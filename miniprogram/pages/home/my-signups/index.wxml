@@ -1,0 +1,162 @@
+<view class="signups-page">
+  <view class="grid-background"></view>
+
+  <view class="page-content" wx:if="{{!bootstrapping}}">
+    <view class="hero-card">
+      <text class="hero-title">我的报名</text>
+      <text class="hero-desc">移动端处理我名下的面试报名，数据范围与 web 端一致。</text>
+      <view class="hero-stats">
+        <view class="hero-stat">
+          <text class="hero-stat-value">{{total}}</text>
+          <text class="hero-stat-label">当前记录</text>
+        </view>
+        <view class="hero-stat">
+          <text class="hero-stat-value">{{selectedIds.length}}</text>
+          <text class="hero-stat-label">已选中</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="permission-empty" wx:if="{{!hasPermission}}">
+      <text class="permission-title">暂无面试管理权限</text>
+      <text class="permission-desc">当前账号没有 interviews:manage 权限，菜单展示与 web 端保持一致。</text>
+    </view>
+
+    <block wx:if="{{hasPermission}}">
+      <view class="panel-card filter-card">
+        <view class="field-row">
+          <input class="field-input" placeholder="搜索候选人姓名" value="{{candidateName}}" bindinput="onCandidateNameChange" />
+          <input class="field-input" placeholder="搜索岗位名称" value="{{jobName}}" bindinput="onJobNameChange" />
+        </view>
+
+        <view class="field-row field-row-compact">
+          <picker class="picker-field" mode="selector" range="{{resultOptions}}" range-key="label" value="{{resultOptionIndex}}" bindchange="onResultChange">
+            <view class="picker-value">结果筛选：{{currentResultLabel}}</view>
+          </picker>
+          <picker class="picker-field" mode="date" value="{{dateFrom}}" bindchange="onDateFromChange">
+            <view class="picker-value">开始日期：{{dateFrom || '请选择'}}</view>
+          </picker>
+          <picker class="picker-field" mode="date" value="{{dateTo}}" bindchange="onDateToChange">
+            <view class="picker-value">结束日期：{{dateTo || '请选择'}}</view>
+          </picker>
+        </view>
+
+        <view class="button-row">
+          <button class="ghost-btn" size="mini" bindtap="handleReset">重置</button>
+          <button class="ghost-btn" size="mini" bindtap="handleSearch">搜索</button>
+          <button class="primary-btn" size="mini" bindtap="openCreateEditor">安排面试</button>
+        </view>
+      </view>
+
+      <view class="panel-card batch-card" wx:if="{{list.length}}">
+        <view class="batch-top">
+          <view class="select-chip" bindtap="toggleSelectAll">
+            <text class="select-chip-mark">{{selectedIds.length === list.length && list.length ? '✓' : ''}}</text>
+            <text class="select-chip-text">全选当前页</text>
+          </view>
+          <text class="batch-tip">已选 {{selectedIds.length}} 条</text>
+        </view>
+
+        <view class="batch-actions">
+          <button class="mini-action success" size="mini" disabled="{{!selectedIds.length}}" data-result="passed" bindtap="handleBatchResult">批量通过</button>
+          <button class="mini-action danger" size="mini" disabled="{{!selectedIds.length}}" data-result="rejected" bindtap="handleBatchResult">批量不通过</button>
+          <button class="mini-action neutral" size="mini" disabled="{{!selectedIds.length}}" data-result="noshow" bindtap="handleBatchResult">批量未参加</button>
+          <button class="mini-action hired" size="mini" disabled="{{!selectedIds.length}}" data-result="hired" bindtap="handleBatchResult">批量入职</button>
+        </view>
+      </view>
+
+      <view class="list-section" wx:if="{{list.length}}">
+        <view class="panel-card interview-card" wx:for="{{list}}" wx:key="_id">
+          <view class="card-header">
+            <view>
+              <text class="candidate-name">{{item.candidate_name || '未命名候选人'}}</text>
+            </view>
+            <view class="header-right">
+              <view class="result-tag" style="color: {{item.resultInfo.color}}; border-color: {{item.resultInfo.color}};">
+                {{item.resultInfo.text}}
+              </view>
+              <view class="select-chip compact" bindtap="toggleSelect" data-id="{{item._id}}">
+                <text class="select-chip-mark">{{item.checked ? '✓' : ''}}</text>
+              </view>
+            </view>
+          </view>
+
+          <view class="info-grid">
+            <view class="info-row">
+              <text class="info-label">企业</text>
+              <text class="info-value">{{item.company_name || '-'}}</text>
+            </view>
+            <view class="info-row">
+              <text class="info-label">时间</text>
+              <text class="info-value">{{item.displayInterviewTime}}</text>
+            </view>
+            <view class="info-row">
+              <text class="info-label">推荐人</text>
+              <text class="info-value">{{item.recommender_name || '-'}}</text>
+            </view>
+            <view class="info-row">
+              <text class="info-label">电话</text>
+              <text class="info-value phone-link" data-phone="{{item.phone || ''}}" bindtap="callPhone">{{item.phone || '-'}}</text>
+            </view>
+          </view>
+
+          <view class="card-actions">
+            <button class="ghost-btn action-btn" size="mini" data-id="{{item._id}}" bindtap="openEditEditor">修改</button>
+            <button class="mini-action success" size="mini" wx:if="{{item.result === 'pending'}}" data-id="{{item._id}}" data-result="passed" bindtap="handleRowResult">通过</button>
+            <button class="mini-action danger" size="mini" wx:if="{{item.result === 'pending'}}" data-id="{{item._id}}" data-result="rejected" bindtap="handleRowResult">不通过</button>
+            <button class="mini-action neutral" size="mini" wx:if="{{item.result === 'pending'}}" data-id="{{item._id}}" data-result="noshow" bindtap="handleRowResult">未参加</button>
+            <button class="mini-action hired" size="mini" wx:if="{{item.result === 'passed'}}" data-id="{{item._id}}" data-result="hired" bindtap="handleRowResult">入职</button>
+          </view>
+        </view>
+      </view>
+
+      <view class="empty-card" wx:if="{{!loading && !list.length}}">
+        <text class="empty-title">暂无面试记录</text>
+        <text class="empty-desc">调整筛选条件后重试，或直接安排新的面试。</text>
+      </view>
+
+      <view class="load-more" wx:if="{{list.length && hasMore}}">
+        <button class="ghost-btn" size="mini" loading="{{loadingMore}}" bindtap="loadMore">加载更多</button>
+      </view>
+    </block>
+  </view>
+
+  <view class="modal-mask" wx:if="{{showEditor}}" bindtap="closeEditor"></view>
+  <view class="editor-modal" wx:if="{{showEditor}}">
+    <view class="editor-header">
+      <text class="editor-title">{{editorTitle}}</text>
+      <text class="editor-close" bindtap="closeEditor">×</text>
+    </view>
+
+    <view class="editor-body">
+      <input class="editor-input" placeholder="候选人姓名" value="{{form.candidate_name}}" data-field="candidate_name" bindinput="onFormInput" />
+      <input class="editor-input" placeholder="手机号" type="number" value="{{form.phone}}" data-field="phone" bindinput="onFormInput" />
+
+      <picker mode="selector" range="{{jobsOptions}}" range-key="label" value="{{selectedJobIndex}}" bindchange="onJobPickerChange">
+        <view class="editor-picker">{{selectedJobLabel || (jobsLoading ? '岗位加载中...' : '请选择岗位')}}</view>
+      </picker>
+
+      <view class="editor-inline">
+        <picker class="editor-picker inline" mode="date" value="{{formDate}}" bindchange="onFormDateChange">
+          <view>{{formDate || '选择日期'}}</view>
+        </picker>
+        <picker class="editor-picker inline" mode="time" value="{{formTime}}" bindchange="onFormTimeChange">
+          <view>{{formTime || '选择时间'}}</view>
+        </picker>
+      </view>
+
+      <view class="type-row">
+        <view class="type-chip {{form.interview_type === 'offline' ? 'active' : ''}}" data-value="offline" bindtap="onInterviewTypeChange">现场面试</view>
+        <view class="type-chip {{form.interview_type === 'online' ? 'active' : ''}}" data-value="online" bindtap="onInterviewTypeChange">线上面试</view>
+      </view>
+
+      <input class="editor-input" placeholder="面试官" value="{{form.interviewer}}" data-field="interviewer" bindinput="onFormInput" />
+      <textarea class="editor-textarea" placeholder="备注 / 地点 / 链接" value="{{form.remark}}" data-field="remark" bindinput="onFormInput"></textarea>
+    </view>
+
+    <view class="editor-footer">
+      <button class="ghost-btn" bindtap="closeEditor">取消</button>
+      <button class="primary-btn" loading="{{submitting}}" bindtap="submitEditor">保存</button>
+    </view>
+  </view>
+</view>

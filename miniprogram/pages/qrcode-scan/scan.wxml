@@ -1,0 +1,40 @@
+<!-- pages/qrcode-scan/scan.wxml -->
+<view class="scan-page">
+  <view class="scan-guide card">
+    <text class="text-h2">扫码报名</text>
+    <text class="text-small text-gray mt-8">可扫描岗位二维码、分销推广二维码，也可扫描内部入职码</text>
+  </view>
+
+  <view class="scan-result card" wx:if="{{jobInfo}}">
+    <view class="job-header">
+      <text class="job-name text-h2">{{jobInfo.type === 'internal_onboard' ? '内部扫码入职' : (jobInfo.job_name || '分销推广二维码')}}</text>
+      <text class="job-company text-gray">{{jobInfo.type === 'agent_referral' ? '已识别为分销绑定码' : (jobInfo.company_name || '')}}</text>
+      <text class="job-salary text-primary" wx:if="{{jobInfo.type !== 'agent_referral'}}">{{jobInfo.hourly_rate}}元/时</text>
+    </view>
+
+    <view class="mt-16" wx:if="{{jobInfo.type !== 'internal_onboard'}}">
+      <text class="section-title">推荐人：</text>
+      <text>{{jobInfo.recommender_name || '无'}}</text>
+    </view>
+
+    <view class="mt-16" wx:if="{{jobInfo.type === 'internal_onboard'}}">
+      <text class="section-title">操作说明：</text>
+      <text>识别成功后进入注册与入职登记流程</text>
+    </view>
+
+    <button class="btn-primary mt-16" bindtap="goToApply">
+      {{jobInfo.type === 'agent_referral' ? '进入分销页并绑定' : (jobInfo.type === 'internal_onboard' ? '进入扫码入职' : '确认报名此岗位')}}
+    </button>
+  </view>
+
+  <!-- 重新扫描 -->
+  <view class="scan-again" bindtap="scanAgain">
+    <text>扫描其他二维码</text>
+  </view>
+
+  <!-- 全局客服浮动按钮 -->
+  <global-service-btn 
+    show="{{true}}"
+    show-label="{{true}}"
+  />
+</view>

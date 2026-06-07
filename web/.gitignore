@@ -1,0 +1,31 @@
+# Vite
+dist/
+dist-ssr/
+*.local
+
+# Dependencies
+node_modules/
+package-lock.json
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+*.log
+
+# Environment
+.env.local
+.env.*.local
+
+# Build analysis
+dist-analysis/
+
+# Test coverage
+coverage/
+*.lcov

@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "客服咨询",
+  "navigationBarBackgroundColor": "#2C3E50",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "global-service-btn": "/components/global-service-btn/global-service-btn"
+  }
+}

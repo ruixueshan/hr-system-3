@@ -1,0 +1,81 @@
+<!--pages/my/salaries/salaries.wxml-->
+<view class="container">
+  <!-- 统计卡片 -->
+  <view class="stats-card">
+    <view class="stat-header">
+      <text class="stat-title">累计收入</text>
+      <text class="stat-subtitle">{{totalStats.monthCount}} 个月 · {{totalStats.paidCount}} 笔已发放</text>
+    </view>
+    <view class="stat-amount">¥ {{totalAmountText}}</view>
+    <view class="stat-tips">点击查看每月明细</view>
+  </view>
+
+  <!-- 加载状态 -->
+  <view wx:if="{{loading}}" class="loading-container">
+    <view class="loading-spinner"></view>
+    <text class="loading-text">加载中...</text>
+  </view>
+
+  <!-- 空状态 -->
+  <view wx:elif="{{empty}}" class="empty-container">
+    <view class="empty-icon">💰</view>
+    <text class="empty-text">暂无工资记录</text>
+    <text class="empty-tip">发放工资后即可查看</text>
+  </view>
+
+  <!-- 工资列表 -->
+  <view wx:else class="list-container">
+    <view 
+      class="salary-item" 
+      wx:for="{{list}}" 
+      wx:key="key"
+    >
+      <!-- 收起状态 -->
+      <view class="item-summary" bindtap="toggleDetail" data-index="{{index}}">
+        <view class="summary-left">
+          <text class="month-text">{{item.monthText}}</text>
+          <view 
+            class="status-badge" 
+            style="background: {{statusMap[item.status].color}}20; color: {{statusMap[item.status].color}}"
+          >
+            {{statusMap[item.status].text}}
+          </view>
+        </view>
+        <view class="summary-right">
+          <text class="amount">¥ {{item.net_pay || 0}}</text>
+          <text class="arrow">{{expandedIndex === index ? '▲' : '▼'}}</text>
+        </view>
+      </view>
+
+      <!-- 展开详情 -->
+      <view wx:if="{{expandedIndex === index}}" class="item-detail">
+        <view class="detail-section">
+          <view class="detail-title">收入明细</view>
+          <view class="detail-row">
+            <text class="detail-label">应发工资</text>
+            <text class="detail-value income">¥ {{item.gross_pay || 0}}</text>
+          </view>
+        </view>
+
+        <view class="detail-section">
+          <view class="detail-title">扣除明细</view>
+          <view class="detail-row">
+            <text class="detail-label">保险扣除</text>
+            <text class="detail-value expense">- ¥ {{item.insurance_deduct || 0}}</text>
+          </view>
+          <view class="detail-row">
+            <text class="detail-label">个税扣除</text>
+            <text class="detail-value expense">- ¥ {{item.tax || 0}}</text>
+          </view>
+        </view>
+
+        <view class="detail-footer">
+          <view class="footer-row highlight">
+            <text class="footer-label">实发工资</text>
+            <text class="footer-value amount">¥ {{item.net_pay || 0}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

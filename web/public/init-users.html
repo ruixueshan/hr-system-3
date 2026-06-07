@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HR系统3.0 - 初始化测试用户</title>
+  <style>
+    body { font-family: sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; background: #f5f5f5; margin: 0; }
+    .container { background: white; padding: 40px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); max-width: 500px; width: 100%; }
+    h1 { color: #333; font-size: 24px; margin-bottom: 8px; }
+    .subtitle { color: #666; margin-bottom: 24px; }
+    button { width: 100%; padding: 14px; font-size: 16px; border: none; border-radius: 8px; cursor: pointer; margin-top: 12px; }
+    .btn-primary { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+    .btn-secondary { background: #f0f0f0; color: #333; }
+    .btn-primary:hover { opacity: 0.9; }
+    .btn-secondary:hover { background: #e0e0e0; }
+    #status { margin-top: 20px; padding: 16px; border-radius: 8px; display: none; }
+    .success { background: #f0fdf4; border: 1px solid #86efac; color: #166534; }
+    .error { background: #fef2f2; border: 1px solid #fca5a5; color: #991b1b; }
+    .info { background: #f0f9ff; border: 1px solid #7dd3fc; color: #0369a1; }
+    pre { background: #f8f9fa; padding: 12px; border-radius: 6px; overflow-x: auto; font-size: 13px; }
+    .users-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+    .users-table th, .users-table td { padding: 10px; text-align: left; border-bottom: 1px solid #eee; }
+    .users-table th { background: #f8f9fa; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🚀 展瑞HR系统 3.0</h1>
+    <p class="subtitle">测试用户初始化工具</p>
+    
+    <button class="btn-primary" onclick="createTestUsers()">创建测试用户</button>
+    <button class="btn-secondary" onclick="checkUsers()">检查现有用户</button>
+    
+    <div id="status"></div>
+    <div id="users-list"></div>
+  </div>
+
+  <!-- CloudBase JS SDK -->
+  <script src="https://imgcache.qq.com/qcloud/cloudbase-js-sdk/1.7.0/cloudbase.full.js"></script>
+  <script>
+    const ENV_ID = 'cloud1-5glojms9a83c3457';
+    const REGION = 'ap-shanghai';
+    
+    // 初始化 CloudBase
+    let app;
+    let db;
+    
+    async function initCloud() {
+      if (app) return true;
+      try {
+        app = cloudbase.init({
+          env: ENV_ID,
+          region: REGION
+        });
+        
+        // 尝试匿名登录（Web端默认方式）
+        await app.auth({ persistence: 'local' }).anonymousAuthProvider().signIn();
+        db = app.database();
+        showStatus('info', '✅ CloudBase 初始化成功');
+        return true;
+      } catch (err) {
+        console.error('初始化失败:', err);
+        showStatus('error', '❌ 初始化失败: ' + err.message);
+        return false;
+      }
+    }
+    
+    async function createTestUsers() {
+      const initialized = await initCloud();
+      if (!initialized) return;
+      
+      showStatus('info', '⏳ 正在创建测试用户...');
+      
+      const testUsers = [
+        {
+          phone: '13800138000',
+          password: '123456',
+          name: '测试HR',
+          role: 'hr',
+          status: 'normal',
+          avatar: '',
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
+        },
+        {
+          phone: '13900139000',
+          password: '123456',
+          name: '张三',
+          role: 'candidate',
+          status: 'normal',
+          avatar: '',
+          created_at: new Date().toISOString(),
+          updated_at: new Date().toISOString()
+        }
+      ];
+      
+      try {
+        // 检查是否已存在用户
+        const existing = await db.collection('users')
+          .where({ phone: '13800138000' })
+          .get();
+        
+        if (existing.data.length > 0) {
+          showStatus('success', '✅ 测试用户已存在，无需重复创建');
+          await checkUsers();
+          return;
+        }
+        
+        // 创建用户
+        for (const user of testUsers) {
+          await db.collection('users').add(user);
+          console.log('已创建用户:', user.phone);
+        }
+        
+        showStatus('success', `✅ 成功创建 ${testUsers.length} 个测试用户`);
+        await checkUsers();
+      } catch (err) {
+        console.error('创建用户失败:', err);
+        showStatus('error', '❌ 创建用户失败: ' + err.message);
+      }
+    }
+    
+    async function checkUsers() {
+      const initialized = await initCloud();
+      if (!initialized) return;
+      
+      try {
+        const result = await db.collection('users').limit(10).get();
+        const users = result.data;
+        
+        if (users.length === 0) {
+          showStatus('info', 'ℹ️ users 集合为空，请先创建测试用户');
+          document.getElementById('users-list').innerHTML = '';
+          return;
+        }
+        
+        let html = '<table class="users-table">';
+        html += '<tr><th>姓名</th><th>手机号</th><th>密码</th><th>角色</th><th>状态</th></tr>';
+        users.forEach(u => {
+          html += `<tr>
+            <td>${u.name || '-'}</td>
+            <td>${u.phone}</td>
+            <td>${u.password || '-'}</td>
+            <td>${u.role}</td>
+            <td>${u.status}</td>
+          </tr>`;
+        });
+        html += '</table>';
+        
+        document.getElementById('users-list').innerHTML = html;
+        showStatus('success', `✅ 找到 ${users.length} 个用户`);
+      } catch (err) {
+        console.error('查询用户失败:', err);
+        showStatus('error', '❌ 查询失败: ' + err.message);
+      }
+    }
+    
+    function showStatus(type, message) {
+      const el = document.getElementById('status');
+      el.className = type;
+      el.innerHTML = message;
+      el.style.display = 'block';
+    }
+    
+    // 页面加载时自动初始化
+    window.onload = () => initCloud();
+  </script>
+</body>
+</html>

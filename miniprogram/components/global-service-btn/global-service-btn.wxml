@@ -1,0 +1,14 @@
+<!-- components/global-service-btn/global-service-btn.wxml -->
+<view 
+  class="global-service-btn {{show ? 'show' : 'hide'}}"
+  style="top: {{top}}px; left: {{left}}px;"
+  bindtap="onTap"
+  bindtouchmove="onTouchMove"
+  catchtouchmove="onTouchMove"
+>
+  <view class="service-btn-inner">
+    <view class="service-glow"></view>
+    <image class="service-image" src="../../assets/service/float-service.png" mode="aspectFit"></image>
+    <view wx:if="{{showLabel}}" class="service-label">在线客服</view>
+  </view>
+</view>

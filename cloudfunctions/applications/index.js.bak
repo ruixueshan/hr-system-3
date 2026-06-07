@@ -1,0 +1,355 @@
+/**
+ * 报名/投递模块
+ * 普通报名、扫码报名、列表查询
+ */
+const cloud = require('wx-server-sdk');
+cloud.init({ env: cloud.DYNAMIC_CURRENT_ENV });
+
+function success(data = null, message = 'success') {
+  return { code: 0, message, data };
+}
+
+function error(code = 1, message = 'error', data = null) {
+  return { code, message, data };
+}
+const db = cloud.database();
+
+/**
+ * Token验证（与auth云函数相同逻辑）
+ */
+async function verifyToken(token) {
+  try {
+    // 从数据库查询有效的 token
+    const tokenDoc = await db.collection('login_tokens')
+      .where({
+        token,
+        status: 'logged',
+        expire_time: db.command.gt(Date.now())
+      })
+      .get();
+
+    if (tokenDoc.data.length === 0) {
+      return null;
+    }
+
+    const tokenRecord = tokenDoc.data[0];
+    const user = await db.collection('users')
+      .doc(tokenRecord.user_id)
+      .get();
+
+    return user.data || null;
+  } catch (err) {
+    console.error('Token 验证失败:', err);
+    return null;
+  }
+}
+
+exports.main = async (event, context) => {
+  const { action, token } = event;
+
+  console.log('applications云函数调用:', { action, token: token ? '已携带' : '未携带', event });
+
+  try {
+    switch (action) {
+      case 'create':
+      case 'apply':
+        return apply(event);
+      case 'apply-by-qr':
+        return applyByQR(event);
+      case 'my-list':
+        return myList(event);
+      case 'list':
+        return adminList(event);
+      case 'update-status':
+        return updateStatus(event);
+      case 'check-status':
+        return checkStatus(event);
+      default:
+        return error(400, '不支持的操作');
+    }
+  } catch (err) {
+    console.error('报名模块错误:', err);
+    return error(500, err.message);
+  }
+};
+
+/**
+ * 普通报名
+ */
+async function apply(data) {
+  console.log('apply 函数开始，参数:', JSON.stringify(data));
+  const { token, user_id, job_id, source = 'miniprogram', expected_interview_time } = data;
+
+  // 确定用户ID：优先使用token验证，其次使用传入的user_id
+  let currentUserId = user_id;
+  if (token && !currentUserId) {
+    const user = await verifyToken(token);
+    if (!user) {
+      return error(401, 'Token无效或已过期');
+    }
+    currentUserId = user._id;
+  }
+
+  if (!currentUserId) {
+    return error(400, '缺少用户标识');
+  }
+
+  if (!job_id) {
+    return error(400, '缺少岗位ID');
+  }
+
+  console.log('用户ID:', currentUserId, '岗位ID:', job_id, '期望面试时间:', expected_interview_time);
+
+  // 检查是否已报名 - 查询最新的申请记录
+  console.log('检查是否已报名...');
+  const existingRes = await db.collection('applications')
+    .where({ user_id: currentUserId, job_id })
+    .orderBy('created_at', 'desc')
+    .limit(1)
+    .get();
+
+  console.log('已报名记录数:', existingRes.data.length);
+
+  // 如果存在申请且状态不是终态，则不允许重复申请
+  if (existingRes.data.length > 0) {
+    const existingApp = existingRes.data[0];
+    const terminalStatuses = ['cancelled', 'rejected', 'expired'];
+    
+    if (!terminalStatuses.includes(existingApp.status)) {
+      return error(400, `您已申请该岗位，当前状态：${existingApp.status}，无法重复提交`);
+    }
+    
+    console.log('存在终态申请，允许重新申请，状态:', existingApp.status);
+  }
+
+  // 获取岗位信息（冗余 company_id）
+  console.log('获取岗位信息，job_id:', job_id);
+  const jobDoc = await db.collection('jobs').doc(job_id).get();
+
+  console.log('岗位查询结果:', {
+    hasData: !!jobDoc.data,
+    jobId: job_id
+  });
+
+  if (!jobDoc.data) {
+    console.error('岗位不存在，job_id:', job_id);
+    return error(404, '岗位不存在');
+  }
+
+  console.log('岗位信息:', {
+    id: jobDoc.data._id,
+    position: jobDoc.data.position,
+    company_id: jobDoc.data.company_id
+  });
+
+  // 构建申请数据
+  const applicationData = {
+    user_id: currentUserId,
+    job_id,
+    company_id: jobDoc.data.company_id || '',
+    source,
+    status: 'pending',
+    apply_time: db.serverDate(),
+    created_at: db.serverDate(),
+    updated_at: db.serverDate()
+  };
+
+  // 如果有期望面试时间，添加到数据中
+  if (expected_interview_time) {
+    applicationData.expected_interview_time = expected_interview_time;
+  }
+
+  const result = await db.collection('applications').add({
+    data: applicationData
+  });
+
+  console.log('申请成功，申请ID:', result.id);
+  return success({ id: result.id }, '报名成功');
+}
+
+/**
+ * 检查用户对岗位的申请状态
+ */
+async function checkStatus(data) {
+  const { token, job_id } = data;
+  
+  if (!token) {
+    return error(401, '缺少token');
+  }
+  
+  if (!job_id) {
+    return error(400, '缺少岗位ID');
+  }
+  
+  // 验证token获取用户ID
+  const user = await verifyToken(token);
+  if (!user) {
+    return error(401, 'Token无效或已过期');
+  }
+  
+  // 查询申请记录
+  const existing = await db.collection('applications')
+    .where({ user_id: user._id, job_id })
+    .orderBy('created_at', 'desc')
+    .limit(1)
+    .get();
+  
+  if (existing.data.length === 0) {
+    return success({ has_application: false });
+  }
+  
+  const application = existing.data[0];
+  return success({
+    has_application: true,
+    application,
+    can_reapply: ['cancelled', 'rejected', 'expired'].includes(application.status)
+  });
+}
+
+/**
+ * 扫码报名
+ * 通过二维码绑定岗位和推荐人
+ */
+async function applyByQR(data) {
+  const { user_id, qr_code, code } = data;
+
+  // 查询二维码信息
+  const qrDoc = await db.collection('qr_codes')
+    .where({ code, status: 'active' })
+    .get();
+
+  if (!qrDoc.data || qrDoc.data.length === 0) {
+    return error(404, '二维码无效或已过期');
+  }
+
+  const qr = qrDoc.data[0];
+
+  // 检查使用次数限制
+  if (qr.max_uses && qr.used_count >= qr.max_uses) {
+    return error(400, '二维码已达使用上限');
+  }
+
+  // 检查过期时间
+  if (qr.expire_time && new Date(qr.expire_time) < new Date()) {
+    return error(400, '二维码已过期');
+  }
+
+  // 复用 apply 逻辑，绑定岗位和推荐人
+  const applyResult = await apply({
+    user_id,
+    job_id: qr.job_id,
+    source: 'qrcode'
+  });
+
+  if (applyResult.code === 0) {
+    // 更新二维码使用次数
+    await db.collection('qr_codes').doc(qr._id).update({
+      data: {
+        scan_count: (qr.scan_count || 0) + 1,
+        updated_at: db.serverDate()
+      }
+    });
+
+    // 将推荐人信息记录到 applications 表（扩展字段）
+    // 需要在 applications 表添加 recommender_id 字段
+  }
+
+  return applyResult;
+}
+
+/**
+ * 我的报名列表（小程序端）
+ */
+async function myList(data) {
+  const { token, user_id } = data;
+
+  // 优先使用 token 验证获取用户 ID
+  let currentUserId = user_id;
+  if (token && !currentUserId) {
+    const user = await verifyToken(token);
+    if (!user) {
+      return error(401, 'Token 无效或已过期');
+    }
+    currentUserId = user._id;
+  }
+
+  if (!currentUserId) {
+    return error(400, '缺少用户标识');
+  }
+
+  // 查询申请记录，并关联岗位信息
+  const res = await db.collection('applications')
+    .where({ user_id: currentUserId })
+    .orderBy('created_at', 'desc')
+    .limit(50)
+    .get();
+
+  // 获取岗位信息以丰富返回数据
+  const applications = res.data;
+  const jobIds = applications.map(app => app.job_id).filter(id => id);
+  
+  let jobs = {};
+  if (jobIds.length > 0) {
+    const jobRes = await db.collection('jobs')
+      .where({
+        _id: db.command.in(jobIds)
+      })
+      .get();
+    
+    jobRes.data.forEach(job => {
+      jobs[job._id] = job;
+    });
+  }
+
+  // 合并数据
+  const list = applications.map(app => ({
+    ...app,
+    job_title: jobs[app.job_id]?.position || '未知岗位',
+    salary_range: jobs[app.job_id]?.salary_range || '面议',
+    location: jobs[app.job_id]?.location || '未知地点',
+    experience: jobs[app.job_id]?.experience || '经验不限',
+    education: jobs[app.job_id]?.education || '学历不限'
+  }));
+
+  return success(list);
+}
+
+/**
+ * 候选人库（管理员查询）
+ */
+async function adminList(data) {
+  const { job_id, status, company_id, page = 1, pageSize = 20 } = data;
+  const query = db.collection('applications').where({});
+
+  if (job_id) query.where({ job_id });
+  if (status) query.where({ status });
+  if (company_id) query.where({ company_id });
+
+  const totalRes = await query.count();
+  const total = totalRes.total;
+  const skip = (page - 1) * pageSize;
+
+  const listRes = await query.orderBy('created_at', 'desc')
+    .skip(skip).limit(pageSize).get();
+
+  return success({ list: listRes.data, total, page, pageSize });
+}
+
+/**
+ * 更新报名状态
+ */
+async function updateStatus(data) {
+  const { application_id, status, remark } = data;
+
+  await db.collection('applications').doc(application_id).update({
+    data: {
+      status,
+      remark,
+      updated_at: db.serverDate()
+    }
+  });
+
+  // 如果通过，自动创建面试记录或后续流程可根据需求扩展
+
+  return success(null, '状态已更新');
+}

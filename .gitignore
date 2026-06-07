@@ -1,0 +1,93 @@
+# -------------------------------------------------------
+# OS / Editor
+# -------------------------------------------------------
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+.vscode/
+.idea/
+.codex/
+*.swp
+*.swo
+
+# -------------------------------------------------------
+# Dependencies
+# -------------------------------------------------------
+node_modules/
+*/node_modules/
+
+# -------------------------------------------------------
+# Build / Cache Artifacts
+# -------------------------------------------------------
+dist/
+build/
+.cache/
+.temp/
+tmp/
+coverage/
+web/dist/
+web/.vite/
+
+# -------------------------------------------------------
+# Logs
+# -------------------------------------------------------
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# -------------------------------------------------------
+# Environment / Secrets
+# -------------------------------------------------------
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# Keys / certs (avoid committing sensitive assets)
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+*.cer
+
+# -------------------------------------------------------
+# Tencent CloudBase / WeChat Local Private Config
+# -------------------------------------------------------
+project.private.config.json
+cloudfunctions/project.private.config.json
+miniprogram/project.private.config.json
+
+# Local CloudBase runtime/cache
+.tcb/
+.cloudbase/
+
+# -------------------------------------------------------
+# WeChat Miniprogram Generated / Local Files
+# -------------------------------------------------------
+miniprogram/.cache/
+miniprogram/.temp/
+miniprogram/npm/
+miniprogram/miniprogram_npm/
+
+# -------------------------------------------------------
+# Test / Runtime Dumps
+# -------------------------------------------------------
+*.pid
+*.seed
+*.pid.lock
+*.out
+*.err
+*.stackdump
+
+# -------------------------------------------------------
+# Archives
+# -------------------------------------------------------
+*.zip
+*.tar
+*.tar.gz
+*.7z

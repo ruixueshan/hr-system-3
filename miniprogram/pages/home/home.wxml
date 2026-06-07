@@ -1,0 +1,579 @@
+<!--pages/home/home.wxml-->
+<view class="distributor-home">
+  <view class="grid-background"></view>
+  
+  <!-- 首页视图（非代理用户） -->
+  <view class="main-content" wx:if="{{!showManageContent}}">
+    <!-- 头部标题区 -->
+    <view class="header-section">
+      <view class="title-container">
+        <text class="main-title">分销团队</text>
+        <text class="sub-title">JOIN THE DISTRIBUTION NETWORK</text>
+      </view>
+      <view class="title-decoration">
+        <view class="decoration-line line-1"></view>
+        <view class="decoration-line line-2"></view>
+        <view class="decoration-dot"></view>
+      </view>
+    </view>
+
+    <!-- 吸引文案区 -->
+    <view class="attraction-section">
+      <view class="attraction-card">
+        <view class="card-content">
+          <view class="icon-wrapper">
+            <view class="icon-circle"></view>
+            <image class="icon-image" src="../../assets/home-icons/rocket.png" mode="aspectFit"></image>
+          </view>
+          <text class="attraction-title">开启您的分销事业</text>
+          <text class="attraction-desc">加入我们，成为顶尖分销团队的一员。享受高额佣金、灵活工作时间和专业培训支持。与行业领先者合作，打造您的商业帝国。</text>
+          <view class="stats-grid">
+            <view class="stat-item">
+              <text class="stat-number">50%</text>
+              <text class="stat-label">佣金比例</text>
+            </view>
+            <view class="stat-item">
+              <text class="stat-number">¥5000+</text>
+              <text class="stat-label">月均收入</text>
+            </view>
+            <view class="stat-item">
+              <text class="stat-number">即时</text>
+              <text class="stat-label">自动审批</text>
+            </view>
+          </view>
+        </view>
+        <view class="card-glow"></view>
+      </view>
+    </view>
+
+    <!-- 未登录用户申请入口 -->
+    <view class="application-entry-section" wx:if="{{!userInfo && !loading}}">
+      <view class="application-entry-card">
+        <view class="card-content">
+          <view class="icon-wrapper">
+            <view class="icon-circle"></view>
+            <image class="icon-image" src="../../assets/home-icons/key.png" mode="aspectFit"></image>
+          </view>
+          <text class="entry-title">立即加入分销团队</text>
+          <text class="entry-desc">登录后即可申请成为认证代理，享受高额佣金、专业培训和专属权益。与行业领先者合作，打造您的商业帝国。</text>
+          <view class="entry-stats">
+            <view class="entry-stat">
+              <text class="entry-stat-number">50%</text>
+              <text class="entry-stat-label">佣金比例</text>
+            </view>
+            <view class="entry-stat">
+              <text class="entry-stat-number">¥5000+</text>
+              <text class="entry-stat-label">月均收入</text>
+            </view>
+            <view class="entry-stat">
+              <text class="entry-stat-number">即时</text>
+              <text class="entry-stat-label">自动审批</text>
+            </view>
+          </view>
+          <button class="entry-apply-btn" bindtap="applyForAgent">
+            登录后申请成为代理
+          </button>
+          <text class="entry-hint">已有账号？点击上方按钮登录后申请</text>
+        </view>
+        <view class="card-glow"></view>
+      </view>
+    </view>
+
+    <!-- 用户状态区 -->
+    <view class="status-section" wx:if="{{userInfo}}">
+      <view class="status-card">
+        <view class="user-info">
+          <view class="avatar-section">
+            <image class="avatar" src="{{userInfo.avatar || '../../assets/default-avatar.png'}}" mode="aspectFill"></image>
+            <view class="avatar-glow"></view>
+          </view>
+          <view class="user-details">
+            <text class="user-name">{{userInfo.real_name || '用户'}}</text>
+            <text class="user-phone">{{userInfo.phone || '未绑定手机'}}</text>
+            <view class="role-tag {{isAgent ? 'agent-tag' : 'candidate-tag'}}">
+              <text>{{isAgent ? '已认证代理' : '普通用户'}}</text>
+            </view>
+          </view>
+        </view>
+
+        <!-- 申请状态（非管理权限用户显示） -->
+        <view class="application-status" wx:if="{{userInfo && !canEnterManage && !isAgent}}">
+          <view class="status-header">
+            <text class="status-title">代理申请状态</text>
+            <text class="status-indicator {{applicationStatus === 'pending' ? 'pending' : applicationStatus === 'approved' ? 'approved' : 'none'}}">
+              {{applicationStatus === 'pending' ? '审核中' : applicationStatus === 'approved' ? '已通过' : '未申请'}}
+            </text>
+          </view>
+          
+          <view class="status-actions">
+            <button 
+              class="apply-btn {{applicationStatus === 'pending' ? 'disabled' : ''}}" 
+              bindtap="applyForAgent"
+              disabled="{{applicationStatus === 'pending'}}"
+            >
+              {{applicationStatus === 'pending' ? '审核中...' : '立即申请成为代理'}}
+            </button>
+            
+            <text class="status-hint" wx:if="{{applicationStatus === 'pending'}}">
+              您的申请正在审核中
+            </text>
+          </view>
+        </view>
+
+        <view class="referral-tip" wx:if="{{referralTip}}">
+          <text>{{referralTip}}</text>
+        </view>
+
+        <!-- 已认证代理入口 -->
+        <view class="agent-portal" wx:if="{{canEnterManage}}">
+          <view class="portal-header">
+            <view class="portal-title-row">
+              <image class="portal-icon" src="../../assets/home-icons/agent.png" mode="aspectFit"></image>
+              <text class="portal-title">欢迎回来，{{userInfo.real_name || userInfo.name || '用户'}}！</text>
+            </view>
+            <text class="portal-subtitle">您已获得招聘之家高级访问权限</text>
+          </view>
+          
+          <button class="recruitment-hub-btn" bindtap="goToRecruitmentHub">
+            进入招聘之家
+          </button>
+        </view>
+      </view>
+    </view>
+
+    <!-- 功能特色区 -->
+    <view class="features-section">
+      <text class="section-title">分销优势</text>
+      <view class="features-grid">
+        <view class="feature-item">
+          <image class="feature-icon" src="../../assets/home-icons/money.png" mode="aspectFit"></image>
+          <text class="feature-title">高额佣金</text>
+          <text class="feature-desc">行业领先的佣金比例，收入无上限</text>
+        </view>
+        <view class="feature-item">
+          <image class="feature-icon" src="../../assets/home-icons/training.png" mode="aspectFit"></image>
+          <text class="feature-title">专业培训</text>
+          <text class="feature-desc">系统化培训体系，快速提升销售技能</text>
+        </view>
+        <view class="feature-item">
+          <image class="feature-icon" src="../../assets/home-icons/security.png" mode="aspectFit"></image>
+          <text class="feature-title">权益保障</text>
+          <text class="feature-desc">完善的权益保障体系，合作更安心</text>
+        </view>
+        <view class="feature-item">
+          <image class="feature-icon" src="../../assets/home-icons/growth.png" mode="aspectFit"></image>
+          <text class="feature-title">成长通道</text>
+          <text class="feature-desc">清晰的晋升路径，从代理到区域总监</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 底部信息 -->
+    <view class="footer-section">
+      <text class="footer-text">加入我们，共创辉煌</text>
+      <text class="footer-contact">咨询热线: 400-888-8888</text>
+      <text class="footer-copyright">© 2026 展瑞分销团队 All Rights Reserved</text>
+    </view>
+  </view>
+
+  <!-- 管理视图（代理用户） -->
+  <view class="manage-container" wx:if="{{showManageContent}}">
+    <view class="header">
+      <view class="back-btn" bindtap="goBack" wx:if="{{showBack}}">
+        <text class="back-icon">←</text>
+        <text>返回</text>
+      </view>
+      <view class="title">招聘之家</view>
+    </view>
+
+    <view class="content">
+      <view class="card">
+        <view class="card-title">欢迎回来，{{userInfo ? (userInfo.real_name || userInfo.name || '用户') : ''}}</view>
+        <view class="card-subtitle">您已获得管理权限</view>
+      </view>
+
+      <!-- 功能菜单 -->
+      <view class="menu-list">
+        <view class="menu-item" wx:if="{{canManageInterviews}}" bindtap="goToMySignups">
+          <image class="menu-icon" src="../../assets/home-icons/report.png" mode="aspectFit"></image>
+          <view class="menu-content">
+            <view class="menu-title">我的报名</view>
+            <view class="menu-desc">查看并处理我名下的面试报名</view>
+          </view>
+          <view class="menu-arrow">›</view>
+        </view>
+
+        <view class="menu-item" bindtap="openAgentQrModal">
+          <image class="menu-icon" src="../../assets/home-icons/qrcode.png" mode="aspectFit"></image>
+          <view class="menu-content">
+            <view class="menu-title">扫码注册</view>
+            <view class="menu-desc">生成推广二维码绑定候选人</view>
+          </view>
+          <view class="menu-arrow">›</view>
+        </view>
+
+        <view class="menu-item" bindtap="goToApply">
+          <image class="menu-icon" src="../../assets/home-icons/apply.png" mode="aspectFit"></image>
+          <view class="menu-content">
+            <view class="menu-title">扫码报名</view>
+            <view class="menu-desc">扫码后直接报名岗位</view>
+          </view>
+          <view class="menu-arrow">›</view>
+        </view>
+
+        <view class="menu-item" bindtap="goToCheckin">
+          <image class="menu-icon" src="../../assets/home-icons/qrcode.png" mode="aspectFit"></image>
+          <view class="menu-content">
+            <view class="menu-title">扫码签到</view>
+            <view class="menu-desc">按企业、岗位、面试日期生成签到码</view>
+          </view>
+          <view class="menu-arrow">›</view>
+        </view>
+
+        <view class="menu-item" bindtap="goToOnboard">
+          <image class="menu-icon" src="../../assets/home-icons/onboard.png" mode="aspectFit"></image>
+          <view class="menu-content">
+            <view class="menu-title">扫码入职</view>
+            <view class="menu-desc">扫描二维码快速办理员工入职</view>
+          </view>
+          <view class="menu-arrow">›</view>
+        </view>
+        
+      </view>
+
+      <view class="tips">
+        <text>提示：</text> 点击"返回"按钮可以回到首页视图
+      </view>
+    </view>
+  </view>
+
+  <!-- 入职码生成弹窗 -->
+  <view class="modal-mask" wx:if="{{showOnboardModal}}" bindtap="closeOnboardModal"></view>
+  <view class="onboard-modal" wx:if="{{showOnboardModal}}">
+    <view class="modal-header">
+      <text class="modal-title">扫码入职</text>
+      <text class="modal-close" bindtap="closeOnboardModal">×</text>
+    </view>
+
+    <view class="modal-content">
+      <view class="form-item" wx:if="{{!generatedOnboardQr}}">
+        <text class="form-label">选择企业</text>
+        <picker mode="selector" range="{{onboardCompanies}}" range-key="display_name" disabled="{{onboardModalLoading}}" bindchange="onCompanyChange">
+          <view class="picker-value">
+            {{selectedCompanyName || (onboardModalLoading ? '企业加载中...' : (onboardCompanies.length ? '请选择企业' : '暂无企业'))}}
+            <text class="picker-arrow">›</text>
+          </view>
+        </picker>
+      </view>
+
+      <view class="form-item" wx:if="{{!generatedOnboardQr && selectedCompanyId}}">
+        <text class="form-label">选择岗位</text>
+        <picker mode="selector" range="{{onboardJobs}}" range-key="display_name" disabled="{{onboardJobsLoading}}" bindchange="onJobChange">
+          <view class="picker-value">
+            {{selectedJobName || (onboardJobsLoading ? '岗位加载中...' : (onboardJobs.length ? '请选择岗位' : '暂无岗位'))}}
+            <text class="picker-arrow">›</text>
+          </view>
+        </picker>
+      </view>
+
+      <view class="qr-section" wx:if="{{!generatedOnboardQr}}">
+        <button
+          class="btn-generate"
+          type="primary"
+          bindtap="generateOnboardQr"
+          loading="{{onboardQrLoading}}"
+          disabled="{{onboardQrLoading || !selectedJobId}}"
+        >
+          {{onboardQrLoading ? '生成中...' : '生成入职码'}}
+        </button>
+      </view>
+
+      <view class="qr-display" wx:if="{{generatedOnboardQr}}">
+        <view class="qr-info">
+          <view class="info-row">
+            <text class="info-label">企业：</text>
+            <text class="info-value">{{generatedOnboardQr.company_name || '-'}}</text>
+          </view>
+          <view class="info-row">
+            <text class="info-label">岗位：</text>
+            <text class="info-value">{{generatedOnboardQr.job_name || '-'}}</text>
+          </view>
+          <view class="info-row">
+            <text class="info-label">编码：</text>
+            <text class="info-value code">{{generatedOnboardQr.code}}</text>
+          </view>
+        </view>
+
+        <view class="qr-image-wrapper">
+          <image
+            class="qr-image"
+            src="{{generatedOnboardQr.qrUrl}}"
+            mode="aspectFit"
+            show-menu-by-longpress="true"
+          />
+        </view>
+
+        <view class="qr-actions">
+          <button class="btn-save" bindtap="saveOnboardQrImage">保存二维码</button>
+          <button class="btn-again" bindtap="generateOnboardQr">重新生成</button>
+        </view>
+
+        <view class="qr-tips">
+          <text>将此二维码发送给员工，微信扫一扫即可完成入职登记</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 加载中 -->
+  <view class="loading-overlay" wx:if="{{loading}}">
+    <view class="loading-content">
+      <view class="loading-spinner"></view>
+      <text class="loading-text">加载中...</text>
+    </view>
+  </view>
+
+  <!-- 登录弹窗 -->
+  <login-sheet 
+    visible="{{showLoginSheet}}"
+    bind:close="onLoginClose"
+    bind:login-success="onLoginSuccess"
+  />
+
+  <!-- 分销二维码弹窗 -->
+  <view class="modal-mask" wx:if="{{showAgentQrModal}}" bindtap="closeAgentQrModal"></view>
+  <view class="agent-qr-modal" wx:if="{{showAgentQrModal}}">
+    <view class="modal-header">
+      <text class="modal-title">扫码注册</text>
+      <text class="modal-close" bindtap="closeAgentQrModal">×</text>
+    </view>
+    <view class="modal-content">
+      <view class="agent-qr-desc">绑定分销人，不绑定岗位，扫码后先归属到您名下</view>
+      
+      <view class="qr-section">
+        <button
+          class="btn-generate"
+          type="primary"
+          bindtap="generateAgentQr"
+          loading="{{generatingQr}}"
+          disabled="{{generatingQr}}"
+        >
+          {{generatingQr ? '生成中...' : (agentQr ? '重新生成' : '生成二维码')}}
+        </button>
+      </view>
+
+      <view class="qr-display" wx:if="{{agentQr}}">
+        <view class="qr-image-wrapper">
+          <image
+            class="qr-image"
+            src="{{agentQr.qr_url}}"
+            mode="aspectFit"
+            show-menu-by-longpress="true"
+          />
+        </view>
+
+        <view class="qr-info">
+          <view class="info-row">
+            <text class="info-label">推广码：</text>
+            <text class="info-value code">{{agentQr.code}}</text>
+          </view>
+        </view>
+
+          <view class="qr-actions">
+            <button class="btn-save" bindtap="previewAgentQr">预览</button>
+            <button class="btn-save" bindtap="saveAgentQrImage">下载</button>
+          </view>
+        </view>
+    </view>
+  </view>
+
+  <!-- 报名码生成弹窗 -->
+  <view class="modal-mask" wx:if="{{showApplyModal}}" bindtap="closeApplyModal"></view>
+  <view class="onboard-modal" wx:if="{{showApplyModal}}">
+    <view class="modal-header">
+      <text class="modal-title">扫码报名</text>
+      <text class="modal-close" bindtap="closeApplyModal">×</text>
+    </view>
+
+    <view class="modal-content">
+      <view class="form-item" wx:if="{{!generatedApplyQr}}">
+        <text class="form-label">选择企业</text>
+        <picker mode="selector" range="{{applyCompanies}}" range-key="display_name" disabled="{{applyModalLoading}}" bindchange="onApplyCompanyChange">
+          <view class="picker-value">
+            {{selectedApplyCompanyName || (applyModalLoading ? '企业加载中...' : (applyCompanies.length ? '请选择企业' : '暂无企业'))}}
+            <text class="picker-arrow">›</text>
+          </view>
+        </picker>
+      </view>
+
+      <view class="form-item" wx:if="{{!generatedApplyQr && selectedApplyCompanyId}}">
+        <text class="form-label">选择岗位</text>
+        <picker mode="selector" range="{{applyJobs}}" range-key="display_name" disabled="{{applyJobsLoading}}" bindchange="onApplyJobChange">
+          <view class="picker-value">
+            {{selectedApplyJobName || (applyJobsLoading ? '岗位加载中...' : (applyJobs.length ? '请选择岗位' : '暂无岗位'))}}
+            <text class="picker-arrow">›</text>
+          </view>
+        </picker>
+      </view>
+
+      <view class="form-item" wx:if="{{!generatedApplyQr && selectedApplyJobId}}">
+        <text class="form-label">选择面试时间</text>
+        <view class="datetime-picker">
+          <picker mode="date" value="{{selectedApplyDate}}" bindchange="onApplyDateChange">
+            <view class="picker-value">
+              {{selectedApplyDate || '选择日期'}}
+            </view>
+          </picker>
+          <picker mode="time" value="{{selectedApplyTime}}" bindchange="onApplyTimeChange">
+            <view class="picker-value">
+              {{selectedApplyTime || '选择时间'}}
+            </view>
+          </picker>
+        </view>
+      </view>
+
+      <view class="qr-section" wx:if="{{!generatedApplyQr}}">
+        <button
+          class="btn-generate"
+          type="primary"
+          bindtap="generateApplyQr"
+          loading="{{applyQrLoading}}"
+          disabled="{{applyQrLoading || !selectedApplyDate || !selectedApplyTime}}"
+        >
+          {{applyQrLoading ? '生成中...' : '生成报名码'}}
+        </button>
+      </view>
+
+      <view class="qr-display" wx:if="{{generatedApplyQr}}">
+        <view class="qr-info">
+          <view class="info-row">
+            <text class="info-label">企业：</text>
+            <text class="info-value">{{generatedApplyQr.company_name || '-'}}</text>
+          </view>
+          <view class="info-row">
+            <text class="info-label">岗位：</text>
+            <text class="info-value">{{generatedApplyQr.job_name || '-'}}</text>
+          </view>
+          <view class="info-row">
+            <text class="info-label">面试时间：</text>
+            <text class="info-value">{{generatedApplyQr.interview_time || '-'}}</text>
+          </view>
+        </view>
+
+        <view class="qr-image-wrapper">
+          <image
+            class="qr-image"
+            src="{{generatedApplyQr.qrLocalPath || generatedApplyQr.qrUrl}}"
+            mode="aspectFit"
+            show-menu-by-longpress="true"
+          />
+        </view>
+
+        <view class="qr-actions">
+          <button class="btn-save" bindtap="saveApplyQrImage">保存二维码</button>
+          <button class="btn-again" bindtap="generateApplyQr">重新生成</button>
+        </view>
+
+        <view class="qr-tips">
+          <text>将此二维码发送给候选人，微信扫一扫即可完成报名登记</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 签到码生成弹窗 -->
+  <view class="modal-mask" wx:if="{{showCheckinModal}}" bindtap="closeCheckinModal"></view>
+  <view class="onboard-modal" wx:if="{{showCheckinModal}}">
+    <view class="modal-header">
+      <text class="modal-title">扫码签到</text>
+      <text class="modal-close" bindtap="closeCheckinModal">×</text>
+    </view>
+
+    <view class="modal-content">
+      <view class="form-item" wx:if="{{!generatedCheckinQr}}">
+        <text class="form-label">选择企业</text>
+        <picker mode="selector" range="{{checkinCompanies}}" range-key="display_name" disabled="{{checkinModalLoading}}" bindchange="onCheckinCompanyChange">
+          <view class="picker-value">
+            {{selectedCheckinCompanyName || (checkinModalLoading ? '企业加载中...' : (checkinCompanies.length ? '请选择企业' : '暂无企业'))}}
+            <text class="picker-arrow">›</text>
+          </view>
+        </picker>
+      </view>
+
+      <view class="form-item" wx:if="{{!generatedCheckinQr && selectedCheckinCompanyId}}">
+        <text class="form-label">选择岗位</text>
+        <picker mode="selector" range="{{checkinJobs}}" range-key="display_name" disabled="{{checkinJobsLoading}}" bindchange="onCheckinJobChange">
+          <view class="picker-value">
+            {{selectedCheckinJobName || (checkinJobsLoading ? '岗位加载中...' : (checkinJobs.length ? '请选择岗位' : '暂无岗位'))}}
+            <text class="picker-arrow">›</text>
+          </view>
+        </picker>
+      </view>
+
+      <view class="form-item" wx:if="{{!generatedCheckinQr && selectedCheckinJobId}}">
+        <text class="form-label">面试日期</text>
+        <picker mode="date" value="{{selectedCheckinDate}}" bindchange="onCheckinDateChange">
+          <view class="picker-value">
+            {{selectedCheckinDate || '选择日期'}}
+          </view>
+        </picker>
+      </view>
+
+      <view class="form-item" wx:if="{{!generatedCheckinQr && selectedCheckinJobId}}">
+        <text class="form-label">面试地点（可选）</text>
+        <input class="modal-input" value="{{selectedCheckinLocation}}" bindinput="onCheckinLocationInput" placeholder="请输入面试地点" />
+      </view>
+
+      <view class="qr-section" wx:if="{{!generatedCheckinQr}}">
+        <button
+          class="btn-generate"
+          type="primary"
+          bindtap="generateCheckinQr"
+          loading="{{checkinQrLoading}}"
+          disabled="{{checkinQrLoading || !selectedCheckinDate}}"
+        >
+          {{checkinQrLoading ? '生成中...' : '生成签到码'}}
+        </button>
+      </view>
+
+      <view class="qr-display" wx:if="{{generatedCheckinQr}}">
+        <view class="qr-info">
+          <view class="info-row">
+            <text class="info-label">企业：</text>
+            <text class="info-value">{{generatedCheckinQr.company_name || '-'}}</text>
+          </view>
+          <view class="info-row">
+            <text class="info-label">岗位：</text>
+            <text class="info-value">{{generatedCheckinQr.job_name || '-'}}</text>
+          </view>
+          <view class="info-row">
+            <text class="info-label">面试日期：</text>
+            <text class="info-value">{{generatedCheckinQr.interview_date || '-'}}</text>
+          </view>
+          <view class="info-row" wx:if="{{generatedCheckinQr.location}}">
+            <text class="info-label">地点：</text>
+            <text class="info-value">{{generatedCheckinQr.location}}</text>
+          </view>
+        </view>
+
+        <view class="qr-image-wrapper">
+          <image
+            class="qr-image"
+            src="{{generatedCheckinQr.qrUrl}}"
+            mode="aspectFit"
+            show-menu-by-longpress="true"
+          />
+        </view>
+
+        <view class="qr-actions">
+          <button class="btn-save" bindtap="saveCheckinQrImage">保存二维码</button>
+          <button class="btn-again" bindtap="generateCheckinQr">重新生成</button>
+        </view>
+
+        <view class="qr-tips">
+          <text>将此二维码发送给候选人，面试当天扫码即可完成签到</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

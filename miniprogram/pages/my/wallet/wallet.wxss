@@ -1,0 +1,52 @@
+.wallet-page { min-height: 100vh; padding: 24rpx 0 44rpx; background: linear-gradient(180deg, #f2faf3 0%, #f8f5ec 42%, #f6f6f6 100%); }
+.balance-card { margin: 0 24rpx 24rpx; padding: 72rpx 40rpx 48rpx; color: #fff; text-align: left; border-radius: 34rpx; background: linear-gradient(135deg, #2d7655 0%, #50ad70 58%, #d2b34d 100%); box-shadow: 0 26rpx 54rpx rgba(34, 116, 81, 0.22); }
+.balance-label { margin-bottom: 42rpx; font-size: 30rpx; opacity: 0.9; }
+.balance-value { margin-bottom: 54rpx; font-size: 82rpx; font-weight: 800; letter-spacing: 1rpx; }
+.balance-subrow { display: flex; gap: 36rpx; font-size: 26rpx; opacity: 0.9; }
+.bind-status { display: flex; align-items: center; justify-content: center; margin: 0 24rpx 28rpx; padding: 26rpx 22rpx; color: #276a50; font-size: 28rpx; background: #fff; border-radius: 24rpx; box-shadow: 0 10rpx 28rpx rgba(36, 93, 70, 0.08); }
+.bind-status.warn { color: #9b6a12; }
+.status-icon { margin-right: 10rpx; }
+.withdraw-card, .list-card, .auth-card { margin: 24rpx; padding: 32rpx 30rpx; background: rgba(255, 255, 255, 0.96); border-radius: 28rpx; box-shadow: 0 12rpx 36rpx rgba(29, 44, 36, 0.07); }
+.auth-card { display: flex; align-items: center; justify-content: space-between; border: 1rpx solid rgba(201, 139, 41, 0.18); }
+.auth-card.active { border-color: rgba(23, 104, 78, 0.18); background: #f5fbf7; }
+.auth-title { color: #17251f; font-size: 30rpx; font-weight: 700; }
+.auth-sub { margin-top: 8rpx; color: #7b857f; font-size: 24rpx; }
+.btn-auth { min-width: 152rpx; height: 68rpx; line-height: 68rpx; margin: 0; color: #fff; font-size: 26rpx; border-radius: 999rpx; background: #c98b29; }
+.section-title { color: #111827; font-size: 34rpx; font-weight: 800; }
+.withdraw-limit-card { margin: 22rpx 0 30rpx; padding: 24rpx 26rpx; background: #f8fbfd; border: 1rpx solid #e1e6ea; border-radius: 22rpx; box-shadow: 0 8rpx 20rpx rgba(31, 41, 55, 0.04); }
+.limit-title { margin-bottom: 14rpx; color: #66737d; font-size: 26rpx; font-weight: 800; }
+.limit-line { color: #8a949e; font-size: 24rpx; line-height: 1.65; }
+.limit-line.danger { margin-top: 4rpx; color: #c62828; font-weight: 800; }
+.amount-input-row { display: flex; align-items: center; height: 96rpx; padding: 0 28rpx; margin-bottom: 28rpx; background: #f2f8f1; border-radius: 22rpx; }
+.yuan { margin-right: 18rpx; color: #17684e; font-size: 38rpx; font-weight: 800; }
+.amount-input { flex: 1; color: #17251f; font-size: 38rpx; }
+.btn-withdraw { height: 88rpx; line-height: 88rpx; color: #fff; font-size: 32rpx; font-weight: 800; border-radius: 44rpx; background: #2f7658; }
+.btn-withdraw[disabled] { color: rgba(255,255,255,0.78); background: #a9b5ae; }
+.hint { margin-top: 22rpx; color: #7b857f; font-size: 26rpx; line-height: 1.6; }
+.list-card.clickable { cursor: pointer; }
+.list-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20rpx; }
+.card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 24rpx; }
+.card-header .section-title { margin-bottom: 0; }
+.card-arrow { color: #c9d0cc; font-size: 46rpx; font-weight: 300; line-height: 1; }
+.list-item { display: flex; align-items: center; justify-content: space-between; padding: 24rpx 0; border-bottom: 1rpx solid #edf0ec; }
+.list-item:last-child { border-bottom: none; }
+.item-title { color: #17251f; font-size: 28rpx; font-weight: 600; }
+.item-sub { max-width: 440rpx; margin-top: 8rpx; color: #8b948f; font-size: 22rpx; word-break: break-all; }
+.item-date { margin-top: 4rpx; color: #b0b8b3; font-size: 20rpx; }
+.income-title { color: #17684e; }
+.status-pill { flex-shrink: 0; margin-left: auto; padding: 8rpx 18rpx; color: #17684e; font-size: 22rpx; background: #e5f3eb; border-radius: 999rpx; }
+.amount { color: #17684e; font-size: 28rpx; font-weight: 700; }
+.income-amount { color: #c98b29; }
+.empty, .loading { padding: 34rpx; color: #9ca39f; font-size: 26rpx; text-align: center; }
+.popup-mask { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.45); z-index: 1000; }
+.popup-panel { position: fixed; bottom: 0; left: 24rpx; right: 24rpx; max-height: 75vh; background: #fff; border-radius: 32rpx 32rpx 0 0; z-index: 1001; display: flex; flex-direction: column; overflow: hidden; box-sizing: border-box; padding-left: 20rpx; padding-right: 20rpx; }
+.popup-header { display: flex; align-items: center; justify-content: space-between; padding: 32rpx 0 20rpx; border-bottom: 1rpx solid #edf0ec; }
+.popup-title { color: #17251f; font-size: 32rpx; font-weight: 700; }
+.popup-title { flex: 1; min-width: 0; margin-right: 12rpx; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.popup-close { width: 52rpx; height: 52rpx; line-height: 52rpx; text-align: center; color: #7b857f; font-size: 30rpx; background: #f0f2f0; border-radius: 50%; }
+.popup-scroll { flex: 1; padding: 16rpx 0; max-height: 60vh; overflow-y: auto; overflow-x: hidden; }
+.popup-scroll .list-item { min-width: 0; overflow: hidden; gap: 16rpx; }
+.popup-scroll .list-item > view:first-child { flex: 1; min-width: 0; overflow: hidden; }
+.popup-scroll .item-sub { max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: normal; word-break: break-word; overflow-wrap: anywhere; }
+.popup-scroll .status-pill { flex-shrink: 0; }
+.popup-tip { padding: 30rpx; color: #9ca39f; font-size: 24rpx; text-align: center; }

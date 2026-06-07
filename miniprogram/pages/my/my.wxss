@@ -1,0 +1,218 @@
+/* pages/my/my.wxss */
+.my-page {
+  min-height: 100vh;
+  background: #f5f5f5;
+}
+
+.join-group-item {
+  padding: 0;
+  overflow: hidden;
+}
+
+.header-section {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 40rpx 30rpx;
+  padding-bottom: 60rpx;
+}
+
+.user-card {
+  display: flex;
+  align-items: center;
+  padding: 30rpx 20rpx;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 20rpx;
+  margin-bottom: 30rpx;
+}
+
+.avatar-container {
+  position: relative;
+  margin-right: 30rpx;
+}
+
+.avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  border: 4rpx solid rgba(255, 255, 255, 0.3);
+}
+
+.default-avatar {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  border: 4rpx solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.default-avatar-text {
+  font-size: 60rpx;
+}
+
+.user-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+
+.user-name {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #fff;
+}
+
+.user-phone {
+  font-size: 26rpx;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.user-role {
+  font-size: 24rpx;
+  color: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.2);
+  padding: 4rpx 12rpx;
+  border-radius: 12rpx;
+  align-self: flex-start;
+}
+
+.edit-hint {
+  font-size: 26rpx;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.stats-row {
+  display: flex;
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 40rpx 20rpx;
+  margin: -40rpx 20rpx 0;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.1);
+}
+
+.stat-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10rpx;
+}
+
+.stat-value {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #667eea;
+}
+
+.wallet-stat {
+  color: #e3a23a;
+}
+
+.stat-label {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.stat-divider {
+  width: 1rpx;
+  background: #f0f0f0;
+  margin: 0 20rpx;
+}
+
+.menu-section {
+  margin: 30rpx 20rpx;
+}
+
+.section-title {
+  font-size: 28rpx;
+  color: #999;
+  margin-bottom: 20rpx;
+  padding-left: 10rpx;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20rpx;
+}
+
+.menu-card {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 40rpx 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+
+.menu-icon {
+  width: 88rpx;
+  height: 88rpx;
+}
+
+.menu-label {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.menu-list {
+  background: #fff;
+  border-radius: 16rpx;
+  overflow: hidden;
+}
+
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32rpx 30rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.menu-item:last-child {
+  border-bottom: none;
+}
+
+.menu-left {
+  display: flex;
+  align-items: center;
+  gap: 24rpx;
+}
+
+.menu-item-icon {
+  width: 64rpx;
+  height: 64rpx;
+}
+
+.menu-item-label {
+  font-size: 30rpx;
+  color: #333;
+}
+
+.menu-arrow {
+  font-size: 32rpx;
+  color: #ccc;
+}
+
+.logout-section {
+  padding: 40rpx 20rpx;
+}
+
+.btn-logout {
+  width: 100%;
+  height: 88rpx;
+  background: #fff;
+  color: #ff4d4f;
+  border-radius: 44rpx;
+  font-size: 32rpx;
+  border: none;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+
+.btn-logout::after {
+  border: none;
+}

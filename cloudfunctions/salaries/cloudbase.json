@@ -1,0 +1,8 @@
+{
+  "name": "salaries",
+  "handler": "index.main",
+  "runtime": "Nodejs16.13",
+  "timeout": 60,
+  "memorySize": 256,
+  "installDependencyOnline": true
+}

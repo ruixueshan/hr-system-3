@@ -1,0 +1,78 @@
+[
+  {
+    "_id": "33956e3d69bbcd3a00c8b2c92dd0c4c2",
+    "created_at": "2026-03-19T10:17:30.201Z",
+    "description": "总经理",
+    "name": "gm",
+    "permissions": [
+      "*"
+    ],
+    "status": "active",
+    "updated_at": "2026-03-19T10:17:30.201Z",
+    "_openid": "S18HrmTomjpw2Kxwg2JlDg"
+  },
+  {
+    "_id": "6a0a1fb669bbcd7e00c8b9d8605e5469",
+    "updated_at": "2026-03-27T08:09:46.514Z",
+    "_openid": "gNiDXRriBeIEN0jPwnb5vQ",
+    "created_at": "2026-03-19T10:18:38.708Z",
+    "description": "副总经理",
+    "name": "deputy",
+    "permissions": [
+      "dashboard:view",
+      "companies:manage",
+      "jobs:manage",
+      "candidates:view",
+      "interviews:manage",
+      "employees:manage",
+      "salary:manage",
+      "worktime:manage",
+      "bonus:manage",
+      "advance:manage",
+      "rateplans:manage",
+      "commission:manage",
+      "reports:view",
+      "settings:manage",
+      "companies:view"
+    ],
+    "status": "active"
+  },
+  {
+    "_id": "33956e3d69bbce7200c8cb530593a1c8",
+    "status": "active",
+    "updated_at": "2026-03-27T08:10:10.958Z",
+    "_openid": "gNiDXRriBeIEN0jPwnb5vQ",
+    "created_at": "2026-03-19T10:22:41.915Z",
+    "description": "招聘人员",
+    "name": "hr",
+    "permissions": [
+      "dashboard:view",
+      "candidates:view",
+      "interviews:manage",
+      "employees:manage",
+      "rateplans:view",
+      "commission:view",
+      "reports:view",
+      "worktime:view"
+    ]
+  },
+  {
+    "_id": "f6fcfb9c69bbceb500c68c23712e7943",
+    "permissions": [
+      "dashboard:view",
+      "salary:manage",
+      "worktime:manage",
+      "bonus:manage",
+      "advance:manage",
+      "commission:manage",
+      "reports:view",
+      "companies:view"
+    ],
+    "status": "active",
+    "updated_at": "2026-03-19T10:23:49.123Z",
+    "_openid": "S18HrmTomjpw2Kxwg2JlDg",
+    "created_at": "2026-03-19T10:23:49.123Z",
+    "description": "财务",
+    "name": "finance"
+  }
+]

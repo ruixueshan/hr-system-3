@@ -1,0 +1,86 @@
+<view class="onboard-page">
+  <view class="hero-card">
+    <text class="hero-title">扫码入职登记</text>
+    <text class="hero-subtitle">完成登录并填写关键信息后，系统会自动创建或绑定员工档案。</text>
+  </view>
+
+  <view class="info-card" wx:if="{{qrInfo}}">
+    <view class="card-title">入职信息</view>
+    <view class="info-row">
+      <text class="label">企业</text>
+      <text class="value">{{qrInfo.company_name || '-'}}</text>
+    </view>
+    <view class="info-row">
+      <text class="label">岗位</text>
+      <text class="value">{{qrInfo.job_name || '-'}}</text>
+    </view>
+    <view class="info-row">
+      <text class="label">生成人</text>
+      <text class="value">{{qrInfo.creator_name || '-'}}</text>
+    </view>
+  </view>
+
+  <view class="login-card" wx:if="{{!isLoggedIn}}">
+    <view class="card-title">第一步：登录账号</view>
+    <text class="card-desc">使用微信手机号快捷登录，后续系统会把账号与员工档案自动关联。</text>
+    <button
+      class="btn-primary"
+      open-type="getPhoneNumber"
+      bindgetphonenumber="onGetPhoneNumber"
+      loading="{{logging}}"
+      disabled="{{logging}}"
+    >
+      {{logging ? '登录中...' : '微信手机号快捷登录'}}
+    </button>
+  </view>
+
+  <view class="form-card">
+    <view class="card-title">第二步：填写入职信息</view>
+    <text class="card-desc">手机号填写员工实际在职手机号，可与登录手机号不同。</text>
+
+    <view class="form-item">
+      <text class="label">姓名</text>
+      <input class="input" value="{{form.real_name}}" data-field="real_name" bindinput="onInput" placeholder="请输入真实姓名，不能包含数字" />
+    </view>
+
+    <view class="form-item">
+      <text class="label">在职手机号</text>
+      <input class="input" value="{{form.phone}}" data-field="phone" bindinput="onInput" type="number" maxlength="11" placeholder="请输入员工实际使用手机号" />
+    </view>
+
+    <view class="form-item">
+      <text class="label">身份证号</text>
+      <input class="input" value="{{form.id_card}}" data-field="id_card" bindinput="onInput" maxlength="18" placeholder="请输入18位身份证号" />
+    </view>
+
+    <view class="form-item">
+      <text class="label">入职日期</text>
+      <picker mode="date" value="{{form.join_date}}" bindchange="onJoinDateChange" class="date-picker">
+        <view class="picker">
+          <text>{{form.join_date || '请选择入职日期'}}</text>
+          <text class="picker-arrow">›</text>
+        </view>
+      </picker>
+    </view>
+
+    <view class="form-item settlement-item" wx:if="{{qrInfo && qrInfo.supports_daily}}">
+      <text class="label">结算方式</text>
+      <radio-group class="settlement-radio-group" bindchange="onSettlementModeChange">
+        <label class="settlement-radio">
+          <radio value="monthly" checked="{{form.settlement_mode === 'monthly'}}" color="#2563eb" />
+          <text>月结</text>
+        </label>
+        <label class="settlement-radio">
+          <radio value="daily" checked="{{form.settlement_mode === 'daily'}}" color="#2563eb" />
+          <text>日结</text>
+        </label>
+      </radio-group>
+    </view>
+  </view>
+
+  <view class="footer">
+    <button class="btn-submit" bindtap="handleSubmit" loading="{{submitting}}" disabled="{{submitting || !isLoggedIn}}">
+      {{submitting ? '提交中...' : (isLoggedIn ? '提交入职登记' : '请先登录')}}
+    </button>
+  </view>
+</view>

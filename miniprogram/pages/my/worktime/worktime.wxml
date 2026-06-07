@@ -1,0 +1,151 @@
+<!--pages/my/worktime/worktime.wxml-->
+<view class="container">
+  <!-- 月份选择器 -->
+  <view class="month-selector">
+    <picker 
+      mode="date" 
+      fields="month" 
+      value="{{currentMonth}}" 
+      end="{{maxMonth}}"
+      bindchange="onMonthChange"
+    >
+      <view class="picker">
+        <text class="picker-icon">📅</text>
+        <text class="picker-text">{{currentMonth}}</text>
+        <text class="picker-arrow">▼</text>
+      </view>
+    </picker>
+    <picker mode="selector" range="{{companies}}" range-key="display_name" value="{{companyIndex}}" bindchange="onCompanyChange">
+      <view class="picker company-picker">
+        <text class="picker-icon">🏢</text>
+        <text class="picker-text">{{(companies[companyIndex] && companies[companyIndex].display_name) || '选择企业'}}</text>
+        <text class="picker-arrow">▼</text>
+      </view>
+    </picker>
+  </view>
+
+  <!-- 统计卡片 -->
+  <view class="stats-card">
+    <view class="stat-item">
+      <text class="stat-value">{{totalHours}}</text>
+      <text class="stat-label">本月工时</text>
+    </view>
+    <view class="stat-divider"></view>
+    <view class="stat-item">
+      <text class="stat-value">{{records.length}}</text>
+      <text class="stat-label">工作天数</text>
+    </view>
+  </view>
+  <view wx:if="{{!canReport}}" class="warn-bar">
+    <text>{{reportDisabledReason}}</text>
+  </view>
+
+  <!-- 加载状态 -->
+  <view wx:if="{{loading}}" class="loading-container">
+    <view class="loading-spinner"></view>
+    <text class="loading-text">加载中...</text>
+  </view>
+
+  <!-- 日历工时 -->
+  <view wx:else class="calendar-container">
+    <view class="calendar-card">
+      <view class="calendar-header">
+        <text class="calendar-title">{{currentMonth}} 工时日历</text>
+        <text class="calendar-subtitle">{{empty ? '本月暂无记录' : '点选日期查看明细'}}</text>
+      </view>
+      <view class="week-row">
+        <text class="week-cell" wx:for="{{weekHeaders}}" wx:key="*this">{{item}}</text>
+      </view>
+      <view class="calendar-grid">
+        <view
+          class="calendar-day {{item.inMonth ? '' : 'calendar-day-muted'}} {{item.isToday ? 'calendar-day-today' : ''}} {{item.hasRecord ? 'calendar-day-filled' : ''}} {{item.hasApproved ? 'calendar-day-approved' : ''}} {{item.isSelected ? 'calendar-day-selected' : ''}}"
+          wx:for="{{calendarDays}}"
+          wx:key="key"
+          data-date="{{item.date}}"
+          bindtap="onCalendarDayTap"
+        >
+          <text class="day-number">{{item.day}}</text>
+          <text wx:if="{{item.hoursText}}" class="day-hours">{{item.hoursText}}</text>
+          <text wx:if="{{item.shiftText}}" class="day-shift">{{item.shiftText}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view class="day-detail-card">
+      <view class="day-detail-head">
+        <view>
+          <text class="day-detail-date">{{selectedDate || currentMonth}}</text>
+          <text class="day-detail-tip">{{selectedDayRecords.length ? '当天工时明细' : '当天暂无工时'}}</text>
+        </view>
+        <button class="mini-add-btn {{!canReport ? 'mini-add-btn-disabled' : ''}}" disabled="{{!canReport}}" bindtap="openAddSheetForSelectedDate">填报</button>
+      </view>
+
+      <view wx:if="{{selectedDayRecords.length === 0}}" class="day-empty">
+        <text>暂无记录</text>
+      </view>
+      <view wx:else class="detail-list">
+        <view class="detail-row" wx:for="{{selectedDayRecords}}" wx:key="_id">
+          <view class="detail-main">
+            <text class="detail-hours">{{item.total_hours || item.hours}} 小时</text>
+            <text class="detail-company" wx:if="{{item.company_name}}">{{item.company_name}}</text>
+            <text class="detail-time" wx:if="{{item.start_time && item.end_time}}">{{item.start_time}} - {{item.end_time}}</text>
+          </view>
+          <view class="row-right">
+            <text class="shift-tag shift-{{item.shift || 'day'}}">{{item.shift === 'night' ? '夜班' : '白班'}}</text>
+            <text class="status-tag status-{{item.status || 'pending'}}">{{item.status === 'approved' ? '已通过' : (item.status === 'rejected' ? '已驳回' : '待审核')}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+
+  <!-- 填报弹窗 -->
+  <view wx:if="{{showAddSheet}}" class="sheet-mask" bindtap="closeAddSheet">
+    <view class="sheet" catchtap="noop" style="margin-bottom: {{keyboardHeight}}px;">
+      <view class="sheet-title">填报工时</view>
+      <scroll-view class="sheet-scroll" scroll-y scroll-with-animation>
+        <view class="sheet-content">
+          <view class="sheet-row">
+            <text class="label">日期</text>
+            <picker mode="date" value="{{addForm.work_date}}" end="{{today}}" bindchange="onDateChange">
+              <view class="picker">{{addForm.work_date}}</view>
+            </picker>
+          </view>
+          <view class="sheet-row">
+            <text class="label">企业关系</text>
+            <picker mode="selector" range="{{companies}}" range-key="display_name" value="{{companyIndex}}" bindchange="onCompanyChange" bindtap="onCompanyPickerTap">
+              <view class="picker">{{(companies[companyIndex] && companies[companyIndex].display_name) || '选择企业'}}</view>
+            </picker>
+          </view>
+          <view wx:if="{{companies[companyIndex]}}" class="sheet-readonly-row">
+            <text class="label">入职时间</text>
+            <text class="readonly-value">{{companies[companyIndex].join_date || '未设置'}}</text>
+          </view>
+          <view wx:if="{{companies[companyIndex]}}" class="sheet-readonly-row">
+            <text class="label">离职时间</text>
+            <text class="readonly-value">{{companies[companyIndex].leave_date || '未离职'}}</text>
+          </view>
+          <view class="sheet-row">
+            <text class="label">班次</text>
+            <view class="shift-selector">
+              <view class="shift-btn {{addForm.shift === 'day' ? 'shift-active' : ''}}" bindtap="onShiftChange" data-shift="day">白班</view>
+              <view class="shift-btn {{addForm.shift === 'night' ? 'shift-active' : ''}}" bindtap="onShiftChange" data-shift="night">夜班</view>
+            </view>
+          </view>
+          <view class="sheet-row">
+            <text class="label">工时</text>
+            <input class="input tall" type="digit" placeholder="请输入当天总工时（小时）" value="{{addForm.hours}}" data-field="hours" bindinput="onInput" bindfocus="onInputFocus" bindblur="onInputBlur" cursor-spacing="220" />
+          </view>
+          <view style="height: 20rpx;"></view>
+        </view>
+      </scroll-view>
+      <view class="btn-row">
+        <button class="btn-secondary half" bindtap="closeAddSheet">取消</button>
+        <button class="btn-primary half" loading="{{submitting}}" disabled="{{submitting}}" bindtap="submitWorktime">
+          {{submitting ? '提交中...' : '提交'}}
+        </button>
+      </view>
+    </view>
+  </view>
+</view>

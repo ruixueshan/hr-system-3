@@ -1,0 +1,67 @@
+{
+  "envId": "cloud1-5glojms9a83c3457",
+  "region": "ap-shanghai",
+  "functionRoot": "./cloudfunctions",
+  "functions": [
+    { "name": "advances",            "installDependencyOnline": true },
+    { "name": "applications",        "installDependencyOnline": true },
+    { "name": "archives",            "installDependencyOnline": true },
+    { "name": "auth",                "installDependencyOnline": true },
+    { "name": "auth-change-password","installDependencyOnline": true },
+    { "name": "auth-login",          "installDependencyOnline": true },
+    { "name": "auth-phone-login",    "installDependencyOnline": true },
+    { "name": "auth-token-verify",   "installDependencyOnline": true },
+    { "name": "auth-web-login",      "installDependencyOnline": true },
+    { "name": "auth-wechat",         "installDependencyOnline": true },
+    { "name": "blacklist",           "installDependencyOnline": true },
+    { "name": "bonus-config",        "installDependencyOnline": true },
+    { "name": "candidates",          "installDependencyOnline": true },
+    { "name": "companies",           "installDependencyOnline": true },
+    { "name": "employees",           "installDependencyOnline": true },
+    { "name": "interviews",          "installDependencyOnline": true },
+    { "name": "insurance-yungongbao","installDependencyOnline": false },
+    { "name": "jobs",                "installDependencyOnline": true },
+    { "name": "logs",                "installDependencyOnline": true },
+    { "name": "notification",        "installDependencyOnline": true },
+    { "name": "qrcode",              "installDependencyOnline": true },
+    { "name": "salary-advance",      "installDependencyOnline": true },
+    { "name": "salary-engine-v2",    "installDependencyOnline": true },
+    { "name": "salaries-v2",         "installDependencyOnline": true },
+    { "name": "stats",               "installDependencyOnline": true },
+    { "name": "stats-report",        "installDependencyOnline": true, "triggers": [
+      { "name": "daily-morning", "type": "timer", "config": "0 0 8 * * * *" },
+      { "name": "daily-evening", "type": "timer", "config": "0 0 18 * * * *" }
+    ] },
+    { "name": "system",              "installDependencyOnline": true },
+    { "name": "users",               "installDependencyOnline": true },
+    { "name": "wallet",              "timeout": 60, "installDependencyOnline": true, "envVariables": { "JWT_SECRET": "0655ad025c3695e7950d0af58f6e69f0b7b2e408499683ad63f05302281ef598" } },
+    { "name": "payment-proxy",      "timeout": 60, "installDependencyOnline": true, "runtime": "Nodejs18.15", "triggers": [
+      { "name": "payment-sync-tick", "type": "timer", "config": "0 */5 * * * * *" }
+    ] },
+    { "name": "worktime",            "installDependencyOnline": true }
+  ],
+  "hosting": {
+    "source": "web/dist",
+    "cloudPath": "/",
+    "excludePath": [],
+    "rewrite": [
+      {
+        "source": "/**",
+        "target": "/index.html",
+        "statusCode": 200
+      }
+    ]
+  },
+  "ai": {
+    "defaultAgent": "{{env.AI_DEFAULT_AGENT}}",
+    "agents": {
+      "codebuddy": {
+        "type": "none"
+      }
+    }
+  },
+  "framework": {
+    "name": "vite",
+    "source": "web"
+  }
+}

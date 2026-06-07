@@ -1,0 +1,9 @@
+{
+  "name": "auth-phone-login",
+  "version": "1.0.0",
+  "description": "微信手机号快捷登录",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "^3.0.0"
+  }
+}

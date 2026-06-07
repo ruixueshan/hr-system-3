@@ -1,0 +1,70 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/job-detail/detail",
+    "pages/apply/apply",
+    "pages/my/my",
+    "pages/my/profile/profile",
+    "pages/my/applications/applications",
+    "pages/my/worktime/worktime",
+    "pages/my/salaries/salaries",
+    "pages/my/wallet/wallet",
+    "pages/my/wallet-apply/wallet-apply",
+    "pages/home/home",
+    "pages/home/my-signups/index",
+    "pages/internal-onboard/index",
+    "pages/interview-checkin/index",
+    "pages/qrcode-scan/scan",
+    "pages/job-apply/index"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#667eea",
+    "navigationBarTitleText": "展瑞招聘",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f5f5f5",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#667eea",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "岗位",
+        "iconPath": "assets/tabbar/fenlei.png",
+        "selectedIconPath": "assets/tabbar/fenleiT.png"
+      },
+      {
+        "pagePath": "pages/home/home",
+        "text": "招聘之家",
+        "iconPath": "assets/tabbar/shouye.png",
+        "selectedIconPath": "assets/tabbar/shouyeT.png"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "assets/tabbar/my.png",
+        "selectedIconPath": "assets/tabbar/my_selected.png"
+      }
+    ]
+  },
+  "plugins": {
+    "materialPlugin": {
+      "version": "1.0.13",
+      "provider": "wx4d2deeab3aed6e5a"
+    }
+  },
+  "usingComponents": {},
+  "permission": {
+    "scope.userLocation": {
+      "desc": "您的位置信息将用于推荐附近的岗位"
+    }
+  },
+  "requiredPrivateInfos": [
+    "getLocation"
+  ],
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

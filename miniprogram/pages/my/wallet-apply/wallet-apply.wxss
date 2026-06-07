@@ -1,0 +1,89 @@
+.apply-page {
+  min-height: 100vh;
+  padding: 30rpx 24rpx;
+  background: linear-gradient(180deg, #f1f8f2 0%, #faf6ea 100%);
+  box-sizing: border-box;
+}
+
+.hero {
+  padding: 34rpx 8rpx 24rpx;
+}
+
+.eyebrow {
+  color: #17684e;
+  font-size: 24rpx;
+  font-weight: 700;
+  letter-spacing: 2rpx;
+}
+
+.title {
+  margin-top: 14rpx;
+  color: #14231d;
+  font-size: 42rpx;
+  font-weight: 800;
+  line-height: 1.25;
+}
+
+.desc {
+  margin-top: 18rpx;
+  color: #6f7c75;
+  font-size: 26rpx;
+  line-height: 1.6;
+}
+
+.card {
+  margin-top: 24rpx;
+  padding: 36rpx 32rpx;
+  background: #fff;
+  border-radius: 30rpx;
+  box-shadow: 0 16rpx 42rpx rgba(30, 53, 42, 0.08);
+}
+
+.card.center {
+  text-align: center;
+}
+
+.card-title {
+  margin-bottom: 22rpx;
+  color: #17251f;
+  font-size: 32rpx;
+  font-weight: 700;
+}
+
+.line {
+  margin-bottom: 16rpx;
+  color: #69746e;
+  font-size: 26rpx;
+  line-height: 1.55;
+}
+
+.name-input {
+  height: 92rpx;
+  padding: 0 26rpx;
+  margin-bottom: 30rpx;
+  color: #17251f;
+  font-size: 30rpx;
+  background: #f3f7f0;
+  border-radius: 22rpx;
+}
+
+.primary {
+  height: 86rpx;
+  line-height: 86rpx;
+  color: #fff;
+  font-size: 30rpx;
+  font-weight: 700;
+  border-radius: 43rpx;
+  background: #17684e;
+}
+
+.success-mark {
+  width: 92rpx;
+  height: 92rpx;
+  margin: 0 auto 24rpx;
+  color: #fff;
+  font-size: 56rpx;
+  line-height: 92rpx;
+  background: #2fa36d;
+  border-radius: 50%;
+}

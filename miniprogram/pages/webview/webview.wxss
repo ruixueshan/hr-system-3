@@ -1,0 +1,66 @@
+/* pages/webview/webview.wxss */
+.webview-container {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+}
+
+.loading-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.loading-text {
+  font-size: 32rpx;
+  color: #666;
+}
+
+.error-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  background: #fff;
+  padding: 60rpx 40rpx;
+  border-radius: 16rpx;
+  box-shadow: 0 8rpx 30rpx rgba(0, 0, 0, 0.1);
+  width: 80%;
+}
+
+.error-text {
+  font-size: 30rpx;
+  color: #E74C3C;
+  margin-bottom: 40rpx;
+  display: block;
+}
+
+.btn-retry,
+.btn-copy {
+  height: 80rpx;
+  border-radius: 40rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+  border: none;
+  margin: 10rpx;
+}
+
+.btn-retry {
+  background: linear-gradient(135deg, #2C3E50 0%, #34495E 100%);
+  color: #fff;
+  width: 200rpx;
+}
+
+.btn-copy {
+  background: linear-gradient(135deg, #3498DB 0%, #2980B9 100%);
+  color: #fff;
+  width: 200rpx;
+}
+
+.btn-retry::after,
+.btn-copy::after {
+  border: none;
+}

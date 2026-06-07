@@ -1,0 +1,1204 @@
+/**
+ * 展瑞人力资源管理系统 3.0
+ * 数据库集合创建脚本
+ * 以实际页面功能为准，2026-05 全面更新
+ *
+ * 使用方法：
+ * 1. 登录腾讯云开发控制台，创建 CloudBase 环境
+ * 2. 使用 CloudBase CLI 或控制台导入此 JSON 创建集合
+ * 3. 手动创建索引（见 INDEXES.md）
+ */
+
+const collections = [
+  // ============================================================
+  // 用户与认证
+  // ============================================================
+  {
+    name: 'users',
+    description: '统一用户表（候选人/员工/管理员/HR），含候选人业务扩展字段',
+    fields: [
+      { name: 'openid', type: 'string', index: true },
+      { name: 'unionid', type: 'string' },
+      { name: 'name', type: 'string' },
+      { name: 'real_name', type: 'string' },
+      { name: 'phone', type: 'string' }, // 加密存储
+      { name: 'account_phone', type: 'string' },
+      { name: 'id_card', type: 'string' }, // 加密存储
+      { name: 'gender', type: 'number' },
+      { name: 'avatar', type: 'string' },
+      { name: 'birth_date', type: 'string' },
+      { name: 'education', type: 'string' },
+      { name: 'expected_salary', type: 'string' },
+      { name: 'expected_location', type: 'string' },
+      { name: 'skills', type: 'array' },
+      { name: 'user_type', type: 'string', enum: ['candidate', 'employee', 'admin'], default: 'candidate' },
+      { name: 'role', type: 'string', enum: ['gm', 'deputy', 'hr', 'external', 'finance', 'manager', 'employee', 'candidate'], default: 'candidate' },
+      { name: 'status', type: 'string', enum: ['normal', 'disabled'], default: 'normal' },
+      // 候选人业务扩展字段
+      { name: 'candidate_owner_id', type: 'string', index: true },
+      { name: 'candidate_owner_name', type: 'string' },
+      { name: 'candidate_owner_type', type: 'string', enum: ['hr', 'recommender', 'public'] },
+      { name: 'candidate_last_action_at', type: 'date' },
+      { name: 'candidate_last_action_type', type: 'string' },
+      { name: 'candidate_business_status', type: 'string', enum: ['registered', 'applied', 'interviewing', 'passed', 'rejected', 'cancelled', 'onboarded'] },
+      { name: 'last_login', type: 'date' },
+      { name: 'created_at', type: 'date', index: true },
+      { name: 'updated_at', type: 'date' }
+    ]
+  },
+  {
+    name: 'login_tokens',
+    description: '登录会话令牌',
+    fields: [
+      { name: 'user_id', type: 'string', required: true, index: true },
+      { name: 'token', type: 'string', required: true, index: true },
+      { name: 'status', type: 'string', enum: ['logged', 'expired'], default: 'logged', index: true },
+      { name: 'expire_time', type: 'number' },
+      { name: 'created_at', type: 'date' },
+      { name: 'updated_at', type: 'date' }
+    ]
+  },
+  {
+    name: 'roles',
+    description: '角色权限定义',
+    fields: [
+      { name: 'name', type: 'string', required: true },
+      { name: 'description', type: 'string' },
+      { name: 'permissions', type: 'array' },
+      { name: 'status', type: 'string', enum: ['active', 'inactive'], default: 'active' },
+      { name: 'created_at', type: 'date' },
+      { name: 'updated_at', type: 'date' }
+    ]
+  },
+  {
+    name: 'operation_logs',
+    description: '操作审计日志',
+    fields: [
+      { name: 'user_id', type: 'string', index: true },
+      { name: 'user_name', type: 'string' },
+      { name: 'action', type: 'string', index: true },
+      { name: 'target_type', type: 'string', index: true },
+      { name: 'target_id', type: 'string' },
+      { name: 'details', type: 'string' },
+      { name: 'ip', type: 'string' },
+      { name: 'user_agent', type: 'string' },
+      { name: 'created_at', type: 'date', index: true }
+    ]
+  },
+
+  // ============================================================
+  // 企业
+  // ============================================================
+  {
+    name: 'companies',
+    description: '甲方企业',
+    fields: [
+      { name: 'name', type: 'string', required: true, index: true },
+      { name: 'short_name', type: 'string' },
+      { name: 'company_code', type: 'string', index: true },
+      { name: 'industry', type: 'string' },
+      { name: 'address', type: 'string' },
+      { name: 'contact_person', type: 'string' },
+      { name: 'contact_phone', type: 'string' },
+      { name: 'business_scope', type: 'string' },
+      { name: 'tags', type: 'array' },
+      { name: 'status', type: 'string', enum: ['active', 'paused', 'terminated'], default: 'active', index: true },
+      { name: 'created_by', type: 'string' },
+      { name: 'created_at', type: 'date', index: true },
+      { name: 'updated_at', type: 'date' }
+    ]
+  },
+
+  // ============================================================
+  // 岗位
+  // ============================================================
+  {
+    name: 'jobs',
+    description: '岗位（含工价方案关联、财务结算配置、招聘信息）',
+    fields: [
+      { name: 'company_id', type: 'string', required: true, index: true },
+      { name: 'position', type: 'string', required: true },
+      { name: 'job_code', type: 'string', index: true },
+      { name: 'location', type: 'string', index: true },
+      { name: 'department', type: 'string' },
+      { name: 'rate_plan_id', type: 'string', index: true },
+      { name: 'supports_daily', type: 'boolean', default: false, index: true },
+      { name: 'shift_type', type: 'string', enum: ['day', 'two_shift'] },
+      { name: 'work_time', type: 'string' },
+      { name: 'age_min', type: 'number' },
+      { name: 'age_max', type: 'number' },
+      { name: 'gender', type: 'string' },
+      { name: 'education', type: 'string' },
+      { name: 'experience', type: 'string' },
+      { name: 'salary_type', type: 'string', enum: ['hourly', 'monthly', 'daily'], default: 'hourly' },
+      { name: 'hourly_rate', type: 'number' },
+      { name: 'salary_min', type: 'number' },
+      { name: 'salary_max', type: 'number' },
+      { name: 'salary_range', type: 'string' },
+      { name: 'purchase_hourly_rate', type: 'number', index: true },
+      { name: 'bill_hours', type: 'number' },
+      { name: 'sort_order', type: 'number', default: 0, index: true },
+      { name: 'benefits', type: 'array' },
+      { name: 'vacancies', type: 'number', default: 0 },
+      { name: 'recruited', type: 'number', default: 0 },
+      { name: 'description', type: 'string' },
+      { name: 'work_content', type: 'string' },
+      { name: 'is_recruiting', type: 'boolean', default: true, index: true },
+      { name: 'is_deleted', type: 'boolean', default: false },
+      { name: 'status', type: 'string', enum: ['active', 'paused', 'closed'], default: 'active', index: true },
+      { name: 'created_by', type: 'string' },
+      { name: 'created_at', type: 'date', index: true },
+      { name: 'updated_at', type: 'date' }
+    ]
+  },
+
+  // ============================================================
+  // 报名/候选人
+  // ============================================================
+  {
+    name: 'qr_codes',
+    description: '报名二维码（含分销码/入职码/签到码）',
+    fields: [
+      { name: 'code', type: 'string', required: true, unique: true, index: true },
+      { name: 'type', type: 'string', enum: ['agent_referral', 'internal_onboard', 'job_apply', 'interview_checkin'], default: 'job_apply', index: true },
+      { name: 'job_id', type: 'string', index: true },
+      { name: 'job_name', type: 'string' },
+      { name: 'recommender_id', type: 'string', index: true },
+      { name: 'recommender_name', type: 'string' },
+      { name: 'company_id', type: 'string', index: true },
+      { name: 'qr_url', type: 'string' },
+      { name: 'max_uses', type: 'number' },
+      { name: 'used_count', type: 'number', default: 0 },
+      { name: 'scan_count', type: 'number', default: 0 },
+      { name: 'expire_time', type: 'date' },
+      { name: 'status', type: 'string', enum: ['active', 'paused', 'expired'], default: 'active', index: true },
+      { name: 'created_by', type: 'string' },
+      { name: 'created_at', type: 'date', index: true },
+      { name: 'updated_at', type: 'date' }
+    ]
+  },
+  {
+    name: 'applications',
+    description: '报名投递记录',
+    fields: [
+      { name: 'user_id', type: 'string', required: true, index: true },
+      { name: 'job_id', type: 'string', required: true, index: true },
+      { name: 'company_id', type: 'string', index: true },
+      { name: 'job_name', type: 'string' },
+      { name: 'company_name', type: 'string' },
+      { name: 'user_name', type: 'string' },
+      { name: 'phone', type: 'string' },
+      { name: 'applicant_id_card', type: 'string' },
+      { name: 'source', type: 'string', enum: ['miniprogram', 'import', 'admin', 'qrcode'], default: 'miniprogram' },
+      { name: 'recommender_id', type: 'string', index: true },
+      { name: 'recommender_name', type: 'string' },
+      { name: 'qr_code', type: 'string', index: true },
+      { name: 'checkin_time', type: 'date' },
+      { name: 'checkin_source', type: 'string' },
+      { name: 'status', type: 'string', enum: ['pending', 'contacted', 'interview', 'passed', 'rejected', 'cancelled'], default: 'pending', index: true },
+      { name: 'resume', type: 'string' },
+      { name: 'remark', type: 'string' },
+      { name: 'apply_time', type: 'date', index: true },
+      { name: 'expected_interview_time', type: 'date' },
+      { name: 'contact_time', type: 'date' },
+      { name: 'interview_time', type: 'date' },
+      { name: 'result_time', type: 'date' },
+      { name: 'created_at', type: 'date', index: true },
+      { name: 'updated_at', type: 'date' }
+    ]
+  },
+  {
+    name: 'agent_applications',
+    description: '分销代理申请（内部审批，申请后自动通过）',
+    fields: [
+      { name: 'user_id', type: 'string', required: true, index: true },
+      { name: 'status', type: 'string', enum: ['pending', 'approved', 'rejected', 'cancelled'], default: 'pending', index: true },
+      { name: 'apply_time', type: 'date' },
+      { name: 'approved_time', type: 'date' },
+      { name: 'created_at', type: 'date', index: true },
+      { name: 'updated_at', type: 'date' }
+    ]
+  },
+  {
+    name: 'candidate_owners',
+    description: '候选人归属历史',
+    fields: [
+      { name: 'candidate_id', type: 'string', required: true, index: true },
+      { name: 'owner_type', type: 'string', required: true },
+      { name: 'owner_id', type: 'string', index: true },
+      { name: 'owner_name', type: 'string' },
+      { name: 'owner_role', type: 'string' },
+      { name: 'bind_reason', type: 'string' },
+      { name: 'bind_at', type: 'date' },
+      { name: 'expire_at', type: 'date' },
+      { name: 'unbind_reason', type: 'string' },
+      { name: 'created_at', type: 'date' }
+    ]
+  },
+  {
+    name: 'candidate_action_logs',
+    description: '候选人动作记录',
+    fields: [
+      { name: 'candidate_id', type: 'string', required: true, index: true },
+      { name: 'action_type', type: 'string', required: true, index: true },
+      { name: 'operator_id', type: 'string', index: true },
+      { name: 'operator_name', type: 'string' },
+      { name: 'operator_role', type: 'string' },
+      { name: 'related_job_id', type: 'string', index: true },
+      { name: 'related_company_id', type: 'string', index: true },
+      { name: 'related_application_id', type: 'string', index: true },
+      { name: 'related_interview_id', type: 'string' },
+      { name: 'related_employee_id', type: 'string' },
+      { name: 'remark', type: 'string' },
+      { name: 'created_at', type: 'date', index: true },
+      { name: 'created_at_ts', type: 'number', index: true }
+    ]
+  },
+  {
+    name: 'candidate_remarks',
+    description: 'HR候选人备注',
+    fields: [
+      { name: 'candidate_id', type: 'string', required: true, index: true },
+      { name: 'category', type: 'string', enum: ['skill', 'residence_area', 'target_area', 'shift_demand'], required: true, index: true },
+      { name: 'content', type: 'string', required: true },
+      { name: 'operator_id', type: 'string' },
+      { name: 'operator_name', type: 'string' },
+      { name: 'created_at', type: 'date' },
+      { name: 'updated_at', type: 'date' }
+    ]
+  },
+
+  // ============================================================
+  // 面试
+  // ============================================================
+  {
+    name: 'interviews',
+    description: '面试记录',
+    fields: [
+      { name: 'application_id', type: 'string', index: true },
+      { name: 'user_id', type: 'string', index: true },
+      { name: 'candidate_name', type: 'string', index: true },
+      { name: 'phone', type: 'string' },
+      { name: 'id_card', type: 'string' },
+      { name: 'job_id', type: 'string', index: true },
+      { name: 'job_name', type: 'string' },
+      { name: 'company_id', type: 'string', index: true },
+      { name: 'company_name', type: 'string' },
+      { name: 'recommender_id', type: 'string', index: true },
+      { name: 'recommender_name', type: 'string' },
+      { name: 'interview_time', type: 'string' },
+      { name: 'interview_type', type: 'string', enum: ['online', 'offline'], default: 'offline' },
+      { name: 'interviewer', type: 'string' },
+      { name: 'location', type: 'string' },
+      { name: 'status', type: 'string', enum: ['scheduled', 'completed', 'cancelled'], default: 'scheduled', index: true },
+      { name: 'result', type: 'string', enum: ['pending', 'passed', 'rejected', 'noshow', 'hired'], default: 'pending', index: true },
+      { name: 'checkin_status', type: 'string', enum: ['not_checked_in', 'checked_in', 'onboarded', 'absent'], default: 'not_checked_in', index: true },
+      { name: 'checked_in_at', type: 'date' },
+      { name: 'checkin_source', type: 'string' },
+      { name: 'onboarded_at', type: 'date' },
+      { name: 'application_status', type: 'string' },
+      { name: 'application_checkin_time', type: 'date' },
+      { name: 'score', type: 'number' },
+      { name: 'evaluation', type: 'string' },
+      { name: 'remark', type: 'string' },
+      { name: 'notes', type: 'string' },
+      { name: 'next_interview_date', type: 'date' },
+      { name: 'created_by', type: 'string' },
+      { name: 'created_at', type: 'date', index: true },
+      { name: 'updated_at', type: 'date' }
+    ]
+  },
+
+  // ============================================================
+  // 员工
+  // ============================================================
+  {
+    name: 'employees',
+    description: '员工主档（不含企业关联，通过 employee_companies 关联）',
+    fields: [
+      { name: 'user_id', type: 'string', unique: true, index: true },
+      { name: 'name', type: 'string', required: true },
+      { name: 'phone', type: 'string' },
+      { name: 'id_card', type: 'string' },
+      { name: 'gender', type: 'number' },
+      { name: 'employee_no', type: 'string', unique: true, index: true },
+      { name: 'emergency_contact', type: 'string' },
+      { name: 'emergency_phone', type: 'string' },
+      { name: 'bank_name', type: 'string' },
+      { name: 'bank_account', type: 'string' },
+      { name: 'bank_account_name', type: 'string' },
+      { name: 'bank_card_last4', type: 'string' },
+      { name: 'status', type: 'string', enum: ['probation', 'regular', 'resigned'], default: 'probation', index: true },
+      { name: 'departure_date', type: 'date' },
+      { name: 'departure_reason', type: 'string' },
+      { name: 'is_blacklisted', type: 'boolean', default: false, index: true },
+      { name: 'blacklist_reason', type: 'string' },
+      { name: 'created_at', type: 'date', index: true },
+      { name: 'updated_at', type: 'date' }
+    ]
+  },
+  {
+    name: 'employee_companies',
+    description: '员工-企业关联（薪资核心，支持一人多企业，含合同、结算方式、工价方案）',
+    fields: [
+      { name: 'employee_id', type: 'string', required: true, index: true },
+      { name: 'company_id', type: 'string', required: true, index: true },
+      { name: 'job_id', type: 'string', index: true },
+      { name: 'job_name', type: 'string' },
+      { name: 'hourly_rate', type: 'number', default: 0 },
+      { name: 'rate_plan_id', type: 'string', index: true },
+      { name: 'settlement_mode', type: 'string', enum: ['daily', 'monthly'], default: 'daily', index: true },
+      { name: 'employment_status', type: 'string', enum: ['active', 'pending_resign', 'resigned'], default: 'active', index: true },
+      { name: 'join_date', type: 'date', required: true, index: true },
+      { name: 'leave_date', type: 'date', index: true },
+      { name: 'referrer_id', type: 'string', index: true },
+      { name: 'referrer_name', type: 'string' },
+      { name: 'recommender_id', type: 'string', index: true },
+      { name: 'recommender_name', type: 'string' },
+      { name: 'source_referrer_id', type: 'string', index: true },
+      { name: 'source_referrer_name', type: 'string' },
+      { name: 'status', type: 'string', enum: ['active', 'suspended', 'left'], default: 'active', index: true },
+      { name: 'contract_status', type: 'string', enum: ['unsigned', 'signed'], default: 'unsigned', index: true },
+      { name: 'contract_no', type: 'string', index: true },
+      { name: 'contract_sequence', type: 'number' },
+      { name: 'contract_signed_at', type: 'date' },
+      { name: 'contract_start', type: 'date' },
+      { name: 'contract_end', type: 'date' },
+      { name: 'contract_type', type: 'string' },
+      { name: 'rate_history', type: 'array' },
+      { name: 'created_by', type: 'string' },
+      { name: 'created_at', type: 'date' },
+      { name: 'updated_at', type: 'date' }
+    ]
+  },
+
+  // ============================================================
+  // 工价方案
+  // ============================================================
+  {
+    name: 'rate_plans',
+    description: '工价方案（时薪、日薪、夜班补贴、保险扣除配置）',
+    fields: [
+      { name: 'name', type: 'string', required: true },
+      { name: 'company_id', type: 'string', required: true, index: true },
+      { name: 'hourly_rate_daily', type: 'number', default: 0 },
+      { name: 'daily_rate_daily', type: 'number', default: 0 },
+      { name: 'pay_hours_daily', type: 'number', default: 8 },
+      { name: 'night_hourly_rate_daily', type: 'number', default: 0 },
+      { name: 'night_daily_rate_daily', type: 'number', default: 0 },
+      { name: 'hourly_rate_monthly', type: 'number', default: 0 },
+      { name: 'daily_rate_monthly', type: 'number', default: 0 },
+      { name: 'pay_hours_monthly', type: 'number', default: 8 },
+      { name: 'night_hourly_rate_monthly', type: 'number', default: 0 },
+      { name: 'night_daily_rate_monthly', type: 'number', default: 0 },
+      { name: 'insurance_daily_deduct', type: 'number', default: 0 },
+      { name: 'insurance_monthly_deduct', type: 'number', default: 0 },
+      { name: 'effective_from', type: 'string' },
+      { name: 'effective_to', type: 'string' },
+      { name: 'status', type: 'string', enum: ['active', 'inactive'], default: 'active', index: true },
+      { name: 'created_at', type: 'date' },
+      { name: 'updated_at', type: 'date' }
+    ]
+  },
+
+  // ============================================================
+  // 工时
+  // ============================================================
+  {
+    name: 'worktimes',
+    description: '日结工时记录（含押金标记）',
+    fields: [
+      { name: 'employee_id', type: 'string', required: true, index: true },
+      { name: 'company_id', type: 'string', required: true, index: true },
+      { name: 'work_date', type: 'date', required: true },
+      { name: 'shift', type: 'string', enum: ['day', 'night'], default: 'day' },
+      { name: 'regular_hours', type: 'number', default: 0 },
+      { name: 'total_hours', type: 'number', default: 0 },
+      { name: 'hourly_rate', type: 'number' },
+      { name: 'source', type: 'string', enum: ['self', 'excel'], default: 'self' },
+      { name: 'status', type: 'string', enum: ['pending', 'approved', 'rejected'], default: 'pending', index: true },
+      { name: 'is_deposit', type: 'boolean', default: false, index: true },
+      { name: 'deposit_time', type: 'date' },
+      { name: 'salary_status', type: 'string', enum: ['pending', 'paid'], default: 'pending', index: true },
+      { name: 'pay_date', type: 'date' },
+      { name: 'submit_time', type: 'date' },
+      { name: 'approve_by', type: 'string' },
+      { name: 'approve_time', type: 'date' },
+      { name: 'approve_remark', type: 'string' },
+      { name: 'remark', type: 'string' },
+      { name: 'employee_no', type: 'string' },
+      { name: 'employee_name', type: 'string' },
+      { name: 'job_name', type: 'string' },
+      { name: 'company_name', type: 'string' },
+      { name: 'created_at', type: 'date', index: true },
+      { name: 'updated_at', type: 'date' }
+    ]
+  },
+  {
+    name: 'worktime_monthly_summaries',
+    description: '月结工时汇总',
+    fields: [
+      { name: 'employee_id', type: 'string', required: true, index: true },
+      { name: 'company_id', type: 'string', required: true, index: true },
+      { name: 'company_name', type: 'string' },
+      { name: 'employee_no', type: 'string' },
+      { name: 'employee_name', type: 'string' },
+      { name: 'job_id', type: 'string' },
+      { name: 'job_name', type: 'string' },
+      { name: 'rate_plan_id', type: 'string' },
+      { name: 'year_month', type: 'string', required: true, index: true },
+      { name: 'total_hours', type: 'number', default: 0 },
+      { name: 'total_days', type: 'number', default: 0 },
+      { name: 'night_hours', type: 'number', default: 0 },
+      { name: 'night_days', type: 'number', default: 0 },
+      { name: 'salary_amount', type: 'number', default: 0 },
+      { name: 'hourly_rate', type: 'number', default: 0 },
+      { name: 'night_hourly_rate', type: 'number', default: 0 },
+      { name: 'night_daily_rate', type: 'number', default: 0 },
+      { name: 'insurance_daily_deduct', type: 'number', default: 0 },
+      { name: 'insurance_monthly_deduct', type: 'number', default: 0 },
+      { name: 'employment_status', type: 'string', enum: ['active', 'resigned'] },
+      { name: 'settlement_mode', type: 'string', default: 'monthly' },
+      { name: 'source', type: 'string', enum: ['import', 'manual'], default: 'manual' },
+      { name: 'remark', type: 'string' },
+      { name: 'status', type: 'string', enum: ['pending', 'approved', 'rejected'], default: 'pending', index: true },
+      { name: 'created_at', type: 'date', index: true },
+      { name: 'updated_at', type: 'date' }
+    ]
+  },
+
+  // ============================================================
+  // 薪资
+  // ============================================================
+  {
+    name: 'salaries',
+    description: '薪资记录（日结发薪/月结发薪/项目报销 统一存储）',
+    fields: [
+      { name: 'employee_id', type: 'string', required: true, index: true },
+      { name: 'employee_no', type: 'string' },
+      { name: 'employee_name', type: 'string' },
+      { name: 'company_id', type: 'string', required: true, index: true },
+      { name: 'company_name', type: 'string' },
+      { name: 'job_id', type: 'string' },
+      { name: 'job_name', type: 'string' },
+      { name: 'year', type: 'number', index: true },
+      { name: 'month', type: 'number', index: true },
+      { name: 'year_month', type: 'string', index: true },
+      { name: 'work_date', type: 'date' },
+      { name: 'start_date', type: 'date' },
+      { name: 'end_date', type: 'date' },
+      { name: 'shift', type: 'string' },
+      { name: 'regular_hours', type: 'number' },
+      { name: 'overtime_hours', type: 'number' },
+      { name: 'total_hours', type: 'number' },
+      { name: 'total_days', type: 'number' },
+      { name: 'hourly_rate', type: 'number' },
+      { name: 'base_pay', type: 'number' },
+      { name: 'overtime_pay', type: 'number' },
+      { name: 'night_allowance', type: 'number' },
+      { name: 'meal_allowance', type: 'number' },
+      { name: 'bonus', type: 'number' },
+      { name: 'other_allowance', type: 'number' },
+      { name: 'personal_reward', type: 'number' },
+      { name: 'accident_insurance', type: 'number' },
+      { name: 'insurance_deduct', type: 'number' },
+      { name: 'advance_deduct', type: 'number' },
+      { name: 'tax', type: 'number' },
+      { name: 'other_deduct', type: 'number' },
+      { name: 'gross_pay', type: 'number' },
+      { name: 'manual_adjust', type: 'number', default: 0 },
+      { name: 'net_pay', type: 'number' },
+      { name: 'total_amount', type: 'number' },
+      { name: 'settlement_mode', type: 'string', enum: ['daily', 'monthly'], index: true },
+      { name: 'source_type', type: 'string', index: true },
+      { name: 'source_id', type: 'string', index: true },
+      { name: 'work_quantity', type: 'number' },
+      { name: 'status', type: 'string', enum: ['pending', 'calculated', 'approved', 'paid'], default: 'pending', index: true },
+      { name: 'pay_date', type: 'date' },
+      { name: 'pay_remark', type: 'string' },
+      { name: 'user_id', type: 'string', index: true },
+      { name: 'details', type: 'string' },
+      { name: 'calculated_night_allowance', type: 'number' },
+      { name: 'calculated_deduct', type: 'number' },
+      { name: 'insurance_month', type: 'string', index: true },
+      { name: 'insurance_ledger_id', type: 'string', index: true },
+      { name: 'insurance_deduct_detail', type: 'string' },
+      { name: 'created_by', type: 'string' },
+      { name: 'created_at', type: 'date' },
+      { name: 'updated_at', type: 'date' }
+    ]
+  },
+  {
+    name: 'salary_advances',
+    description: '预支工资申请',
+    fields: [
+      { name: 'employee_id', type: 'string', required: true, index: true },
+      { name: 'employee_name', type: 'string' },
+      { name: 'employee_no', type: 'string' },
+      { name: 'company_id', type: 'string', required: true, index: true },
+      { name: 'apply_amount', type: 'number', required: true },
+      { name: 'apply_reason', type: 'string' },
+      { name: 'max_amount', type: 'number' },
+      { name: 'last_month_net', type: 'number' },
+      { name: 'status', type: 'string', enum: ['pending', 'approved', 'rejected', 'paid'], default: 'pending', index: true },
+      { name: 'approve_by', type: 'string' },
+      { name: 'approve_time', type: 'date' },
+      { name: 'approve_remark', type: 'string' },
+      { name: 'pay_time', type: 'date' },
+      { name: 'deduct_month', type: 'string', index: true },
+      { name: 'deduct_status', type: 'string', enum: ['pending', 'deducted'], default: 'pending' },
+      { name: 'remark', type: 'string' },
+      { name: 'created_at', type: 'date', index: true },
+      { name: 'updated_at', type: 'date' }
+    ]
+  },
+  {
+    name: 'salary_insurance_ledgers',
+    description: '保险月度应扣义务台账',
+    fields: [
+      { name: 'employee_id', type: 'string', required: true, index: true },
+      { name: 'company_id', type: 'string', required: true, index: true },
+      { name: 'insurance_month', type: 'string', required: true, index: true },
+      { name: 'ledger_key', type: 'string', required: true, index: true },
+      { name: 'rule_version', type: 'string', default: 'v2' },
+      { name: 'settlement_mode_snapshot', type: 'string', index: true },
+      { name: 'join_date_snapshot', type: 'date' },
+      { name: 'leave_date_snapshot', type: 'date' },
+      { name: 'rate_plan_id_snapshot', type: 'string', index: true },
+      { name: 'insurance_daily_deduct_snapshot', type: 'number' },
+      { name: 'insurance_monthly_deduct_snapshot', type: 'number' },
+      { name: 'obligation_amount', type: 'number', required: true },
+      { name: 'deducted_amount', type: 'number', default: 0 },
+      { name: 'remaining_amount', type: 'number', default: 0 },
+      { name: 'status', type: 'string', enum: ['pending', 'partial', 'settled', 'cancelled'], default: 'pending', index: true },
+      { name: 'first_due_event_month', type: 'string', index: true },
+      { name: 'last_deduct_source_type', type: 'string', index: true },
+      { name: 'last_deduct_source_id', type: 'string', index: true },
+      { name: 'remark', type: 'string' },
+      { name: 'created_at', type: 'date', index: true },
+      { name: 'updated_at', type: 'date', index: true }
+    ]
+  },
+  {
+    name: 'salary_insurance_deductions',
+    description: '保险台账扣减流水',
+    fields: [
+      { name: 'ledger_id', type: 'string', required: true, index: true },
+      { name: 'employee_id', type: 'string', required: true, index: true },
+      { name: 'company_id', type: 'string', required: true, index: true },
+      { name: 'insurance_month', type: 'string', required: true, index: true },
+      { name: 'source_type', type: 'string', required: true, index: true },
+      { name: 'source_id', type: 'string', index: true },
+      { name: 'deduct_amount', type: 'number', required: true },
+      { name: 'pay_date', type: 'date', index: true },
+      { name: 'remark', type: 'string' },
+      { name: 'created_by', type: 'string' },
+      { name: 'created_at', type: 'date', index: true }
+    ]
+  },
+
+  // ============================================================
+  // 项目报销
+  // ============================================================
+  {
+    name: 'project_reimbursements',
+    description: '项目报销记录',
+    fields: [
+      { name: 'company_id', type: 'string', required: true, index: true },
+      { name: 'company_name', type: 'string' },
+      { name: 'job_id', type: 'string', index: true },
+      { name: 'job_name', type: 'string' },
+      { name: 'work_date', type: 'date' },
+      { name: 'period_start', type: 'date', index: true },
+      { name: 'period_end', type: 'date', index: true },
+      { name: 'work_quantity', type: 'number', required: true },
+      { name: 'reimbursement_amount', type: 'number', required: true },
+      { name: 'reimbursement_to_user_id', type: 'string', required: true, index: true },
+      { name: 'reimbursement_to_user_name', type: 'string' },
+      { name: 'remark', type: 'string' },
+      { name: 'status', type: 'string', enum: ['pending', 'approved', 'deleted'], default: 'pending', index: true },
+      { name: 'approved_at', type: 'date' },
+      { name: 'approved_by', type: 'string' },
+      { name: 'approved_by_name', type: 'string' },
+      { name: 'deleted_at', type: 'date' },
+      { name: 'deleted_by', type: 'string' },
+      { name: 'deleted_by_name', type: 'string' },
+      { name: 'created_at', type: 'date', index: true },
+      { name: 'updated_at', type: 'date' }
+    ]
+  },
+
+  // ============================================================
+  // 财务
+  // ============================================================
+  {
+    name: 'finance_billing_configs',
+    description: '企业岗位结算配置（财务一期）',
+    fields: [
+      { name: 'company_id', type: 'string', required: true, index: true },
+      { name: 'company_name', type: 'string' },
+      { name: 'job_id', type: 'string', required: true, index: true },
+      { name: 'job_name', type: 'string' },
+      { name: 'billing_mode', type: 'string', enum: ['hourly_included', 'service_fee_monthly', 'service_fee_hourly'], required: true, index: true },
+      { name: 'salary_cost_bearing_mode', type: 'string', enum: ['platform_cost', 'company_cost'], required: true },
+      { name: 'client_hourly_rate', type: 'number' },
+      { name: 'service_fee_monthly', type: 'number' },
+      { name: 'service_fee_hourly', type: 'number' },
+      { name: 'bill_hours_rule', type: 'string', enum: ['actual_hours', 'fixed_daily_hours'], default: 'actual_hours' },
+      { name: 'fixed_bill_hours', type: 'number' },
+      { name: 'effective_from', type: 'date', required: true, index: true },
+      { name: 'effective_to', type: 'date' },
+      { name: 'status', type: 'string', enum: ['active', 'disabled'], default: 'active', index: true },
+      { name: 'remark', type: 'string' },
+      { name: 'source_job_purchase_hourly_rate', type: 'number' },
+      { name: 'source_job_bill_hours', type: 'number' },
+      { name: 'created_by', type: 'string' },
+      { name: 'created_at', type: 'date', index: true },
+      { name: 'updated_at', type: 'date' }
+    ]
+  },
+  {
+    name: 'finance_monthly_results',
+    description: '企业月度财务核算结果（财务一期）',
+    fields: [
+      { name: 'company_id', type: 'string', required: true, index: true },
+      { name: 'company_name', type: 'string' },
+      { name: 'job_id', type: 'string', index: true },
+      { name: 'job_name', type: 'string' },
+      { name: 'year', type: 'number', required: true, index: true },
+      { name: 'month', type: 'number', required: true, index: true },
+      { name: 'year_month', type: 'string', required: true, index: true },
+      { name: 'billing_mode', type: 'string', enum: ['hourly_included', 'service_fee_monthly', 'service_fee_hourly'], required: true },
+      { name: 'salary_cost_bearing_mode', type: 'string', enum: ['platform_cost', 'company_cost'], required: true },
+      { name: 'billable_hours', type: 'number', default: 0 },
+      { name: 'billable_headcount', type: 'number', default: 0 },
+      { name: 'service_days', type: 'number', default: 0 },
+      { name: 'month_days', type: 'number', default: 0 },
+      { name: 'revenue_amount', type: 'number', default: 0 },
+      { name: 'salary_cost_amount', type: 'number', default: 0 },
+      { name: 'advance_cost_amount', type: 'number', default: 0 },
+      { name: 'bonus_cost_amount', type: 'number', default: 0 },
+      { name: 'reimbursement_cost_amount', type: 'number', default: 0 },
+      { name: 'other_cost_amount', type: 'number', default: 0 },
+      { name: 'gross_profit', type: 'number', default: 0 },
+      { name: 'net_profit', type: 'number', default: 0 },
+      { name: 'source_config_id', type: 'string', index: true },
+      { name: 'status', type: 'string', enum: ['generated', 'missing_config'], default: 'generated', index: true },
+      { name: 'details', type: 'string' },
+      { name: 'calculated_at', type: 'date', index: true },
+      { name: 'calculated_by', type: 'string' },
+      { name: 'updated_at', type: 'date' }
+    ]
+  },
+
+  // ============================================================
+  // 招聘提成
+  // ============================================================
+  {
+    name: 'personal_rewards',
+    description: '个人奖励',
+    fields: [
+      { name: 'employee_id', type: 'string', required: true, index: true },
+      { name: 'company_id', type: 'string', index: true },
+      { name: 'reward_type', type: 'string', required: true },
+      { name: 'reward_name', type: 'string' },
+      { name: 'amount', type: 'number', required: true },
+      { name: 'is_percentage', type: 'boolean', default: false },
+      { name: 'year', type: 'number' },
+      { name: 'month', type: 'number' },
+      { name: 'status', type: 'string', enum: ['pending', 'approved'], default: 'pending', index: true },
+      { name: 'remark', type: 'string' },
+      { name: 'created_by', type: 'string' },
+      { name: 'created_at', type: 'date', index: true }
+    ]
+  },
+  {
+    name: 'recruitment_bonus_rules',
+    description: '招聘提成规则',
+    fields: [
+      { name: 'recommender_id', type: 'string', index: true },
+      { name: 'company_id', type: 'string', index: true },
+      { name: 'calculation_mode', type: 'string', enum: ['hourly', 'service_fee', 'gross_salary'], default: 'hourly' },
+      { name: 'hourly_coefficient', type: 'number', required: true },
+      { name: 'service_fee_rate', type: 'number', default: 0 },
+      { name: 'gross_salary_rate', type: 'number', default: 0 },
+      { name: 'bonus_period_type', type: 'string', enum: ['long_term', 'fixed_months'], default: 'long_term' },
+      { name: 'bonus_period_months', type: 'number', default: 0 },
+      { name: 'start_date', type: 'string', required: true, index: true },
+      { name: 'end_date', type: 'string' },
+      { name: 'start_month', type: 'string', index: true },
+      { name: 'end_month', type: 'string' },
+      { name: 'priority', type: 'number', default: 0, index: true },
+      { name: 'status', type: 'string', enum: ['active', 'disabled'], default: 'active', index: true },
+      { name: 'remark', type: 'string' },
+      { name: 'created_by', type: 'string' },
+      { name: 'created_at', type: 'date' },
+      { name: 'updated_at', type: 'date' }
+    ]
+  },
+  {
+    name: 'recruitment_bonus_batches',
+    description: '招聘提成月度结算批次',
+    fields: [
+      { name: 'batch_key', type: 'string', required: true, index: true },
+      { name: 'batch_no', type: 'string', required: true, index: true },
+      { name: 'recommender_id', type: 'string', required: true, index: true },
+      { name: 'recommender_name', type: 'string' },
+      { name: 'year', type: 'number', required: true, index: true },
+      { name: 'month', type: 'number', required: true, index: true },
+      { name: 'year_month', type: 'string', required: true, index: true },
+      { name: 'candidate_count', type: 'number', default: 0 },
+      { name: 'detail_count', type: 'number', default: 0 },
+      { name: 'total_hours', type: 'number', default: 0 },
+      { name: 'total_bonus', type: 'number', default: 0 },
+      { name: 'approved_count', type: 'number', default: 0 },
+      { name: 'paid_count', type: 'number', default: 0 },
+      { name: 'status', type: 'string', enum: ['calculated', 'approved', 'partially_paid', 'paid', 'cancelled'], default: 'calculated', index: true },
+      { name: 'calculated_by', type: 'string' },
+      { name: 'calculated_by_name', type: 'string' },
+      { name: 'calculated_at', type: 'date', index: true },
+      { name: 'approved_by', type: 'string' },
+      { name: 'approved_by_name', type: 'string' },
+      { name: 'approved_at', type: 'date' },
+      { name: 'paid_by', type: 'string' },
+      { name: 'paid_by_name', type: 'string' },
+      { name: 'paid_at', type: 'date' },
+      { name: 'remark', type: 'string' },
+      { name: 'created_at', type: 'date', index: true },
+      { name: 'updated_at', type: 'date' }
+    ]
+  },
+  {
+    name: 'recruitment_bonuses',
+    description: '招聘提成计算结果明细',
+    fields: [
+      { name: 'batch_id', type: 'string', required: true, index: true },
+      { name: 'batch_no', type: 'string', index: true },
+      { name: 'recommender_id', type: 'string', required: true, index: true },
+      { name: 'recommender_name', type: 'string' },
+      { name: 'employee_id', type: 'string', required: true, index: true },
+      { name: 'candidate_name', type: 'string' },
+      { name: 'company_id', type: 'string', required: true, index: true },
+      { name: 'company_name', type: 'string' },
+      { name: 'join_date', type: 'date' },
+      { name: 'bonus_period_type', type: 'string' },
+      { name: 'bonus_period_months', type: 'number' },
+      { name: 'bonus_period_end_date', type: 'string' },
+      { name: 'eligible_start_date', type: 'string' },
+      { name: 'eligible_end_date', type: 'string' },
+      { name: 'rule_id', type: 'string' },
+      { name: 'calculation_mode', type: 'string', enum: ['hourly', 'service_fee', 'gross_salary'], default: 'hourly' },
+      { name: 'hourly_coefficient', type: 'number' },
+      { name: 'service_fee_rate', type: 'number' },
+      { name: 'gross_salary_rate', type: 'number' },
+      { name: 'rule_value', type: 'number' },
+      { name: 'calculation_base_amount', type: 'number' },
+      { name: 'service_fee_amount', type: 'number' },
+      { name: 'gross_salary_amount', type: 'number' },
+      { name: 'total_hours', type: 'number' },
+      { name: 'bonus_amount', type: 'number' },
+      { name: 'year', type: 'number', index: true },
+      { name: 'month', type: 'number', index: true },
+      { name: 'year_month', type: 'string', index: true },
+      { name: 'status', type: 'string', enum: ['pending', 'approved', 'paid'], default: 'pending', index: true },
+      { name: 'approved_by', type: 'string' },
+      { name: 'approved_by_name', type: 'string' },
+      { name: 'approved_at', type: 'date' },
+      { name: 'paid_by', type: 'string' },
+      { name: 'paid_by_name', type: 'string' },
+      { name: 'pay_date', type: 'date' },
+      { name: 'paid_at', type: 'date' },
+      { name: 'created_at', type: 'date', index: true },
+      { name: 'updated_at', type: 'date' }
+    ]
+  },
+
+  // ============================================================
+  // 提成方案（岗位管理维度：时长×单价 / 出勤比例×月额）
+  // ============================================================
+  {
+    name: 'commission_plans',
+    description: '提成方案（时长×单价 / 出勤比例×月额）',
+    fields: [
+      { name: 'name', type: 'string', required: true },
+      { name: 'scope', type: 'string', enum: ['template', 'personal'], default: 'template' },
+      { name: 'company_id', type: 'string', index: true },
+      { name: 'company_name', type: 'string' },
+      { name: 'job_id', type: 'string', index: true },
+      { name: 'job_name', type: 'string' },
+      { name: 'employee_name', type: 'string' },
+      { name: 'mode', type: 'string', enum: ['hour_amount', 'attendance_prorate'], default: 'hour_amount' },
+      { name: 'hour_amount', type: 'number', default: 0 },
+      { name: 'monthly_amount', type: 'number', default: 0 },
+      { name: 'remark', type: 'string' },
+      { name: 'status', type: 'string', enum: ['active', 'inactive', 'deleted'], default: 'active', index: true },
+      { name: 'is_deleted', type: 'boolean', default: false },
+      { name: 'created_at', type: 'date' },
+      { name: 'updated_at', type: 'date' }
+    ]
+  },
+
+  // ============================================================
+  // HR绩效
+  // ============================================================
+  {
+    name: 'hr_performance',
+    description: 'HR专员月度绩效',
+    fields: [
+      { name: 'hr_id', type: 'string', required: true, index: true },
+      { name: 'hr_name', type: 'string' },
+      { name: 'year', type: 'number', required: true, index: true },
+      { name: 'month', type: 'number', required: true, index: true },
+      { name: 'min_valid_hires', type: 'number', default: 3 },
+      { name: 'valid_hires', type: 'number', default: 0 },
+      { name: 'total_hours', type: 'number', default: 0 },
+      { name: 'status', type: 'string', enum: ['pending', 'calculated', 'passed', 'failed'], default: 'pending', index: true },
+      { name: 'bonus_coefficient', type: 'number' },
+      { name: 'total_bonus', type: 'number' },
+      { name: 'remark', type: 'string' },
+      { name: 'created_at', type: 'date' },
+      { name: 'updated_at', type: 'date' }
+    ]
+  },
+
+  // ============================================================
+  // 黑名单
+  // ============================================================
+  {
+    name: 'blacklists',
+    description: '员工黑名单',
+    fields: [
+      { name: 'user_id', type: 'string', required: true, index: true },
+      { name: 'user_name', type: 'string' },
+      { name: 'id_card', type: 'string' },
+      { name: 'type', type: 'string', enum: ['absent_3times', 'not_interviewed', 'manual'], index: true },
+      { name: 'expire_type', type: 'string', enum: ['permanent', 'temporary'], index: true },
+      { name: 'expire_time', type: 'date', index: true },
+      { name: 'reason', type: 'string' },
+      { name: 'related_applications', type: 'array' },
+      { name: 'created_by', type: 'string', index: true },
+      { name: 'created_by_name', type: 'string' },
+      { name: 'created_at', type: 'date', index: true },
+      { name: 'updated_at', type: 'date' }
+    ]
+  },
+
+  // ============================================================
+  // 通知与系统配置
+  // ============================================================
+  {
+    name: 'notification_templates',
+    description: '通知模板（面试通知/入职通知/工资条等）',
+    fields: [
+      { name: 'name', type: 'string', required: true },
+      { name: 'type', type: 'string', enum: ['subscribe', 'wecom'], default: 'subscribe' },
+      { name: 'title', type: 'string' },
+      { name: 'content', type: 'string', required: true },
+      { name: 'variables', type: 'array' },
+      { name: 'status', type: 'string', enum: ['active', 'disabled'], default: 'active' },
+      { name: 'created_by', type: 'string' },
+      { name: 'created_at', type: 'date' },
+      { name: 'updated_at', type: 'date' }
+    ]
+  },
+  {
+    name: 'system_config',
+    description: '系统配置（key-value）',
+    fields: [
+      { name: 'category', type: 'string', required: true, index: true },
+      { name: 'key', type: 'string', required: true, index: true },
+      { name: 'value', type: 'string', required: true },
+      { name: 'description', type: 'string' },
+      { name: 'status', type: 'string', enum: ['active', 'inactive'], default: 'active' },
+      { name: 'created_at', type: 'date' },
+      { name: 'updated_at', type: 'date' }
+    ]
+  },
+
+  // ============================================================
+  // 云工保保险
+  // ============================================================
+  {
+    name: 'insurance_provider_configs',
+    description: '云工保账号与状态配置',
+    fields: [
+      { name: 'provider', type: 'string', required: true, index: true },
+      { name: 'base_url', type: 'string' },
+      { name: 'user_name', type: 'string' },
+      { name: 'password_secret_key', type: 'string' },
+      { name: 'token', type: 'string' },
+      { name: 'token_updated_at', type: 'date' },
+      { name: 'customer_status', type: 'number', index: true },
+      { name: 'contract_id', type: 'string' },
+      { name: 'enabled', type: 'boolean', default: true, index: true },
+      { name: 'last_checked_at', type: 'date' },
+      { name: 'created_at', type: 'date' },
+      { name: 'updated_at', type: 'date' }
+    ]
+  },
+  {
+    name: 'insurance_policies',
+    description: '云工保完整保单同步',
+    fields: [
+      { name: 'provider', type: 'string', required: true, index: true },
+      { name: 'policy_id', type: 'string', required: true, index: true },
+      { name: 'policy_no', type: 'string' },
+      { name: 'plan_id', type: 'string', index: true },
+      { name: 'plan_name', type: 'string', index: true },
+      { name: 'series', type: 'string', index: true },
+      { name: 'price', type: 'string' },
+      { name: 'start_date', type: 'date' },
+      { name: 'end_date', type: 'date' },
+      { name: 'can_today', type: 'number' },
+      { name: 'is_active', type: 'number', index: true },
+      { name: 'is_disable', type: 'number', index: true },
+      { name: 'is_subsidiary', type: 'number' },
+      { name: 'active_count', type: 'number' },
+      { name: 'total_person_count', type: 'number' },
+      { name: 'raw_data', type: 'object' },
+      { name: 'synced_at', type: 'date', index: true },
+      { name: 'created_at', type: 'date' },
+      { name: 'updated_at', type: 'date' }
+    ]
+  },
+  {
+    name: 'insurance_active_policies',
+    description: '云工保可加减保保单下拉',
+    fields: [
+      { name: 'provider', type: 'string', required: true, index: true },
+      { name: 'policy_id', type: 'string', required: true, index: true },
+      { name: 'plan_id', type: 'string', index: true },
+      { name: 'plan_name', type: 'string', index: true },
+      { name: 'month', type: 'string' },
+      { name: 'price', type: 'string' },
+      { name: 'type', type: 'string' },
+      { name: 'insurance_company_id', type: 'string' },
+      { name: 'insurance_company_name', type: 'string' },
+      { name: 'date_from', type: 'date' },
+      { name: 'date_to', type: 'date' },
+      { name: 'person_count', type: 'number' },
+      { name: 'premium', type: 'string' },
+      { name: 'raw_data', type: 'object' },
+      { name: 'synced_at', type: 'date', index: true },
+      { name: 'created_at', type: 'date' },
+      { name: 'updated_at', type: 'date' }
+    ]
+  },
+  {
+    name: 'insurance_work_companies',
+    description: '云工保保单下被派遣单位与工种白名单',
+    fields: [
+      { name: 'provider', type: 'string', required: true, index: true },
+      { name: 'policy_id', type: 'string', required: true, index: true },
+      { name: 'work_company_id', type: 'string', required: true, index: true },
+      { name: 'name', type: 'string', required: true, index: true },
+      { name: 'status', type: 'string', index: true },
+      { name: 'occupation_ids', type: 'string' },
+      { name: 'occupation_category_list', type: 'array' },
+      { name: 'active_person_cache', type: 'number' },
+      { name: 'occupation', type: 'array' },
+      { name: 'raw_data', type: 'object' },
+      { name: 'synced_at', type: 'date', index: true },
+      { name: 'created_at', type: 'date' },
+      { name: 'updated_at', type: 'date' }
+    ]
+  },
+  {
+    name: 'insurance_occupations',
+    description: '云工保保单下可用工种',
+    fields: [
+      { name: 'provider', type: 'string', required: true, index: true },
+      { name: 'policy_id', type: 'string', required: true, index: true },
+      { name: 'occupation_id', type: 'string', required: true, index: true },
+      { name: 'name', type: 'string', index: true },
+      { name: 'show_name', type: 'string' },
+      { name: 'category', type: 'number', index: true },
+      { name: 'series', type: 'string', index: true },
+      { name: 'level', type: 'number', index: true },
+      { name: 'merger_name', type: 'string' },
+      { name: 'is_disable', type: 'boolean', index: true },
+      { name: 'raw_data', type: 'object' },
+      { name: 'synced_at', type: 'date', index: true },
+      { name: 'created_at', type: 'date' },
+      { name: 'updated_at', type: 'date' }
+    ]
+  },
+  {
+    name: 'insurance_company_mappings',
+    description: 'HR企业与云工保被派遣单位映射',
+    fields: [
+      { name: 'provider', type: 'string', required: true, index: true },
+      { name: 'company_id', type: 'string', required: true, index: true },
+      { name: 'company_name_snapshot', type: 'string' },
+      { name: 'policy_id', type: 'string', required: true, index: true },
+      { name: 'work_company_id', type: 'string', required: true, index: true },
+      { name: 'work_company_name', type: 'string' },
+      { name: 'suggest_policy_id', type: 'string' },
+      { name: 'enabled', type: 'boolean', default: true, index: true },
+      { name: 'created_at', type: 'date' },
+      { name: 'updated_at', type: 'date' }
+    ]
+  },
+  {
+    name: 'insurance_job_mappings',
+    description: 'HR岗位/工价方案与云工保工种映射',
+    fields: [
+      { name: 'provider', type: 'string', required: true, index: true },
+      { name: 'company_id', type: 'string', required: true, index: true },
+      { name: 'job_id', type: 'string', index: true },
+      { name: 'job_name_snapshot', type: 'string' },
+      { name: 'rate_plan_id', type: 'string', index: true },
+      { name: 'policy_id', type: 'string', required: true, index: true },
+      { name: 'work_company_id', type: 'string', required: true, index: true },
+      { name: 'work_company_name', type: 'string' },
+      { name: 'occupation_id', type: 'string', required: true, index: true },
+      { name: 'occupation_name', type: 'string' },
+      { name: 'occupation_category', type: 'number' },
+      { name: 'series', type: 'string', index: true },
+      { name: 'mapping_status', type: 'string', enum: ['draft', 'active', 'disabled', 'invalid'], default: 'active', index: true },
+      { name: 'match_rule', type: 'string' },
+      { name: 'confidence', type: 'number' },
+      { name: 'remark', type: 'string' },
+      { name: 'created_at', type: 'date' },
+      { name: 'updated_at', type: 'date' }
+    ]
+  },
+  {
+    name: 'employee_insurance_records',
+    description: '员工云工保投保状态记录',
+    fields: [
+      { name: 'provider', type: 'string', required: true, index: true },
+      { name: 'employee_id', type: 'string', index: true },
+      { name: 'employee_company_id', type: 'string', index: true },
+      { name: 'company_id', type: 'string', index: true },
+      { name: 'policy_id', type: 'string', required: true, index: true },
+      { name: 'policy_person_id', type: 'string', index: true },
+      { name: 'external_employee_id', type: 'string', index: true },
+      { name: 'name_snapshot', type: 'string', index: true },
+      { name: 'idcard_masked', type: 'string' },
+      { name: 'work_company', type: 'string' },
+      { name: 'occupation_id', type: 'string' },
+      { name: 'occupation_name', type: 'string' },
+      { name: 'start_date', type: 'date' },
+      { name: 'end_date', type: 'date' },
+      { name: 'status', type: 'string', enum: ['pending_add', 'active', 'pending_off', 'offed', 'failed', 'mismatch'], index: true },
+      { name: 'last_error', type: 'string' },
+      { name: 'last_synced_at', type: 'date', index: true },
+      { name: 'created_at', type: 'date' },
+      { name: 'updated_at', type: 'date' }
+    ]
+  },
+  {
+    name: 'insurance_off_employees',
+    description: '云工保可减保员工缓存',
+    fields: [
+      { name: 'provider', type: 'string', required: true, index: true },
+      { name: 'policy_id', type: 'string', required: true, index: true },
+      { name: 'policy_person_id', type: 'string', required: true, index: true },
+      { name: 'employee_id', type: 'string', index: true },
+      { name: 'name', type: 'string', index: true },
+      { name: 'idcard_masked', type: 'string' },
+      { name: 'work_company', type: 'string' },
+      { name: 'occupation_id', type: 'string' },
+      { name: 'occupation_name', type: 'string' },
+      { name: 'raw_data', type: 'object' },
+      { name: 'synced_at', type: 'date', index: true },
+      { name: 'created_at', type: 'date' },
+      { name: 'updated_at', type: 'date' }
+    ]
+  },
+  {
+    name: 'insurance_batch_tasks',
+    description: '保险批量加减保任务',
+    fields: [
+      { name: 'provider', type: 'string', required: true, index: true },
+      { name: 'task_no', type: 'string', required: true, index: true },
+      { name: 'type', type: 'string', enum: ['batch_add', 'batch_off'], required: true, index: true },
+      { name: 'source', type: 'string' },
+      { name: 'policy_id', type: 'string', index: true },
+      { name: 'total_count', type: 'number' },
+      { name: 'success_count', type: 'number' },
+      { name: 'failed_count', type: 'number' },
+      { name: 'skipped_count', type: 'number' },
+      { name: 'status', type: 'string', index: true },
+      { name: 'operator_id', type: 'string', index: true },
+      { name: 'operator_name', type: 'string' },
+      { name: 'created_at', type: 'date', index: true },
+      { name: 'updated_at', type: 'date' },
+      { name: 'finished_at', type: 'date' }
+    ]
+  },
+  {
+    name: 'insurance_batch_task_items',
+    description: '保险批量任务明细',
+    fields: [
+      { name: 'provider', type: 'string', required: true, index: true },
+      { name: 'task_id', type: 'string', required: true, index: true },
+      { name: 'row_no', type: 'number' },
+      { name: 'employee_id', type: 'string', index: true },
+      { name: 'employee_company_id', type: 'string', index: true },
+      { name: 'company_id', type: 'string', index: true },
+      { name: 'name_snapshot', type: 'string' },
+      { name: 'idcard_masked', type: 'string' },
+      { name: 'policy_id', type: 'string', index: true },
+      { name: 'work_company', type: 'string' },
+      { name: 'occupation_id', type: 'string' },
+      { name: 'operation_start_date', type: 'date' },
+      { name: 'item_status', type: 'string', index: true },
+      { name: 'precheck_errors', type: 'array' },
+      { name: 'provider_response', type: 'object' },
+      { name: 'change_request_id', type: 'string' },
+      { name: 'created_at', type: 'date', index: true },
+      { name: 'updated_at', type: 'date' }
+    ]
+  },
+  {
+    name: 'insurance_change_requests',
+    description: '云工保加减保请求流水',
+    fields: [
+      { name: 'provider', type: 'string', required: true, index: true },
+      { name: 'request_no', type: 'string', required: true, index: true },
+      { name: 'type', type: 'string', enum: ['add', 'off'], required: true, index: true },
+      { name: 'policy_id', type: 'string', index: true },
+      { name: 'start_date', type: 'date' },
+      { name: 'persons_payload', type: 'array' },
+      { name: 'status', type: 'string', index: true },
+      { name: 'provider_response', type: 'object' },
+      { name: 'error_message', type: 'string' },
+      { name: 'operator_id', type: 'string', index: true },
+      { name: 'operator_name', type: 'string' },
+      { name: 'batch_task_id', type: 'string', index: true },
+      { name: 'batch_item_id', type: 'string', index: true },
+      { name: 'created_at', type: 'date' },
+      { name: 'updated_at', type: 'date' }
+    ]
+  },
+  {
+    name: 'insurance_sync_logs',
+    description: '云工保同步日志',
+    fields: [
+      { name: 'provider', type: 'string', required: true, index: true },
+      { name: 'sync_type', type: 'string', required: true, index: true },
+      { name: 'policy_id', type: 'string', index: true },
+      { name: 'status', type: 'string', index: true },
+      { name: 'summary', type: 'object' },
+      { name: 'diffs', type: 'array' },
+      { name: 'started_at', type: 'date' },
+      { name: 'finished_at', type: 'date' },
+      { name: 'created_at', type: 'date', index: true }
+    ]
+  }
+];
+
+// 归档表（结构同原表，不在此定义，按需创建）
+const archiveTables = [
+  'worktimes_archive',
+  'salaries_archive',
+  'interviews_archive'
+];
+
+// 输出为可部署的 JSON
+module.exports = {
+  collections,
+  archiveTables
+};

@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "global-service-btn": "/components/global-service-btn/global-service-btn"
+  }
+}

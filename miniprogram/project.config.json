@@ -1,0 +1,66 @@
+{
+  "description": "展瑞人力资源管理系统 3.0 - 小程序端",
+  "cloudfunctionRoot":"../cloudfunctions",
+  "packOptions": {
+    "ignore": [
+      {
+        "value": ".eslintrc.js",
+        "type": "file"
+      }
+    ],
+    "include": []
+  },
+  "setting": {
+    "bundle": false,
+    "userConfirmedBundleSwitch": false,
+    "urlCheck": true,
+    "scopeDataCheck": false,
+    "coverView": true,
+    "es6": true,
+    "postcss": true,
+    "compileHotReLoad": false,
+    "lazyloadPlaceholderEnable": false,
+    "preloadBackgroundData": false,
+    "minified": true,
+    "autoAudits": false,
+    "newFeature": false,
+    "uglifyFileName": false,
+    "uploadWithSourceMap": true,
+    "useIsolateContext": true,
+    "nodeModules": false,
+    "enhance": true,
+    "useMultiFrameRuntime": true,
+    "useApiHook": true,
+    "useApiHostProcess": true,
+    "showShadowRootInWxmlPanel": true,
+    "packNpmManually": false,
+    "enableEngineNative": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true,
+    "showES6CompileOption": false,
+    "minifyWXML": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "condition": false,
+    "ignoreUploadUnusedFiles": true,
+    "compileWorklet": false,
+    "localPlugins": false,
+    "disableUseStrict": false,
+    "useCompilerPlugins": ["typescript"],
+    "swc": true,
+    "disableSWC": false
+  },
+  "compileType": "miniprogram",
+  "libVersion": "3.5.6",
+  "appid": "wx191bb0402454164d",
+  "projectname": "hr-system-3.0-miniprogram",
+  "condition": {},
+  "editorSetting": {
+    "tabIndent": "insertSpaces",
+    "tabSize": 2
+  },
+  "simulatorPluginLibVersion": {}
+}

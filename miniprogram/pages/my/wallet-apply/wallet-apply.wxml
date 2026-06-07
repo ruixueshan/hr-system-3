@@ -1,0 +1,32 @@
+<!-- pages/my/wallet-apply/wallet-apply.wxml -->
+<view class="apply-page">
+  <view class="hero">
+    <view class="eyebrow">微信发薪钱包</view>
+    <view class="title">开通后可查看工资余额并申请提现到微信零钱</view>
+    <view class="desc">系统会先把已审批工资入账到钱包，提现需经过审核后到账。</view>
+  </view>
+
+  <view class="card" wx:if="{{step === 1}}">
+    <view class="card-title">开通说明</view>
+    <view class="line">仅支持提现到当前登录微信的零钱。</view>
+    <view class="line">提现申请提交后，余额会先冻结，审核或支付失败会自动退回。</view>
+    <button class="primary" bindtap="onStartApply">开始开通</button>
+  </view>
+
+  <view class="card" wx:elif="{{step === 2}}">
+    <view class="card-title">确认实名</view>
+    <input class="name-input" placeholder="请输入本人姓名" value="{{inputName}}" bindinput="onNameInput" />
+    <button class="primary" bindtap="onSubmit" loading="{{loading}}">确认开通</button>
+  </view>
+
+  <view class="card center" wx:elif="{{step === 3}}">
+    <view class="card-title">正在开通...</view>
+    <view class="line">请稍候，正在绑定你的员工钱包。</view>
+  </view>
+
+  <view class="card center" wx:else>
+    <view class="success-mark">✓</view>
+    <view class="card-title">钱包已开通</view>
+    <view class="line">即将进入钱包首页。</view>
+  </view>
+</view>

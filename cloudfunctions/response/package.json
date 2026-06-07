@@ -1,0 +1,9 @@
+{
+  "name": "response",
+  "version": "1.0.0",
+  "description": "响应格式化云函数",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~3.0.1"
+  }
+}

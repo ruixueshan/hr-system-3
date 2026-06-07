@@ -1,0 +1,18 @@
+<!--pages/webview/webview.wxml-->
+<view class="webview-container">
+  <web-view src="{{url}}" bindmessage="onMessage" bindload="onWebViewLoad" binderror="onError"></web-view>
+  <view wx:if="{{loading}}" class="loading-container">
+    <text class="loading-text">加载中...</text>
+  </view>
+  <view wx:if="{{error}}" class="error-container">
+    <text class="error-text">{{error}}</text>
+    <button class="btn-retry" bindtap="onRetry">重试</button>
+    <button class="btn-copy" bindtap="onCopy">复制链接</button>
+  </view>
+
+  <!-- 全局客服浮动按钮 -->
+  <global-service-btn 
+    show="{{true}}"
+    show-label="{{true}}"
+  />
+</view>

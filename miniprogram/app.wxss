@@ -1,0 +1,225 @@
+/* app.wxss - 全局样式 */
+page {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+  font-size: 28rpx;
+  line-height: 1.6;
+}
+
+/* 容器 */
+.container {
+  padding: 24rpx;
+  box-sizing: border-box;
+}
+
+/* 卡片 */
+.card {
+  background: #fff;
+  border-radius: 16rpx;
+  padding: 28rpx;
+  margin-bottom: 24rpx;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.06);
+}
+
+/* 按钮 */
+.btn-primary {
+  background-color: #667eea;
+  color: #fff;
+  border-radius: 12rpx;
+  padding: 24rpx;
+  text-align: center;
+  font-size: 32rpx;
+  font-weight: 600;
+}
+
+.btn-primary:active {
+  background-color: #5a6fd6;
+}
+
+.btn-secondary {
+  background-color: #f0f0f0;
+  color: #333;
+  border-radius: 12rpx;
+  padding: 24rpx;
+  text-align: center;
+  font-size: 28rpx;
+}
+
+.btn-disabled {
+  background-color: #cacaca;
+  color: #999;
+}
+
+/* 文本 */
+.text-primary {
+  color: #667eea;
+}
+
+.text-success {
+  color: #10b981;
+}
+
+.text-warning {
+  color: #f59e0b;
+}
+
+.text-danger {
+  color: #ef4444;
+}
+
+.text-gray {
+  color: #999;
+}
+
+/* 字体大小 */
+.text-h1 {
+  font-size: 36rpx;
+  font-weight: 600;
+}
+
+.text-h2 {
+  font-size: 32rpx;
+  font-weight: 600;
+}
+
+.text-small {
+  font-size: 24rpx;
+  color: #999;
+}
+
+/* 布局 */
+.flex {
+  display: flex;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+/* 间距 */
+.mt-8 { margin-top: 16rpx; }
+.mt-12 { margin-top: 24rpx; }
+.mt-16 { margin-top: 32rpx; }
+
+.mb-8 { margin-bottom: 16rpx; }
+.mb-12 { margin-bottom: 24rpx; }
+.mb-16 { margin-bottom: 32rpx; }
+
+.ml-8 { margin-left: 16rpx; }
+.mr-8 { margin-right: 16rpx; }
+
+.p-16 { padding: 32rpx; }
+.p-24 { padding: 48rpx; }
+
+/* 表单 */
+.form-item {
+  margin-bottom: 32rpx;
+}
+
+.form-label {
+  font-size: 28rpx;
+  color: #333;
+  margin-bottom: 16rpx;
+  display: block;
+}
+
+.form-input {
+  background: #f9fafb;
+  border-radius: 12rpx;
+  padding: 24rpx;
+  font-size: 28rpx;
+  border: 1rpx solid #e5e7eb;
+}
+
+.form-input:focus {
+  border-color: #667eea;
+}
+
+/* 状态标签 */
+.tag {
+  display: inline-block;
+  padding: 4rpx 16rpx;
+  border-radius: 8rpx;
+  font-size: 24rpx;
+  line-height: 1.5;
+}
+
+.tag-pending {
+  background-color: #fef3c7;
+  color: #f59e0b;
+}
+
+.tag-pass {
+  background-color: #d1fae5;
+  color: #10b981;
+}
+
+.tag-reject {
+  background-color: #fee2e2;
+  color: #ef4444;
+}
+
+.tag-interview {
+  background-color: #dbeafe;
+  color: #3b82f6;
+}
+
+/* 分割线 */
+.divider {
+  height: 1rpx;
+  background-color: #e5e7eb;
+  margin: 24rpx 0;
+}
+
+/* 空状态 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 120rpx 48rpx;
+}
+
+.empty-icon {
+  width: 200rpx;
+  height: 200rpx;
+  margin-bottom: 32rpx;
+  opacity: 0.4;
+}
+
+.empty-text {
+  color: #999;
+  font-size: 28rpx;
+}
+
+/* 加载中 */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60rpx 0;
+}

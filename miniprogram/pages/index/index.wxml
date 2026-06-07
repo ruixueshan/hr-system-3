@@ -1,0 +1,165 @@
+<!-- pages/index/index.wxml -->
+<view class="index-page">
+  <!-- 搜索栏 + 入群（固定在顶部）-->
+  <view class="search-bar">
+    <view class="search-input-wrapper">
+      <text class="search-icon">🔍</text>
+      <input
+        class="search-input"
+        placeholder="搜索岗位名称/地点"
+        value="{{keyword}}"
+        bindinput="onSearchInput"
+        bindconfirm="handleSearch"
+      />
+      <text class="search-btn" bindtap="handleSearch">搜索</text>
+    </view>
+    <!-- 入群插件 -->
+    <view class="join-group-bar" wx:if="{{joinGroupUrl}}">
+      <cell
+        url="{{joinGroupUrl}}"
+        bind:startmessage="onJoinGroupStart"
+        bind:completemessage="onJoinGroupComplete"
+        contactText="加入招聘群，获取最新岗位信息"
+      />
+    </view>
+  </view>
+
+  <!-- 轮播图 -->
+  <view class="banner-section" wx:if="{{banners.length > 0}}">
+    <swiper
+      class="banner-swiper"
+      indicator-dots="{{true}}"
+      indicator-color="rgba(255,255,255,0.5)"
+      indicator-active-color="#ffffff"
+      autoplay="{{true}}"
+      interval="5000"
+      circular="{{true}}"
+      duration="500"
+    >
+      <block wx:for="{{banners}}" wx:key="id">
+        <swiper-item>
+          <view class="banner-item" bindtap="onBannerTap" data-banner="{{item}}">
+            <image class="banner-image" src="{{item.image}}" mode="aspectFill" />
+            <view class="banner-overlay" wx:if="{{item.title}}">
+              <text class="banner-title">{{item.title}}</text>
+            </view>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+  <!-- 筛选标签 -->
+  <view class="filter-section">
+    <view class="filter-tabs">
+      <view 
+        class="filter-tab {{!filterType ? 'active' : ''}}" 
+        bindtap="handleFilter" 
+        data-type=""
+      >
+        全部
+      </view>
+      <view 
+        class="filter-tab {{filterType === 'daily' ? 'active' : ''}}" 
+        bindtap="handleFilter" 
+        data-type="daily"
+      >
+        日结
+      </view>
+    </view>
+  </view>
+
+  <!-- 岗位列表 -->
+  <view class="job-list">
+    <block wx:for="{{jobs}}" wx:key="id">
+      <view class="job-card poster-card poster-theme-{{item.poster_theme_accent}}" bindtap="goToDetail" data-id="{{item.id}}">
+        <view class="poster-topbar">
+          <view class="poster-branding">
+            <text class="poster-brand">展瑞招聘</text>
+            <text class="poster-company">{{item.poster_theme_label}}</text>
+          </view>
+          <view class="poster-theme-chip">{{item.company}}</view>
+        </view>
+
+        <view class="poster-heading">
+          <text class="poster-title">{{item.title}}</text>
+          <text class="poster-year">--{{item.poster_year}}--</text>
+        </view>
+
+        <view class="poster-hero">
+          <view class="poster-copy">
+            <view class="poster-section-title">{{item.poster_subtitle}}</view>
+            <view class="poster-copy-list">
+              <view class="poster-copy-item" wx:for="{{item.poster_body}}" wx:for-item="line" wx:key="label">
+                <text class="poster-copy-label">{{line.label}}:</text>
+                <text class="poster-copy-value">{{line.value}}</text>
+              </view>
+            </view>
+          </view>
+
+          <view class="poster-art">
+            <view class="poster-art-frame">
+              <image class="poster-art-image" src="{{item.poster_image}}" mode="aspectFit" />
+            </view>
+            <view class="poster-art-caption">{{item.poster_badge}}</view>
+          </view>
+        </view>
+
+        <view class="poster-bottom">
+          <view class="poster-badge-circle">
+            <text class="poster-badge-title">{{item.poster_badge}}</text>
+            <text class="poster-badge-year">{{item.poster_year}}</text>
+          </view>
+
+          <view class="poster-summary">
+            <view class="poster-highlights">
+              <text class="poster-highlight" wx:for="{{item.poster_highlights}}" wx:for-item="highlight" wx:key="*this">{{highlight}}</text>
+            </view>
+            <view class="poster-meta">
+              <text class="poster-salary">{{item.salary_display}}</text>
+              <text class="poster-update">{{item.created_at || '刚刚发布'}}</text>
+            </view>
+          </view>
+
+          <view class="poster-cta">{{item.poster_button_text}}</view>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <!-- 空状态 -->
+  <view class="empty-state" wx:if="{{jobs.length === 0 && !loading}}">
+    <view class="empty-icon">💼</view>
+    <text class="empty-text">暂无岗位</text>
+    <text class="empty-tip">换个关键词试试吧</text>
+  </view>
+
+  <!-- 加载状态 -->
+  <view class="loading-container" wx:if="{{loading}}">
+    <view class="loading-spinner"></view>
+    <text class="loading-text">加载中...</text>
+  </view>
+
+  <view class="loading-more" wx:if="{{loadingMore}}">
+    <view class="loading-spinner small"></view>
+    <text class="loading-more-text">正在加载更多岗位...</text>
+  </view>
+
+  <!-- 加载完成 -->
+  <view class="end-text" wx:if="{{!hasMore && jobs.length > 0 && !loadingMore}}">
+    <text>没有更多了</text>
+  </view>
+
+  <!-- 全局客服浮动按钮 -->
+  <global-service-btn 
+    show="{{true}}"
+    show-label="{{true}}"
+  />
+
+  <!-- 登录弹窗 -->
+  <login-sheet 
+    visible="{{showLoginSheet}}"
+    bind:close="onLoginClose"
+    bind:login-success="onLoginSuccess"
+  />
+</view>

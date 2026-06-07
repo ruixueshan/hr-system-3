@@ -1,0 +1,84 @@
+.login-mask {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 9999;
+}
+
+.sheet {
+  width: 100%;
+  background: #fff;
+  border-top-left-radius: 16rpx;
+  border-top-right-radius: 16rpx;
+  padding: 32rpx 32rpx 48rpx;
+  box-sizing: border-box;
+}
+
+.drag {
+  width: 80rpx;
+  height: 8rpx;
+  background: #e5e5e5;
+  border-radius: 999rpx;
+  margin: 0 auto 24rpx;
+}
+
+.title {
+  font-size: 34rpx;
+  font-weight: 600;
+  text-align: center;
+}
+
+.desc {
+  margin-top: 12rpx;
+  font-size: 26rpx;
+  color: #666;
+  text-align: center;
+}
+
+.btn-primary {
+  margin-top: 32rpx;
+  background: #07c160;
+  color: #fff;
+  border: none;
+}
+
+.btn-cancel {
+  margin-top: 12rpx;
+  color: #666;
+  background: #f5f5f5;
+  border: none;
+}
+
+.privacy-area {
+  margin-top: 24rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.privacy-check {
+  display: flex;
+  align-items: center;
+}
+
+.privacy-text {
+  margin-left: 8rpx;
+  font-size: 24rpx;
+  color: #666;
+}
+
+.privacy-links {
+  margin-top: 8rpx;
+  display: flex;
+  font-size: 24rpx;
+}
+
+.link {
+  color: #07c160;
+}

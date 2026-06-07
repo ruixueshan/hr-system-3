@@ -1,0 +1,14 @@
+{
+  "$schema": "https://static.cloudbase.net/cli/cloudbaserc.schema.json",
+  "envId": "cloud1-5glojms9a83c3457",
+  "functionRoot": ".",
+  "functions": [
+    {
+      "name": "worktime",
+      "runtime": "Nodejs20.19",
+      "timeout": 60,
+      "handler": "index.main",
+      "envVariables": {}
+    }
+  ]
+}

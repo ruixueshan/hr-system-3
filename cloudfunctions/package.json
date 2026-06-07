@@ -1,0 +1,19 @@
+{
+  "name": "hr-cloudfunctions",
+  "version": "1.0.0",
+  "description": "HR System Cloud Functions",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~3.0.1"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}

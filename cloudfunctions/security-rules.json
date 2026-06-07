@@ -1,0 +1,151 @@
+/**
+ * CloudBase 安全规则（生产版）
+ * 参考：3.0系统综合设计文档.md
+ *
+ * 部署方法：
+ * 1. 登录腾讯云开发控制台
+ * 2. 进入数据库 → 安全规则
+ * 3. 粘贴此 JSON 配置
+ */
+
+module.exports = {
+  // 用户表：可读可写
+  "users": {
+    "read": "auth != null",
+    "write": "auth != null"
+  },
+
+  // 企业信息：管理员可读写
+  "companies": {
+    "read": "request.auth.role in ['hr', 'finance', 'gm', 'deputy']",
+    "write": "request.auth.role in ['hr', 'gm', 'deputy']"
+  },
+
+  // 岗位：所有人可读，管理员可写
+  "jobs": {
+    "read": "true",
+    "write": "request.auth.role in ['hr', 'gm', 'deputy']"
+  },
+
+  // 报名表：用户可读写自己的，管理员可读写所有
+  "applications": {
+    "read": "auth.uid == doc.user_id || request.auth.role in ['hr', 'finance', 'gm', 'deputy']",
+    "write": "auth.uid == doc.user_id || request.auth.role in ['hr', 'gm', 'deputy']"
+  },
+
+  // 面试记录：管理员可读写
+  "interviews": {
+    "read": "auth.uid == doc.user_id || request.auth.role in ['hr', 'gm', 'deputy']",
+    "write": "request.auth.role in ['hr', 'gm', 'deputy']"
+  },
+
+  // 员工档案：员工可读自己，管理员可读写
+  "employees": {
+    "read": "auth.uid == doc.user_id || request.auth.role in ['hr', 'finance', 'gm', 'deputy']",
+    "write": "request.auth.role in ['hr', 'gm', 'deputy']"
+  },
+
+  // 员工-企业关联
+  "employee_companies": {
+    "read": "auth.uid == doc.employee_id || request.auth.role in ['hr', 'finance', 'gm', 'deputy']",
+    "write": "request.auth.role in ['hr', 'gm', 'deputy']"
+  },
+
+  // 工时记录：员工可读写自己的，管理员可读写
+  "worktime_records": {
+    "read": "auth.uid == doc.employee_id || request.auth.role in ['hr', 'finance', 'gm', 'deputy']",
+    "write": "auth.uid == doc.employee_id || request.auth.role in ['hr', 'finance', 'gm', 'deputy']"
+  },
+
+  // 薪资记录：只读，禁止直接写（只能通过 salary-engine 计算）
+  "salaries": {
+    "read": "auth.uid == doc.employee_id || request.auth.role in ['hr', 'finance', 'gm', 'deputy']",
+    "write": "false"
+  },
+
+  // 工资预支：员工可申请，管理员可审核
+  "salary_advances": {
+    "read": "auth.uid == doc.employee_id || request.auth.role in ['hr', 'finance', 'gm', 'deputy']",
+    "write": "auth.uid == doc.employee_id || request.auth.role in ['hr', 'finance', 'gm', 'deputy']"
+  },
+
+  // 企业薪资配置：管理员可读写
+  "company_salary_configs": {
+    "read": "request.auth.role in ['hr', 'finance', 'gm', 'deputy']",
+    "write": "request.auth.role in ['hr', 'gm', 'deputy']"
+  },
+
+  // 个人奖惩：管理员可读写
+  "personal_rewards": {
+    "read": "auth.uid == doc.employee_id || request.auth.role in ['hr', 'finance', 'gm', 'deputy']",
+    "write": "request.auth.role in ['hr', 'gm', 'deputy']"
+  },
+
+  // 招聘提成规则：管理员可读写
+  "recruitment_bonus_rules": {
+    "read": "request.auth.role in ['hr', 'finance', 'gm', 'deputy']",
+    "write": "request.auth.role in ['hr', 'gm', 'deputy']"
+  },
+
+  // 招聘提成结果：只读（由定时任务或 salary-engine 计算写入）
+  "recruitment_bonuses": {
+    "read": "request.auth.role in ['hr', 'finance', 'gm', 'deputy']",
+    "write": "false"
+  },
+
+  // 招聘提成批次：只读（由 salary-engine 统一结算与审核）
+  "recruitment_bonus_batches": {
+    "read": "request.auth.role in ['hr', 'finance', 'gm', 'deputy']",
+    "write": "false"
+  },
+
+  // HR绩效：只读
+  "hr_performance": {
+    "read": "request.auth.role in ['hr', 'finance', 'gm', 'deputy']",
+    "write": "false"
+  },
+
+  // 黑名单：管理员可读写
+  "blacklists": {
+    "read": "request.auth.role in ['hr', 'gm', 'deputy']",
+    "write": "request.auth.role in ['hr', 'gm', 'deputy']"
+  },
+
+  // 通知模板：管理员可读写
+  "notification_templates": {
+    "read": "request.auth.role in ['hr', 'gm', 'deputy']",
+    "write": "request.auth.role in ['hr', 'gm', 'deputy']"
+  },
+
+  // 审计日志：只读（仅财务、总经理、副经理可看）
+  "audit_logs": {
+    "read": "request.auth.role in ['gm', 'deputy', 'finance']",
+    "write": "auth.uid != null" // 云函数可写
+  },
+
+  // 系统配置：只读（小程序/Web），后台可写
+  "system_config": {
+    "read": "true",
+    "write": "request.auth.role in ['gm', 'deputy']"
+  },
+
+  // 二维码：管理员可读写
+  "qr_codes": {
+    "read": "true", // 小程序扫码需查询
+    "write": "request.auth.role in ['hr', 'gm', 'deputy']"
+  },
+
+  // 归档表：只读
+  "worktime_records_archive": {
+    "read": "request.auth.role in ['finance', 'gm', 'deputy']",
+    "write": "false"
+  },
+  "salaries_archive": {
+    "read": "request.auth.role in ['finance', 'gm', 'deputy']",
+    "write": "false"
+  },
+  "interviews_archive": {
+    "read": "request.auth.role in ['gm', 'deputy']",
+    "write": "false"
+  }
+};

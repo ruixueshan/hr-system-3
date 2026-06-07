@@ -1,0 +1,9 @@
+<svg width="720" height="320" viewBox="0 0 720 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g>
+    <text x="40" y="210" fill="#3E3E42" font-size="150" font-weight="700" font-family="STKaiti, KaiTi, 'Songti SC', 'Microsoft YaHei', serif">展瑞</text>
+    <text x="362" y="214" fill="#3E3E42" font-size="34" font-weight="400" font-family="Avenir, Helvetica, Arial, sans-serif" letter-spacing="1">-zhanrui-</text>
+    <path d="M560 70C574 48 615 45 630 72C646 101 630 145 604 174C578 145 549 104 560 70Z" fill="#BE1414"/>
+    <path d="M582 58C597 52 617 57 624 74C630 89 622 108 604 132C586 108 575 89 579 73C580 66 582 61 582 58Z" fill="#D22020" opacity="0.8"/>
+    <text x="590" y="132" fill="#FFF6E9" font-size="46" font-weight="700" font-family="STKaiti, KaiTi, 'Songti SC', 'Microsoft YaHei', serif">资</text>
+  </g>
+</svg>

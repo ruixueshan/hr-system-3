@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>展瑞HR数据大屏</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.11.3/p5.min.js"></script>
+  <style>
+    html, body { margin: 0; padding: 0; background: #0a0a0f; overflow: hidden; }
+    canvas { display: block; }
+  </style>
+</head>
+<body>
+<script>
+p5.disableFriendlyErrors = true;
+
+// === 模拟数据 ===
+const DATA = {
+  总人数: 2559,
+  在职: 127,
+  离职: 89,
+  待联系: 2343,
+  来源: [
+    { name: '58同城', count: 1280, color: '#FF6B35' },
+    { name: '员工推荐', count: 512, color: '#11999E' },
+    { name: '微信', count: 434, color: '#6C5CE7' },
+    { name: '小程序', count: 333, color: '#00B894' },
+  ],
+  甲方: [
+    { name: '京东物流', 人数: 156, 工资: 89.5 },
+    { name: '德邦物流', 人数: 134, 工资: 87.2 },
+    { name: '圆通速递', 人数: 98, 工资: 85.0 },
+    { name: '达利园', 人数: 87, 工资: 82.8 },
+    { name: '其他', 人数: 52, 工资: 78.5 },
+  ],
+  月度入职: [23, 45, 38, 52, 67, 43, 35, 28, 41, 55, 62, 48],
+};
+
+// === 配色 ===
+const COLORS = {
+  bg: '#0a0a0f',
+  card: '#16161e',
+  text: '#e8e8e8',
+  dim: '#6b7280',
+  accent: '#FF6B35',
+  sub: '#11999E',
+};
+
+let particles = [];
+let font;
+
+function setup() {
+  createCanvas(windowWidth, windowHeight);
+  pixelDensity(1);
+  colorMode(HSB, 360, 100, 100, 100);
+  
+  // 装饰粒子
+  for (let i = 0; i < 50; i++) {
+    particles.push({
+      x: random(width),
+      y: random(height),
+      vx: random(-0.3, 0.3),
+      vy: random(-0.3, 0.3),
+      size: random(1, 3),
+    });
+  }
+}
+
+function draw() {
+  background(230, 20, 6);
+  
+  // 装饰粒子
+  noStroke();
+  for (let p of particles) {
+    fill(200, 10, 80, 30);
+    ellipse(p.x, p.y, p.size);
+    p.x += p.vx;
+    p.y += p.vy;
+    if (p.x < 0) p.x = width;
+    if (p.x > width) p.x = 0;
+    if (p.y < 0) p.y = height;
+    if (p.y > height) p.y = 0;
+  }
+  
+  // 标题
+  drawHeader();
+  
+  // 中间大数字
+  drawMainStats();
+  
+  // 左侧来源分布
+  drawSourceChart();
+  
+  // 右侧甲方TOP5
+  drawCompanyChart();
+  
+  // 底部月度趋势
+  drawTrendChart();
+}
+
+function drawHeader() {
+  fill(0, 0, 100);
+  textSize(14);
+  textAlign(LEFT, TOP);
+  text('HQ', 40, 30);
+  
+  fill(0, 0, 60);
+  textSize(32);
+  text('展瑞HR数据大屏', 40, 55);
+  
+  // 右侧时间
+  textAlign(RIGHT, TOP);
+  textSize(14);
+  fill(0, 0, 50);
+  let now = new Date();
+  text(`${now.getFullYear()}.${String(now.getMonth()+1).padStart(2,'0')}.${String(now.getDate()).padStart(2,'0')}  ${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`, width - 40, 40);
+}
+
+function drawMainStats() {
+  let cx = width / 2;
+  let cy = 200;
+  
+  // 总人数
+  fill(0, 0, 100);
+  textAlign(CENTER, CENTER);
+  textSize(90);
+  text(DATA.总人数.toLocaleString(), cx - 150, cy);
+  textSize(18);
+  fill(0, 0, 50);
+  text('候选人总数', cx - 150, cy + 60);
+  
+  // 在职
+  fill(150, 80, 80);
+  textSize(48);
+  text(DATA.在职, cx + 80, cy - 20);
+  textSize(16);
+  fill(150, 60, 60);
+  text('在职员工', cx + 80, cy + 30);
+  
+  // 本月入职
+  fill(190, 70, 90);
+  textSize(48);
+  text('+45', cx + 80, cy + 90);
+  textSize(16);
+  fill(190, 50, 60);
+  text('本月入职', cx + 80, cy + 140);
+}
+
+function drawSourceChart() {
+  let x = 60;
+  let y = 340;
+  let w = width * 0.28;
+  let h = 300;
+  
+  // 卡片背景
+  noStroke();
+  fill(230, 20, 10, 80);
+  rect(x, y, w, h, 16);
+  
+  // 标题
+  fill(0, 0, 80);
+  textSize(18);
+  textAlign(LEFT, TOP);
+  text('候选人来源', x + 24, y + 20);
+  
+  // 环形图
+  let cx = x + w/2;
+  let cy = y + 140;
+  let r = 70;
+  let total = DATA.来源.reduce((s, d) => s + d.count, 0);
+  let startAngle = -PI/2;
+  
+  for (let src of DATA.来源) {
+    let angle = (src.count / total) * TWO_PI;
+    fill(src.color);
+    arc(cx, cy, r*2, r*2, startAngle, startAngle + angle);
+    startAngle += angle;
+  }
+  
+  // 中心白
+  fill(230, 20, 10, 80);
+  ellipse(cx, cy, r, r);
+  
+  // 图例
+  let legY = y + 230;
+  for (let i = 0; i < DATA.来源.length; i++) {
+    let src = DATA.来源[i];
+    let lx = x + 24 + (i % 2) * 130;
+    let ly = legY + Math.floor(i/2) * 26;
+    
+    fill(src.color);
+    rect(lx, ly, 12, 12, 3);
+    fill(0, 0, 70);
+    textSize(13);
+    text(`${src.name} ${src.count}`, lx + 18, ly + 10);
+  }
+}
+
+function drawCompanyChart() {
+  let x = width - 60 - width * 0.35;
+  let y = 340;
+  let w = width * 0.35;
+  let h = 300;
+  
+  noStroke();
+  fill(230, 20, 10, 80);
+  rect(x, y, w, h, 16);
+  
+  fill(0, 0, 80);
+  textSize(18);
+  textAlign(LEFT, TOP);
+  text('甲方客户TOP5', x + 24, y + 20);
+  
+  // 横向柱状图
+  let barH = 36;
+  let barW = w - 180;
+  let maxVal = Math.max(...DATA.甲方.map(c => c.人数));
+  
+  for (let i = 0; i < DATA.甲方.length; i++) {
+    let c = DATA.甲方[i];
+    let by = y + 60 + i * (barH + 12);
+    let bw = (c.人数 / maxVal) * barW;
+    
+    // 公司名
+    fill(0, 0, 70);
+    textSize(14);
+    text(c.name, x + 24, by + 8);
+    
+    // 柱子
+    fill(20, 80, 90);
+    rect(x + 90, by, bw, barH, 6);
+    
+    // 人数
+    fill(0, 0, 90);
+    textSize(14);
+    text(c.人数 + '人', x + 100 + bw, by + 10);
+  }
+}
+
+function drawTrendChart() {
+  let x = 60;
+  let y = height - 180;
+  let w = width - 120;
+  let h = 140;
+  
+  noStroke();
+  fill(230, 20, 10, 80);
+  rect(x, y, w, h, 16);
+  
+  fill(0, 0, 80);
+  textSize(18);
+  text('月度入职趋势', x + 24, y + 20);
+  
+  // 折线图
+  let points = DATA.月度入职;
+  let maxV = Math.max(...points);
+  let minV = Math.min(...points);
+  let plotH = 80;
+  let plotY = y + h - 30;
+  let stepX = (w - 60) / (points.length - 1);
+  
+  noFill();
+  stroke(30, 80, 90);
+  strokeWeight(2);
+  beginShape();
+  for (let i = 0; i < points.length; i++) {
+    let px = x + 40 + i * stepX;
+    let py = plotY - ((points[i] - minV) / (maxV - minV)) * plotH;
+    vertex(px, py);
+  }
+  endShape();
+  
+  // 点
+  noStroke();
+  for (let i = 0; i < points.length; i++) {
+    let px = x + 40 + i * stepX;
+    let py = plotY - ((points[i] - minV) / (maxV - minV)) * plotH;
+    fill(30, 80, 90);
+    ellipse(px, py, 8);
+    fill(0, 0, 100);
+    textSize(10);
+    textAlign(CENTER, TOP);
+    text(points[i], px, py + 10);
+  }
+  
+  // 月份标签
+  fill(0, 0, 50);
+  textSize(11);
+  let months = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+  for (let i = 0; i < months.length; i++) {
+    text(months[i], x + 40 + i * stepX, y + h - 18);
+  }
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
+}
+
+// 保存图片按 s
+function keyPressed() {
+  if (key === 's' || key === 'S') {
+    saveCanvas('hr-dashboard', 'png');
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+{
+  "onReachBottomDistance": 120,
+  "usingComponents": {
+    "global-service-btn": "/components/global-service-btn/global-service-btn",
+    "login-sheet": "/components/login-sheet/login-sheet",
+    "cell": "plugin://materialPlugin/cell"
+  }
+}

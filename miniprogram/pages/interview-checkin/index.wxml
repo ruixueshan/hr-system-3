@@ -1,0 +1,57 @@
+<view class="checkin-page">
+  <view class="hero-card">
+    <text class="hero-title">面试签到</text>
+    <text class="hero-subtitle">确认面试信息后填写姓名和手机号，系统会同步到报名与面试管理。</text>
+  </view>
+
+  <view class="info-card" wx:if="{{qrInfo}}">
+    <view class="card-title">面试信息</view>
+    <view class="info-row">
+      <text class="label">企业</text>
+      <text class="value">{{qrInfo.company_name || '-'}}</text>
+    </view>
+    <view class="info-row">
+      <text class="label">岗位</text>
+      <text class="value">{{qrInfo.job_name || '-'}}</text>
+    </view>
+    <view class="info-row">
+      <text class="label">日期</text>
+      <text class="value">{{qrInfo.interview_date || '-'}}</text>
+    </view>
+    <view class="info-row" wx:if="{{qrInfo.location}}">
+      <text class="label">地点</text>
+      <text class="value">{{qrInfo.location}}</text>
+    </view>
+  </view>
+
+  <view class="form-card">
+    <view class="card-title">签到信息</view>
+
+    <view class="submit-status submit-status-{{statusType}}" wx:if="{{statusText}}">
+      <text class="submit-status-text">{{statusText}}</text>
+    </view>
+
+    <view class="login-block" wx:if="{{!isLoggedIn}}">
+      <text class="login-tip">请先使用微信手机号登录，登录后可自动带出手机号。</text>
+      <button class="btn-login" open-type="getPhoneNumber" bindgetphonenumber="onGetPhoneNumber" loading="{{logging}}">
+        {{logging ? '登录中...' : '微信手机号登录'}}
+      </button>
+    </view>
+
+    <view class="form-item">
+      <text class="label">姓名</text>
+      <input class="input" value="{{form.real_name}}" data-field="real_name" bindinput="onInput" placeholder="请输入真实姓名" />
+    </view>
+
+    <view class="form-item">
+      <text class="label">手机号</text>
+      <input class="input" value="{{form.phone}}" data-field="phone" bindinput="onInput" type="number" maxlength="11" placeholder="请输入手机号" />
+    </view>
+  </view>
+
+  <view class="footer">
+    <button class="btn-submit {{loading || submitting || !isLoggedIn || !qrInfo || qrInfo.expired || qrInfo.not_started ? 'btn-submit-disabled' : ''}}" bindtap="handleSubmit" loading="{{submitting}}" disabled="{{loading || submitting || !isLoggedIn || !qrInfo || qrInfo.expired || qrInfo.not_started}}">
+      {{submitting ? '签到中...' : '确认签到'}}
+    </button>
+  </view>
+</view>

@@ -1,0 +1,9 @@
+{
+  "name": "auth-change-password",
+  "version": "1.0.0",
+  "description": "修改密码云函数",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+}

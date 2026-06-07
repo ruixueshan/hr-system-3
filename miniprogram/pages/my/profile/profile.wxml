@@ -1,0 +1,147 @@
+<!--pages/my/profile/profile.wxml-->
+<view class="profile-container">
+  <view class="form-container">
+    <view class="form-section">
+      <view class="section-title">个人信息</view>
+
+      <view class="form-item required">
+        <text class="label">姓名</text>
+        <input
+          class="input"
+          value="{{form.real_name}}"
+          data-field="real_name"
+          bindinput="onInput"
+          placeholder="请输入真实姓名"
+        />
+      </view>
+
+      <view class="form-item disabled">
+        <text class="label">性别</text>
+        <view class="picker disabled-picker">{{form.gender || '请先输入身份证号'}}</view>
+        <text class="lock-icon">🔒</text>
+      </view>
+
+      <view class="form-item required">
+        <text class="label">手机号</text>
+        <input
+          class="input"
+          value="{{form.phone}}"
+          data-field="phone"
+          bindinput="onInput"
+          type="number"
+          maxlength="11"
+          placeholder="请输入手机号"
+        />
+      </view>
+
+      <view class="form-item">
+        <text class="label">身份证号</text>
+        <input
+          class="input"
+          value="{{form.id_card}}"
+          data-field="id_card"
+          bindinput="onIdCardInput"
+          maxlength="18"
+          placeholder="请输入18位身份证号（自动填充性别和出生日期）"
+        />
+      </view>
+
+      <view class="form-item disabled">
+        <text class="label">出生日期</text>
+        <view class="picker disabled-picker">{{form.birth_date || '请先输入身份证号'}}</view>
+        <text class="lock-icon">🔒</text>
+      </view>
+    </view>
+
+    <view class="form-section">
+      <view class="section-title">发薪方式</view>
+      <text class="section-desc">请选择工资收款方式。默认银行代发；选择微信发薪需完成免确认收款授权，姓名和身份证号应与收款微信实名一致。</text>
+
+      <view class="pay-method-row">
+        <view class="pay-method {{form.salary_payment_method === 'WECHAT' ? 'active' : ''}}" data-method="WECHAT" bindtap="onPaymentMethodSelect">
+          <view class="method-title">微信发薪</view>
+          <view class="method-desc">提现自动打款到微信零钱</view>
+        </view>
+        <view class="pay-method {{form.salary_payment_method === 'BANK' ? 'active' : ''}}" data-method="BANK" bindtap="onPaymentMethodSelect">
+          <view class="method-title">银行代发</view>
+          <view class="method-desc">保存银行卡用于银行报送</view>
+        </view>
+      </view>
+
+      <view class="withdraw-note" wx:if="{{form.salary_payment_method === 'WECHAT'}}">
+        <view class="note-title">微信提现说明</view>
+        <view class="note-line">提现时间：支持7×24小时发起提现，无时间限制。</view>
+        <view class="note-line">到账时间：提交后实时打款到微信零钱。</view>
+        <view class="note-line">可提现额度：单笔限额5000元，当日累计限额10000元，不限提现次数。</view>
+      </view>
+
+      <block wx:if="{{form.salary_payment_method === 'WECHAT'}}">
+        <view class="form-item required">
+          <text class="label">收款姓名</text>
+          <input
+            class="input"
+            value="{{form.real_name}}"
+            data-field="real_name"
+            bindinput="onInput"
+            placeholder="请输入收款微信实名"
+          />
+        </view>
+
+        <view class="form-item required">
+          <text class="label">身份证号</text>
+          <input
+            class="input"
+            value="{{form.id_card}}"
+            data-field="id_card"
+            bindinput="onIdCardInput"
+            maxlength="18"
+            placeholder="请输入身份证号"
+          />
+        </view>
+      </block>
+
+      <block wx:else>
+        <view class="form-item required">
+          <text class="label">开户行</text>
+          <input
+            class="input"
+            value="{{form.bank_name}}"
+            data-field="bank_name"
+            bindinput="onInput"
+            placeholder="例如：中国工商银行"
+          />
+        </view>
+
+        <view class="form-item required">
+          <text class="label">银行卡号</text>
+          <input
+            class="input"
+            value="{{form.bank_account}}"
+            data-field="bank_account"
+            bindinput="onInput"
+            type="number"
+            maxlength="19"
+            placeholder="请输入银行卡号"
+          />
+        </view>
+
+        <view class="form-item required">
+          <text class="label">持卡人姓名</text>
+          <input
+            class="input"
+            value="{{form.bank_account_name}}"
+            data-field="bank_account_name"
+            bindinput="onInput"
+            placeholder="请输入持卡人真实姓名"
+          />
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <view class="btn-container">
+    <button class="btn-primary" bindtap="handleSave" loading="{{loading}}" disabled="{{loading}}">
+      保存资料
+    </button>
+  </view>
+</view>

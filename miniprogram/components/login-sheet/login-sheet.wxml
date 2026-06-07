@@ -1,0 +1,18 @@
+<view wx:if="{{visible}}" class="login-mask" bindtap="close">
+  <view class="sheet" catchtap="noop">
+    <view class="drag"></view>
+    <view class="title">一键登录</view>
+    <view class="desc">授权手机号快速登录，保障账号安全</view>
+    <button
+      class="btn-primary"
+      open-type="getPhoneNumber"
+      bindgetphonenumber="onGetPhoneNumber"
+      loading="{{loading}}"
+      disabled="{{loading}}"
+    >
+      {{loading ? '登录中...' : '手机号一键登录'}}
+    </button>
+    
+    <button class="btn-cancel" bindtap="close">稍后再说</button>
+  </view>
+</view>

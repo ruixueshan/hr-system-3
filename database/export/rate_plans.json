@@ -1,0 +1,1067 @@
+[
+  {
+    "_id": "b3c6c3d569bcba1500df1f631b1bb451",
+    "pay_hours_monthly": {
+      "$numberDouble": "12.0"
+    },
+    "daily_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "night_daily_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "_openid": "pe-J4j0XLnhmRiBGobUBXA",
+    "company_id": "b3c6c3d569bcb98b00df161941cb67fb",
+    "night_daily_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "insurance_daily_deduct": {
+      "$numberDouble": "3.0"
+    },
+    "pay_hours_daily": {
+      "$numberDouble": "12.0"
+    },
+    "status": "active",
+    "daily_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "night_hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "updated_at": "2026-03-27T02:08:50.914Z",
+    "hourly_rate_daily": {
+      "$numberDouble": "15.5"
+    },
+    "night_hourly_rate_monthly": {
+      "$numberDouble": "0.5"
+    },
+    "created_at": "2026-03-20T03:08:05.142Z",
+    "hourly_rate_monthly": {
+      "$numberDouble": "16.5"
+    },
+    "insurance_monthly_deduct": {
+      "$numberDouble": "85.0"
+    },
+    "name": "君弘普工"
+  },
+  {
+    "_id": "69d4baf669c1214b0144d9860e267cef",
+    "hourly_rate_daily": {
+      "$numberDouble": "16.5"
+    },
+    "hourly_rate_monthly": {
+      "$numberDouble": "17.5"
+    },
+    "night_daily_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "insurance_daily_deduct": {
+      "$numberDouble": "3.0"
+    },
+    "night_daily_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "status": "active",
+    "updated_at": "2026-03-23T11:17:30.941Z",
+    "name": "君弘叉车",
+    "insurance_monthly_deduct": {
+      "$numberDouble": "85.0"
+    },
+    "night_hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "night_hourly_rate_monthly": {
+      "$numberDouble": "0.5"
+    },
+    "_openid": "LeKpVGfMEgPMEx-newN7UA",
+    "company_id": "b3c6c3d569bcb98b00df161941cb67fb",
+    "created_at": "2026-03-23T11:17:30.941Z"
+  },
+  {
+    "_id": "3bef321d69c240da0161d741415a3ea6",
+    "night_daily_rate_daily": {
+      "$numberDouble": "10.0"
+    },
+    "night_daily_rate_monthly": {
+      "$numberDouble": "10.0"
+    },
+    "pay_hours_monthly": {
+      "$numberDouble": "12.0"
+    },
+    "name": "朱有琴夫妻",
+    "pay_hours_daily": {
+      "$numberDouble": "12.0"
+    },
+    "status": "active",
+    "company_id": "1fa8f55169c2003d015a3f4e31dc8690",
+    "daily_rate_daily": {
+      "$numberDouble": "180.0"
+    },
+    "insurance_monthly_deduct": {
+      "$numberDouble": "85.0"
+    },
+    "night_hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "updated_at": "2026-03-27T01:53:36.490Z",
+    "_openid": "pe-J4j0XLnhmRiBGobUBXA",
+    "hourly_rate_daily": {
+      "$numberDouble": "15.0"
+    },
+    "insurance_daily_deduct": {
+      "$numberDouble": "3.0"
+    },
+    "night_hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "created_at": "2026-03-24T07:44:25.694Z",
+    "daily_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "hourly_rate_monthly": {
+      "$numberDouble": "15.5"
+    }
+  },
+  {
+    "_id": "1fa8f55169c242a80161049450eda4a5",
+    "created_at": "2026-03-24T07:52:07.531Z",
+    "status": "active",
+    "updated_at": "2026-04-07T05:37:39.150Z",
+    "_openid": "pe-J4j0XLnhmRiBGobUBXA",
+    "hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "name": "2025年方案",
+    "company_id": "1fa8f55169c2003d015a3f4e31dc8690",
+    "daily_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "insurance_monthly_deduct": {
+      "$numberDouble": "85.0"
+    },
+    "night_hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "pay_hours_monthly": {
+      "$numberDouble": "12.0"
+    },
+    "daily_rate_daily": {
+      "$numberDouble": "175.0"
+    },
+    "insurance_daily_deduct": {
+      "$numberDouble": "3.0"
+    },
+    "night_daily_rate_daily": {
+      "$numberDouble": "20.0"
+    },
+    "night_daily_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "night_hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "pay_hours_daily": {
+      "$numberDouble": "12.0"
+    }
+  },
+  {
+    "_id": "33956e3d69c2796b0167b1a4235146ce",
+    "hourly_rate_daily": {
+      "$numberDouble": "15.0"
+    },
+    "name": "聚金普工",
+    "night_daily_rate_monthly": {
+      "$numberDouble": "10.0"
+    },
+    "night_hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "pay_hours_daily": {
+      "$numberDouble": "12.0"
+    },
+    "daily_rate_monthly": {
+      "$numberDouble": "185.0"
+    },
+    "insurance_daily_deduct": {
+      "$numberDouble": "3.0"
+    },
+    "night_daily_rate_daily": {
+      "$numberDouble": "10.0"
+    },
+    "night_hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "pay_hours_monthly": {
+      "$numberDouble": "12.0"
+    },
+    "status": "active",
+    "created_at": "2026-03-24T11:45:46.619Z",
+    "insurance_monthly_deduct": {
+      "$numberDouble": "85.0"
+    },
+    "updated_at": "2026-03-27T01:52:45.756Z",
+    "_openid": "pe-J4j0XLnhmRiBGobUBXA",
+    "hourly_rate_monthly": {
+      "$numberDouble": "15.5"
+    },
+    "company_id": "1fa8f55169c2003d015a3f4e31dc8690",
+    "daily_rate_daily": {
+      "$numberDouble": "180.0"
+    }
+  },
+  {
+    "_id": "b3c6c3d569c3777a0181ec6a381a0317",
+    "_openid": "pe-J4j0XLnhmRiBGobUBXA",
+    "insurance_monthly_deduct": {
+      "$numberDouble": "85.0"
+    },
+    "night_hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "pay_hours_daily": {
+      "$numberDouble": "10.0"
+    },
+    "daily_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "hourly_rate_daily": {
+      "$numberDouble": "14.0"
+    },
+    "hourly_rate_monthly": {
+      "$numberDouble": "15.0"
+    },
+    "created_at": "2026-03-25T05:49:46.924Z",
+    "daily_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "night_daily_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "night_hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "status": "active",
+    "company_id": "f6fcfb9c69c2260a0159bb8562dee9fe",
+    "insurance_daily_deduct": {
+      "$numberDouble": "3.0"
+    },
+    "name": "恒来电器普工",
+    "night_daily_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "pay_hours_monthly": {
+      "$numberDouble": "10.0"
+    },
+    "updated_at": "2026-04-13T06:51:04.937Z"
+  },
+  {
+    "_id": "3bef321d69c378100180ebcb4ac7cc37",
+    "name": "凯达普工",
+    "night_hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "_openid": "LeKpVGfMEgPMEx-newN7UA",
+    "daily_rate_daily": {
+      "$numberDouble": "180.0"
+    },
+    "insurance_monthly_deduct": {
+      "$numberDouble": "85.0"
+    },
+    "night_hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "pay_hours_daily": {
+      "$numberDouble": "11.0"
+    },
+    "status": "active",
+    "updated_at": "2026-04-07T09:01:08.236Z",
+    "created_at": "2026-03-25T05:52:16.551Z",
+    "daily_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "night_daily_rate_daily": {
+      "$numberDouble": "10.0"
+    },
+    "pay_hours_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "night_daily_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "company_id": "33956e3d69c275190167277171422dc2",
+    "hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "insurance_daily_deduct": {
+      "$numberDouble": "3.0"
+    }
+  },
+  {
+    "_id": "93abbbd769c3af69018820d141ddd581",
+    "_openid": "gNiDXRriBeIEN0jPwnb5vQ",
+    "created_at": "2026-03-25T09:48:25.816Z",
+    "hourly_rate_daily": {
+      "$numberDouble": "15.0"
+    },
+    "hourly_rate_monthly": {
+      "$numberDouble": "16.0"
+    },
+    "pay_hours_monthly": {
+      "$numberDouble": "10.5"
+    },
+    "status": "active",
+    "daily_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "insurance_monthly_deduct": {
+      "$numberDouble": "85.0"
+    },
+    "night_daily_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "night_hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "pay_hours_daily": {
+      "$numberDouble": "10.5"
+    },
+    "company_id": "dde8ef4869c3763f0180160b258d9b82",
+    "daily_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "insurance_daily_deduct": {
+      "$numberDouble": "3.0"
+    },
+    "name": "立仁普工",
+    "night_daily_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "night_hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "updated_at": "2026-03-26T07:18:06.113Z"
+  },
+  {
+    "_id": "71fe4ab869c4946501a00cb91e37026d",
+    "daily_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "daily_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "hourly_rate_daily": {
+      "$numberDouble": "20.0"
+    },
+    "insurance_monthly_deduct": {
+      "$numberDouble": "85.0"
+    },
+    "night_daily_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "night_daily_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "hourly_rate_monthly": {
+      "$numberDouble": "22.0"
+    },
+    "insurance_daily_deduct": {
+      "$numberDouble": "3.0"
+    },
+    "name": "威雅普工",
+    "night_hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "night_hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "pay_hours_daily": {
+      "$numberDouble": "8.0"
+    },
+    "pay_hours_monthly": {
+      "$numberDouble": "8.0"
+    },
+    "status": "active",
+    "updated_at": "2026-03-26T07:16:21.478Z",
+    "_openid": "gNiDXRriBeIEN0jPwnb5vQ",
+    "created_at": "2026-03-26T02:05:25.044Z",
+    "company_id": "f6fcfb9c69c493a6019d74c705157768"
+  },
+  {
+    "_id": "33956e3d69c52e7201b5068c564220fb",
+    "created_at": "2026-03-26T13:02:41.624Z",
+    "daily_rate_daily": {
+      "$numberDouble": "175.0"
+    },
+    "insurance_daily_deduct": {
+      "$numberDouble": "3.0"
+    },
+    "pay_hours_monthly": {
+      "$numberDouble": "10.5"
+    },
+    "updated_at": "2026-03-30T05:47:39.759Z",
+    "company_id": "4d75389069c52d3800124cec0ffb6cfd",
+    "hourly_rate_daily": null,
+    "night_daily_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "night_hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "pay_hours_daily": {
+      "$numberDouble": "10.5"
+    },
+    "daily_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "name": "阳溪普工",
+    "night_daily_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "_openid": "pe-J4j0XLnhmRiBGobUBXA",
+    "hourly_rate_monthly": {
+      "$numberDouble": "16.0"
+    },
+    "insurance_monthly_deduct": {
+      "$numberDouble": "85.0"
+    },
+    "night_hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "status": "active"
+  },
+  {
+    "_id": "1fa8f55169c63f8701cf94c95234411a",
+    "company_id": "dde8ef4869c63ed901d2ae95623d47ab",
+    "created_at": "2026-03-27T08:27:50.148Z",
+    "hourly_rate_daily": {
+      "$numberDouble": "14.0"
+    },
+    "insurance_daily_deduct": {
+      "$numberDouble": "3.0"
+    },
+    "night_daily_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "status": "active",
+    "name": "艾尔佳普工",
+    "night_hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "night_hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "daily_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "daily_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "hourly_rate_monthly": {
+      "$numberDouble": "15.0"
+    },
+    "insurance_monthly_deduct": {
+      "$numberDouble": "85.0"
+    },
+    "night_daily_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "pay_hours_daily": {
+      "$numberDouble": "11.0"
+    },
+    "pay_hours_monthly": {
+      "$numberDouble": "11.0"
+    },
+    "updated_at": "2026-03-27T08:27:50.148Z",
+    "_openid": "pe-J4j0XLnhmRiBGobUBXA"
+  },
+  {
+    "_id": "8d2e20b369c7380f01e84a28132ffa0d",
+    "created_at": "2026-03-28T02:08:15.028Z",
+    "hourly_rate_daily": {
+      "$numberDouble": "15.0"
+    },
+    "night_daily_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "pay_hours_monthly": {
+      "$numberDouble": "8.0"
+    },
+    "_openid": "gNiDXRriBeIEN0jPwnb5vQ",
+    "company_id": "c25002a969c737a101e6fc9b06e74bd3",
+    "daily_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "insurance_daily_deduct": {
+      "$numberDouble": "0.0"
+    },
+    "night_hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "status": "active",
+    "updated_at": "2026-03-28T02:08:15.028Z",
+    "daily_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "insurance_monthly_deduct": {
+      "$numberDouble": "0.0"
+    },
+    "night_daily_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "night_hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "name": "圆通普工",
+    "pay_hours_daily": {
+      "$numberDouble": "8.0"
+    }
+  },
+  {
+    "_id": "b3c6c3d569c74b2301eba30b71d33fa0",
+    "daily_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "daily_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "insurance_daily_deduct": {
+      "$numberDouble": "5.0"
+    },
+    "night_hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "_openid": "gNiDXRriBeIEN0jPwnb5vQ",
+    "night_daily_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "night_daily_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "pay_hours_daily": {
+      "$numberDouble": "8.0"
+    },
+    "pay_hours_monthly": {
+      "$numberDouble": "8.0"
+    },
+    "insurance_monthly_deduct": {
+      "$numberDouble": "150.0"
+    },
+    "name": "威雅叉车",
+    "status": "active",
+    "created_at": "2026-03-28T03:29:39.230Z",
+    "hourly_rate_monthly": {
+      "$numberDouble": "25.0"
+    },
+    "night_hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "updated_at": "2026-03-28T03:29:39.230Z",
+    "company_id": "f6fcfb9c69c493a6019d74c705157768"
+  },
+  {
+    "_id": "b3c6c3d569c9e5e6022c82a448cb7e2a",
+    "night_daily_rate_daily": {
+      "$numberDouble": "20.0"
+    },
+    "night_hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "hourly_rate_daily": {
+      "$numberDouble": "14.0"
+    },
+    "name": "艾尔佳通用普工",
+    "night_daily_rate_monthly": {
+      "$numberDouble": "20.0"
+    },
+    "pay_hours_daily": {
+      "$numberDouble": "11.0"
+    },
+    "pay_hours_monthly": {
+      "$numberDouble": "11.0"
+    },
+    "daily_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "daily_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "hourly_rate_monthly": {
+      "$numberDouble": "15.0"
+    },
+    "insurance_monthly_deduct": {
+      "$numberDouble": "85.0"
+    },
+    "night_hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "updated_at": "2026-03-30T02:58:15.529Z",
+    "created_at": "2026-03-30T02:54:29.978Z",
+    "insurance_daily_deduct": {
+      "$numberDouble": "3.0"
+    },
+    "status": "deleted",
+    "company_id": "dde8ef4869c63ed901d2ae95623d47ab",
+    "deleted_at": "2026-03-30T02:58:15.529Z",
+    "is_deleted": true
+  },
+  {
+    "_id": "dde8ef4869ca0a80022fec61507e5cd6",
+    "_openid": "pe-J4j0XLnhmRiBGobUBXA",
+    "pay_hours_daily": {
+      "$numberDouble": "11.0"
+    },
+    "hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "insurance_daily_deduct": {
+      "$numberDouble": "3.0"
+    },
+    "insurance_monthly_deduct": {
+      "$numberDouble": "85.0"
+    },
+    "name": "激光夜班",
+    "pay_hours_monthly": {
+      "$numberDouble": "11.0"
+    },
+    "hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "status": "active",
+    "updated_at": "2026-05-19T09:04:13.896Z",
+    "company_id": "dde8ef4869c3763f0180160b258d9b82",
+    "night_daily_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "night_hourly_rate_daily": {
+      "$numberDouble": "10.0"
+    },
+    "night_hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "created_at": "2026-03-30T05:30:39.808Z",
+    "daily_rate_daily": {
+      "$numberDouble": "180.0"
+    },
+    "daily_rate_monthly": {
+      "$numberDouble": "190.0"
+    },
+    "night_daily_rate_daily": {
+      "$numberDouble": "0.0"
+    }
+  },
+  {
+    "_id": "2d12bec269ca5696024452cb503fdbb5",
+    "insurance_monthly_deduct": {
+      "$numberDouble": "85.0"
+    },
+    "night_hourly_rate_daily": {
+      "$numberDouble": "0.5"
+    },
+    "updated_at": "2026-03-30T10:55:17.881Z",
+    "daily_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "hourly_rate_daily": {
+      "$numberDouble": "15.5"
+    },
+    "hourly_rate_monthly": {
+      "$numberDouble": "16.5"
+    },
+    "night_daily_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "_openid": "pe-J4j0XLnhmRiBGobUBXA",
+    "daily_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "insurance_daily_deduct": {
+      "$numberDouble": "3.0"
+    },
+    "night_daily_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "night_hourly_rate_monthly": {
+      "$numberDouble": "0.5"
+    },
+    "pay_hours_daily": {
+      "$numberDouble": "12.0"
+    },
+    "status": "active",
+    "company_id": "b3c6c3d569bcb98b00df161941cb67fb",
+    "created_at": "2026-03-30T10:55:17.881Z",
+    "name": "满月后补贴方案",
+    "pay_hours_monthly": {
+      "$numberDouble": "12.0"
+    }
+  },
+  {
+    "_id": "dde8ef4869ccb73602777b8f42d8d6df",
+    "night_hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "night_hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "status": "active",
+    "_openid": "pe-J4j0XLnhmRiBGobUBXA",
+    "company_id": "8d2e20b369ccb623027586006ef437f3",
+    "night_daily_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "pay_hours_daily": {
+      "$numberDouble": "11.0"
+    },
+    "created_at": "2026-04-01T06:12:06.632Z",
+    "daily_rate_daily": {
+      "$numberDouble": "140.0"
+    },
+    "daily_rate_monthly": {
+      "$numberDouble": "150.0"
+    },
+    "insurance_monthly_deduct": {
+      "$numberDouble": "80.0"
+    },
+    "pay_hours_monthly": {
+      "$numberDouble": "18.0"
+    },
+    "updated_at": "2026-04-01T06:12:06.632Z",
+    "insurance_daily_deduct": {
+      "$numberDouble": "3.0"
+    },
+    "night_daily_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "name": "谷淦普工"
+  },
+  {
+    "_id": "8d2e20b369d462630338726719c65e8e",
+    "_openid": "pe-J4j0XLnhmRiBGobUBXA",
+    "created_at": "2026-04-07T01:48:18.601Z",
+    "daily_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "name": "姚吉日结工",
+    "night_daily_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "pay_hours_monthly": {
+      "$numberDouble": "8.0"
+    },
+    "company_id": "f0df711e69d4617e033a8eed501fcfbd",
+    "daily_rate_daily": {
+      "$numberDouble": "180.0"
+    },
+    "insurance_daily_deduct": {
+      "$numberDouble": "3.0"
+    },
+    "pay_hours_daily": {
+      "$numberDouble": "12.0"
+    },
+    "night_hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "insurance_monthly_deduct": {
+      "$numberDouble": "85.0"
+    },
+    "night_daily_rate_daily": {
+      "$numberDouble": "10.0"
+    },
+    "status": "active",
+    "hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "night_hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "updated_at": "2026-04-07T01:48:18.601Z"
+  },
+  {
+    "_id": "2d12bec269df64f4046d0d240e79862b",
+    "daily_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "night_daily_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "status": "active",
+    "company_id": "c3459b2a69df07f20457c13b5298a867",
+    "hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "name": "物流分拣日结工",
+    "night_hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "pay_hours_daily": null,
+    "pay_hours_monthly": {
+      "$numberDouble": "8.0"
+    },
+    "created_at": "2026-04-15T10:14:11.758Z",
+    "insurance_daily_deduct": {
+      "$numberDouble": "0.0"
+    },
+    "updated_at": "2026-04-15T10:14:11.758Z",
+    "_openid": "pe-J4j0XLnhmRiBGobUBXA",
+    "daily_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "hourly_rate_daily": {
+      "$numberDouble": "16.0"
+    },
+    "insurance_monthly_deduct": {
+      "$numberDouble": "0.0"
+    },
+    "night_daily_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "night_hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    }
+  },
+  {
+    "_id": "9f5d149069e0870704788ad93ab7731c",
+    "company_id": "f6fcfb9c69c4a0be019f44c52fc3ba6b",
+    "created_at": "2026-04-16T06:51:50.853Z",
+    "hourly_rate_daily": {
+      "$numberDouble": "16.0"
+    },
+    "insurance_daily_deduct": {
+      "$numberDouble": "3.0"
+    },
+    "insurance_monthly_deduct": {
+      "$numberDouble": "85.0"
+    },
+    "hourly_rate_monthly": {
+      "$numberDouble": "17.0"
+    },
+    "name": "雅泰小时工",
+    "night_hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "pay_hours_daily": {
+      "$numberDouble": "11.0"
+    },
+    "night_hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "_openid": "pe-J4j0XLnhmRiBGobUBXA",
+    "daily_rate_monthly": {
+      "$numberDouble": "187.0"
+    },
+    "night_daily_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "pay_hours_monthly": {
+      "$numberDouble": "11.0"
+    },
+    "updated_at": "2026-04-16T06:51:50.853Z",
+    "daily_rate_daily": {
+      "$numberDouble": "176.0"
+    },
+    "night_daily_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "status": "active"
+  },
+  {
+    "_id": "8e40b4e269f03d240002cb113eb5a913",
+    "company_id": "6b0b394169ede6a600ae0db3790fddef",
+    "hourly_rate_monthly": {
+      "$numberDouble": "16.0"
+    },
+    "night_hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "night_daily_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "insurance_monthly_deduct": {
+      "$numberDouble": "85.0"
+    },
+    "created_at": "2026-04-28T04:52:51.310Z",
+    "updated_at": "2026-04-28T04:52:51.310Z",
+    "name": "维凯日结",
+    "pay_hours_daily": {
+      "$numberDouble": "10.5"
+    },
+    "night_hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "night_daily_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "daily_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "pay_hours_monthly": {
+      "$numberDouble": "10.5"
+    },
+    "hourly_rate_daily": {
+      "$numberDouble": "15.0"
+    },
+    "daily_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "insurance_daily_deduct": {
+      "$numberDouble": "3.0"
+    },
+    "_openid": "pe-J4j0XLnhmRiBGobUBXA",
+    "status": "active"
+  },
+  {
+    "_id": "d967c8d469faff34012a87171e1e7a95",
+    "night_daily_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "night_hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "insurance_monthly_deduct": {
+      "$numberDouble": "85.0"
+    },
+    "status": "active",
+    "updated_at": "2026-05-06T08:43:31.944Z",
+    "insurance_daily_deduct": {
+      "$numberDouble": "3.0"
+    },
+    "daily_rate_daily": {
+      "$numberDouble": "155.0"
+    },
+    "pay_hours_daily": {
+      "$numberDouble": "10.5"
+    },
+    "daily_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "pay_hours_monthly": {
+      "$numberDouble": "8.0"
+    },
+    "_openid": "pe-J4j0XLnhmRiBGobUBXA",
+    "created_at": "2026-05-06T08:43:31.944Z",
+    "company_id": "dde8ef4869c3763f0180160b258d9b82",
+    "hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "night_hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "night_daily_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "name": "155日结工价"
+  },
+  {
+    "_id": "a7ff0e996a06920d0043ef4038ad136b",
+    "pay_hours_daily": {
+      "$numberDouble": "10.0"
+    },
+    "_openid": "pe-J4j0XLnhmRiBGobUBXA",
+    "daily_rate_daily": {
+      "$numberDouble": "130.0"
+    },
+    "name": "一楼日结工",
+    "status": "active",
+    "updated_at": "2026-05-15T04:31:17.721Z",
+    "company_id": "f0df711e69ca3d7f02391c0d162805ad",
+    "insurance_daily_deduct": {
+      "$numberDouble": "0.0"
+    },
+    "night_hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "night_hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "night_daily_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "pay_hours_monthly": {
+      "$numberDouble": "8.0"
+    },
+    "created_at": "2026-05-15T03:25:00.997Z",
+    "daily_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "hourly_rate_daily": {
+      "$numberDouble": "13.0"
+    },
+    "insurance_monthly_deduct": {
+      "$numberDouble": "0.0"
+    },
+    "night_daily_rate_daily": {
+      "$numberDouble": "0.0"
+    }
+  },
+  {
+    "_id": "2e5b265c6a0ba4b200c5f5103cdb797b",
+    "insurance_monthly_deduct": {
+      "$numberDouble": "0.0"
+    },
+    "updated_at": "2026-05-18T23:45:53.795Z",
+    "hourly_rate_daily": {
+      "$numberDouble": "13.0"
+    },
+    "pay_hours_daily": {
+      "$numberDouble": "10.0"
+    },
+    "night_daily_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "night_hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "_openid": "pe-J4j0XLnhmRiBGobUBXA",
+    "status": "active",
+    "hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "daily_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "pay_hours_monthly": {
+      "$numberDouble": "8.0"
+    },
+    "insurance_daily_deduct": {
+      "$numberDouble": "0.0"
+    },
+    "created_at": "2026-05-18T23:45:53.795Z",
+    "name": "三楼日结工",
+    "night_hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "company_id": "f0df711e69ca3d7f02391c0d162805ad",
+    "daily_rate_daily": {
+      "$numberDouble": "130.0"
+    },
+    "night_daily_rate_monthly": {
+      "$numberDouble": "0.0"
+    }
+  }
+]

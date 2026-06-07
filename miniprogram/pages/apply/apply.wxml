@@ -1,0 +1,191 @@
+<!--pages/apply/apply.wxml-->
+<view class="apply-container">
+  <!-- 岗位信息 -->
+  <view class="job-card">
+    <view class="job-title">{{job.title}}</view>
+    <view class="job-info">
+      <text class="info-item">{{job.salary_range}}</text>
+      <text class="info-item">{{job.location}}</text>
+      <text class="info-item">{{job.experience}}</text>
+    </view>
+  </view>
+
+  <!-- 申请状态提示 -->
+  <view wx:if="{{existingApplication}}" class="status-card {{canReapply ? 'status-reapply' : 'status-active'}}">
+    <view class="status-header">
+      <text class="status-icon">{{canReapply ? '🔄' : '⏳'}}</text>
+      <text class="status-title">
+        {{canReapply ? '可以重新申请' : '申请已提交'}}
+      </text>
+    </view>
+    <view class="status-content">
+      <text class="status-text">当前状态：</text>
+      <text class="status-value {{existingApplication.status}}">{{existingApplication.status}}</text>
+      <text wx:if="{{existingApplication.apply_time}}" class="status-time">
+        申请时间：{{existingApplication.apply_time}}
+      </text>
+    </view>
+    <view wx:if="{{canReapply}}" class="status-hint">
+      您可以重新提交申请，原有申请记录将被保留作为历史。
+    </view>
+  </view>
+
+  <!-- 申请表单 -->
+  <view class="form-container">
+    <view class="form-section">
+      <view class="section-title">基本信息</view>
+      
+      <view class="form-item required">
+        <text class="label">姓名</text>
+        <input 
+          class="input" 
+          value="{{form.name}}" 
+          data-field="name"
+          bindinput="onInput"
+          placeholder="请输入真实姓名"
+          disabled="{{existingApplication && !canReapply}}"
+        />
+      </view>
+
+      <view class="form-item required">
+        <text class="label">手机号</text>
+        <input 
+          class="input" 
+          value="{{form.phone}}" 
+          data-field="phone"
+          bindinput="onInput"
+          type="number"
+          maxlength="11"
+          placeholder="请输入手机号"
+          disabled="{{existingApplication && !canReapply}}"
+        />
+      </view>
+
+      <view class="form-item">
+        <text class="label">邮箱</text>
+        <input 
+          class="input" 
+          value="{{form.email}}" 
+          data-field="email"
+          bindinput="onInput"
+          type="text"
+          placeholder="请输入邮箱（可选）"
+          disabled="{{existingApplication && !canReapply}}"
+        />
+      </view>
+    </view>
+
+    <view class="form-section">
+      <view class="section-title">工作经历</view>
+      
+      <view class="form-item">
+        <text class="label">当前公司</text>
+        <input 
+          class="input" 
+          value="{{form.current_company}}" 
+          data-field="current_company"
+          bindinput="onInput"
+          placeholder="请输入当前公司"
+          disabled="{{existingApplication && !canReapply}}"
+        />
+      </view>
+
+      <view class="form-item">
+        <text class="label">当前职位</text>
+        <input 
+          class="input" 
+          value="{{form.current_position}}" 
+          data-field="current_position"
+          bindinput="onInput"
+          placeholder="请输入当前职位"
+          disabled="{{existingApplication && !canReapply}}"
+        />
+      </view>
+
+      <view class="form-item">
+        <text class="label">工作年限</text>
+        <input 
+          class="input" 
+          value="{{form.experience_years}}" 
+          data-field="experience_years"
+          bindinput="onInput"
+          type="digit"
+          placeholder="例如：3年"
+          disabled="{{existingApplication && !canReapply}}"
+        />
+      </view>
+
+      <view class="form-item">
+        <text class="label">学历</text>
+        <picker 
+          mode="selector" 
+          range="{{['高中', '大专', '本科', '硕士', '博士', '其他']}}" 
+          value="{{['高中', '大专', '本科', '硕士', '博士', '其他'].indexOf(form.education) || 5}}"
+          bindchange="onEducationChange"
+          disabled="{{existingApplication && !canReapply}}"
+        >
+          <view class="picker">{{form.education || '请选择'}}</view>
+        </picker>
+      </view>
+    </view>
+
+    <view class="form-section">
+      <view class="section-title">自我介绍</view>
+      
+      <view class="form-item vertical">
+        <textarea 
+          class="textarea" 
+          value="{{form.self_introduction}}" 
+          data-field="self_introduction"
+          bindinput="onInput"
+          placeholder="请简要介绍您的工作经历、技能特长等（至少10字）"
+          maxlength="1000"
+          auto-height
+          disabled="{{existingApplication && !canReapply}}"
+        />
+        <text class="char-count">{{form.self_introduction.length}}/1000</text>
+      </view>
+    </view>
+
+    <!-- 咨询按钮 -->
+    <view wx:if="{{showConsult}}" class="consult-section">
+      <view class="consult-hint">申请过程中遇到问题？</view>
+      <button class="btn-consult" bindtap="consultCustomerService">
+        <image class="consult-image" src="../../assets/service/consult-service.png" mode="aspectFit"></image>
+        <view class="consult-copy">
+          <text class="consult-text">在线客服</text>
+          <text class="consult-subtext">咨询报名、面试、入职问题</text>
+        </view>
+      </button>
+    </view>
+  </view>
+
+  <!-- 操作按钮 -->
+  <view class="btn-container">
+    <button class="btn-cancel" bindtap="handleCancel">取消</button>
+    <button 
+      class="btn-submit {{(existingApplication && !canReapply) ? 'btn-disabled' : ''}}" 
+      bindtap="handleSubmit"
+      loading="{{submitting}}"
+      disabled="{{submitting || (existingApplication && !canReapply)}}"
+    >
+      {{existingApplication ? (canReapply ? '重新提交申请' : '已提交') : '提交申请'}}
+    </button>
+  </view>
+
+  <!-- 全局客服浮动按钮 -->
+  <global-service-btn 
+    wx:if="{{showGlobalServiceBtn}}"
+    show="{{showGlobalServiceBtn}}"
+    init-top="{{serviceBtnTop}}"
+    init-left="{{serviceBtnLeft}}"
+    bindtap="onServiceBtnTap"
+  />
+
+  <!-- 登录底部弹窗 -->
+  <login-sheet 
+    visible="{{showLoginSheet}}"
+    bind:close="onLoginClose"
+    bind:login-success="onLoginSuccess"
+  />
+</view>

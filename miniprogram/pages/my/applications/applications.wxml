@@ -1,0 +1,79 @@
+<!--pages/my/applications/applications.wxml-->
+<view class="container">
+  <view wx:if="{{loading}}" class="loading-container">
+    <view class="loading-spinner"></view>
+    <text class="loading-text">加载中...</text>
+  </view>
+
+  <view wx:elif="{{empty}}" class="empty-container">
+    <view class="empty-icon">📋</view>
+    <text class="empty-text">暂无申请记录</text>
+    <text class="empty-tip">去首页看看心仪的岗位吧</text>
+    <button class="btn-go" bindtap="goToIndex">去逛逛</button>
+  </view>
+
+  <view wx:else class="list-container">
+    <view 
+      class="application-item" 
+      wx:for="{{list}}" 
+      wx:key="_id"
+    >
+      <!-- 岗位信息 -->
+      <view class="job-header" bindtap="goToDetail" data-id="{{item.job_id}}">
+        <view class="job-title">{{item.job_title}}</view>
+        <view class="job-salary">{{item.salary_range}}</view>
+      </view>
+
+      <!-- 岗位详情 -->
+      <view class="job-info">
+        <text class="info-tag">{{item.location}}</text>
+        <text class="info-tag">{{item.experience}}</text>
+        <text class="info-tag">{{item.education}}</text>
+      </view>
+
+      <!-- 申请状态 -->
+      <view class="status-section">
+        <view class="status-row">
+          <text class="status-label">申请状态</text>
+          <text class="status-badge" style="background: {{item.statusInfo.color}}20; color: {{item.statusInfo.color}}">
+            {{item.statusInfo.text}}
+          </text>
+        </view>
+        <view class="status-row" wx:if="{{item.status === 'contacted' && item.contact_note}}">
+          <text class="status-label">联系备注</text>
+          <text class="status-note">{{item.contact_note}}</text>
+        </view>
+        <view class="status-row">
+          <text class="status-label">申请时间</text>
+          <text class="status-time">{{item.apply_time}}</text>
+        </view>
+      </view>
+
+      <!-- 操作按钮 -->
+      <view class="action-row" wx:if="{{item.status === 'pending'}}">
+        <button 
+          class="btn-cancel" 
+          bindtap="handleCancel" 
+          data-id="{{item._id}}"
+          size="mini"
+        >
+          取消申请
+        </button>
+        <button 
+          class="btn-view" 
+          bindtap="goToDetail" 
+          data-id="{{item.job_id}}"
+          size="mini"
+        >
+          查看详情
+        </button>
+      </view>
+    </view>
+  </view>
+
+  <!-- 全局客服浮动按钮 -->
+  <global-service-btn 
+    show="{{true}}"
+    show-label="{{true}}"
+  />
+</view>

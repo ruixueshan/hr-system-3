@@ -1,0 +1,130 @@
+<!-- pages/my/wallet/wallet.wxml -->
+<view class="wallet-page">
+  <view class="balance-card">
+    <view class="balance-label">可提现余额</view>
+    <view class="balance-value">¥ {{balance}}</view>
+    <view class="balance-subrow">
+      <text>冻结 ¥{{frozenAmount}}</text>
+      <text>已提现 ¥{{totalWithdrawn}}</text>
+    </view>
+  </view>
+
+  <view class="bind-status" wx:if="{{walletEnabled}}">
+    <text class="status-icon">✓</text>
+    <text>微信钱包已开通，提现仅支持当前微信零钱</text>
+  </view>
+  <view class="bind-status warn" wx:else bindtap="goToApply">
+    <text>未开通微信钱包，点击开通</text>
+  </view>
+
+  <view wx:if="{{transferAuthStatus !== 'TAKING_EFFECT'}}" class="auth-card">
+    <view>
+      <view class="auth-title">免确认收款授权</view>
+      <view class="auth-sub">{{transferAuthText}}</view>
+    </view>
+    <button class="btn-auth" bindtap="onAuthorizeTransfer">去授权</button>
+  </view>
+
+  <view class="withdraw-card">
+    <view class="section-title">申请提现</view>
+    <view class="withdraw-limit-card">
+      <view class="limit-title">微信提现说明</view>
+      <view class="limit-line">提现时间：支持7×24小时发起提现，无时间限制。</view>
+      <view class="limit-line">到账时间：提交后进入后台打款队列，通常 1 分钟内更新状态。</view>
+      <view class="limit-line">可提现额度：单笔限额5000元，当日累计限额10000元，不限提现次数。</view>
+      <view class="limit-line">今日已用 ¥{{todayWithdrawn}}，剩余额度 ¥{{todayRemaining}}。</view>
+    </view>
+    <view class="amount-input-row">
+      <text class="yuan">¥</text>
+      <input class="amount-input" type="digit" placeholder="输入提现金额" value="{{withdrawAmount}}" bindinput="onAmountInput" />
+    </view>
+    <button class="btn-withdraw" bindtap="onWithdraw" disabled="{{loading || submitting || !walletEnabled || transferAuthStatus !== 'TAKING_EFFECT'}}">提交提现申请</button>
+    <view class="hint">提现采用微信支付商家转账"佣金报酬"场景，需先完成免确认收款授权；提交后先冻结余额，后台自动打款并同步到账状态。</view>
+  </view>
+
+  <!-- 最近提现 - 可点击打开弹窗 -->
+  <view class="list-card" bindtap="onShowRecentWithdrawals">
+    <view class="list-header">
+      <view class="section-title">最近提现</view>
+      <text class="card-arrow">›</text>
+    </view>
+    <block wx:if="{{withdrawOrders.length}}">
+      <view class="list-item" wx:for="{{withdrawOrders}}" wx:key="_id">
+        <view>
+          <view class="item-title">提现 ¥{{item.amount_yuan}}</view>
+          <view class="item-sub">{{item.created_date}} {{item.created_time}}</view>
+        </view>
+        <view class="status-pill">{{item.status_text}}</view>
+      </view>
+    </block>
+    <view class="empty" wx:else>暂无提现记录</view>
+  </view>
+
+  <!-- 最近入账 - 可点击打开弹窗 -->
+  <view class="list-card" bindtap="onShowRecentTransactions">
+    <view class="list-header">
+      <view class="section-title">最近入账</view>
+      <text class="card-arrow">›</text>
+    </view>
+    <block wx:if="{{transactions.length}}">
+      <view class="list-item" wx:for="{{transactions}}" wx:key="_id">
+        <view>
+          <view class="item-title">{{item.ledger_type_text}}</view>
+          <view class="item-sub">{{item.remark || item.source_type}}</view>
+          <view class="item-date" wx:if="{{item.created_date}}">{{item.created_date}} {{item.created_time}}</view>
+        </view>
+        <view class="amount">¥{{item.amount_yuan}}</view>
+      </view>
+    </block>
+    <view class="empty" wx:else>暂无入账记录</view>
+  </view>
+
+  <view wx:if="{{loading}}" class="loading">加载中...</view>
+
+  <!-- 提现记录弹窗 -->
+  <view wx:if="{{showWithdrawPopup}}" class="popup-mask" bindtap="closeWithdrawPopup"></view>
+  <view wx:if="{{showWithdrawPopup}}" class="popup-panel">
+    <view class="popup-header">
+      <view class="popup-title">提现记录</view>
+      <view class="popup-close" bindtap="closeWithdrawPopup">✕</view>
+    </view>
+    <scroll-view class="popup-scroll" scroll-y bindscrolltolower="loadMoreWithdrawals" lower-threshold="100">
+      <block wx:if="{{popupWithdrawOrders.length}}">
+        <view class="list-item" wx:for="{{popupWithdrawOrders}}" wx:key="_id">
+          <view>
+            <view class="item-title">提现 ¥{{item.amount_yuan}}</view>
+            <view class="item-sub">{{item.created_date}} {{item.created_time}}</view>
+          </view>
+          <view class="status-pill">{{item.status_text}}</view>
+        </view>
+      </block>
+      <view wx:if="{{withdrawLoadingMore}}" class="popup-tip">加载中...</view>
+      <view wx:elif="{{!withdrawHasMore && popupWithdrawOrders.length > 0}}" class="popup-tip">—— 没有更多了 ——</view>
+      <view wx:elif="{{!withdrawLoadingMore && popupWithdrawOrders.length === 0}}" class="empty">暂无提现记录</view>
+    </scroll-view>
+  </view>
+
+  <!-- 入账记录弹窗 -->
+  <view wx:if="{{showTransactionPopup}}" class="popup-mask" bindtap="closeTransactionPopup"></view>
+  <view wx:if="{{showTransactionPopup}}" class="popup-panel">
+    <view class="popup-header">
+      <view class="popup-title">入账记录</view>
+      <view class="popup-close" bindtap="closeTransactionPopup">✕</view>
+    </view>
+    <scroll-view class="popup-scroll" scroll-y bindscrolltolower="loadMoreTransactions" lower-threshold="100">
+      <block wx:if="{{popupTransactions.length}}">
+        <view class="list-item" wx:for="{{popupTransactions}}" wx:key="_id">
+          <view>
+            <view class="item-title">{{item.ledger_type_text}}</view>
+            <view class="item-sub">{{item.remark || item.source_type}}</view>
+            <view class="item-date" wx:if="{{item.created_date}}">{{item.created_date}} {{item.created_time}}</view>
+          </view>
+          <view class="amount">¥{{item.amount_yuan}}</view>
+        </view>
+      </block>
+      <view wx:if="{{transactionLoadingMore}}" class="popup-tip">加载中...</view>
+      <view wx:elif="{{!transactionHasMore && popupTransactions.length > 0}}" class="popup-tip">—— 没有更多了 ——</view>
+      <view wx:elif="{{!transactionLoadingMore && popupTransactions.length === 0}}" class="empty">暂无入账记录</view>
+    </scroll-view>
+  </view>
+</view>

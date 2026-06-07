@@ -1,0 +1,98 @@
+// 全局样式
+:root {
+  --primary-color: #667eea;
+  --success-color: #10b981;
+  --warning-color: #f59e0b;
+  --danger-color: #ef4444;
+  --text-color: #333333;
+  --text-secondary: #666666;
+  --text-muted: #999999;
+  --bg-color: #f0f2f5;
+  --sidebar-bg: #304156;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 14px;
+  color: var(--text-color);
+  background: var(--bg-color);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* 滚动条美化 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* 过渡动画 */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+/* Element Plus 覆盖 */
+.el-button--primary {
+  --el-button-bg-color: var(--primary-color);
+  --el-button-border-color: var(--primary-color);
+  --el-button-hover-bg-color: #5a6fd6;
+  --el-button-hover-border-color: #5a6fd6;
+}
+
+.el-tag {
+  &.success {
+    --el-tag-bg-color: #d1fae5;
+    --el-tag-text-color: #10b981;
+    --el-tag-border-color: #a7f3d0;
+  }
+
+  &.warning {
+    --el-tag-bg-color: #fef3c7;
+    --el-tag-text-color: #f59e0b;
+    --el-tag-border-color: #fde68a;
+  }
+
+  &.danger {
+    --el-tag-bg-color: #fee2e2;
+    --el-tag-text-color: #ef4444;
+    --el-tag-border-color: #fecaca;
+  }
+}

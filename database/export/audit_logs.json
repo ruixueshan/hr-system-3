@@ -1,0 +1,1095 @@
+[
+  {
+    "_id": "dde8ef4869cc7a7a0270b1741222054d",
+    "user_id": "debug-admin",
+    "user_name": "debug",
+    "role": "hr",
+    "action": "bonus",
+    "target_type": [],
+    "target_id": {},
+    "changes": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1775008378484"
+      }
+    }
+  },
+  {
+    "_id": "8d2e20b369cc7c51026f7e4f2f5ab0e1",
+    "user_id": "8d2e20b369b8daed0079eae842c9d09c",
+    "user_name": "单瑞雪",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": [],
+    "target_id": {},
+    "changes": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1775008849701"
+      }
+    }
+  },
+  {
+    "_id": "33956e3d69cc7c7e026cf7207c0c02df",
+    "user_id": "8d2e20b369b8daed0079eae842c9d09c",
+    "user_name": "单瑞雪",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": [],
+    "target_id": {},
+    "changes": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1775008894165"
+      }
+    }
+  },
+  {
+    "_id": "93abbbd769cc7d70026fcfa26e9ae193",
+    "user_id": "debug-admin",
+    "user_name": "debug",
+    "role": "hr",
+    "action": "bonus",
+    "target_type": [],
+    "target_id": {},
+    "changes": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1775009136475"
+      }
+    }
+  },
+  {
+    "_id": "9f5d149069cc7da2026c4dcb17c99f6e",
+    "user_id": "8d2e20b369b8daed0079eae842c9d09c",
+    "user_name": "单瑞雪",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": [],
+    "target_id": {},
+    "changes": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1775009186466"
+      }
+    }
+  },
+  {
+    "_id": "c3459b2a69cc8000027167c011c315df",
+    "user_id": "8d2e20b369b8daed0079eae842c9d09c",
+    "user_name": "单瑞雪",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": [],
+    "target_id": {},
+    "changes": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1775009792069"
+      }
+    }
+  },
+  {
+    "_id": "9f5d149069cc8096026cac7a2df736f7",
+    "user_id": "8d2e20b369b8daed0079eae842c9d09c",
+    "user_name": "单瑞雪",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": [],
+    "target_id": {},
+    "changes": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1775009942503"
+      }
+    }
+  },
+  {
+    "_id": "2d12bec269cc8181027dc82f46a8898a",
+    "user_id": "8d2e20b369b8daed0079eae842c9d09c",
+    "user_name": "单瑞雪",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": [],
+    "target_id": {},
+    "changes": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1775010177005"
+      }
+    }
+  },
+  {
+    "_id": "93abbbd769cc8198027049a752b155b3",
+    "user_id": "8d2e20b369b8daed0079eae842c9d09c",
+    "user_name": "单瑞雪",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": [],
+    "target_id": {},
+    "changes": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1775010200881"
+      }
+    }
+  },
+  {
+    "_id": "1fa8f55169cc83ab026f4b5404b1d36d",
+    "user_id": "8d2e20b369b8daed0079eae842c9d09c",
+    "user_name": "单瑞雪",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": [],
+    "target_id": {},
+    "changes": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1775010731234"
+      }
+    }
+  },
+  {
+    "_id": "6a0a1fb669cc845d0271eab00da1a936",
+    "user_id": "8d2e20b369b8daed0079eae842c9d09c",
+    "user_name": "单瑞雪",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": [],
+    "target_id": {},
+    "changes": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1775010909471"
+      }
+    }
+  },
+  {
+    "_id": "8d2e20b369cc851b027084b25c938253",
+    "user_id": "8d2e20b369b8daed0079eae842c9d09c",
+    "user_name": "单瑞雪",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": [],
+    "target_id": {},
+    "changes": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1775011099505"
+      }
+    }
+  },
+  {
+    "_id": "2d12bec269cc865a027e49b617f595c1",
+    "user_id": "8d2e20b369b8daed0079eae842c9d09c",
+    "user_name": "单瑞雪",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": [],
+    "target_id": {},
+    "changes": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1775011418871"
+      }
+    }
+  },
+  {
+    "_id": "da3d566169cc881e026b58463c955140",
+    "user_id": "8d2e20b369b8daed0079eae842c9d09c",
+    "user_name": "单瑞雪",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": [],
+    "target_id": {},
+    "changes": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1775011870303"
+      }
+    }
+  },
+  {
+    "_id": "f6fcfb9c69cc883c026d687e2f9d13ad",
+    "user_id": "8d2e20b369b8daed0079eae842c9d09c",
+    "user_name": "单瑞雪",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": [],
+    "target_id": {},
+    "changes": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1775011900008"
+      }
+    }
+  },
+  {
+    "_id": "93abbbd769cc8a2c02713a1a00bcca67",
+    "user_id": "8d2e20b369b8daed0079eae842c9d09c",
+    "user_name": "单瑞雪",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": [],
+    "target_id": {},
+    "changes": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1775012396669"
+      }
+    }
+  },
+  {
+    "_id": "33956e3d69cc8b2d026ecd0b6ee6848f",
+    "user_id": "8d2e20b369b8daed0079eae842c9d09c",
+    "user_name": "单瑞雪",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": [],
+    "target_id": {},
+    "changes": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1775012653820"
+      }
+    }
+  },
+  {
+    "_id": "dde8ef4869ccbee70278902b7e3d8824",
+    "user_id": "8d2e20b369c106cc0142df8b66260c55",
+    "user_name": "单培雷",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": [],
+    "target_id": {},
+    "changes": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1775025895837"
+      }
+    }
+  },
+  {
+    "_id": "c3459b2a69cddb9702965fd0306ab304",
+    "user_id": "8d2e20b369b8daed0079eae842c9d09c",
+    "user_name": "单瑞雪",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": [],
+    "target_id": {},
+    "changes": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1775098775383"
+      }
+    }
+  },
+  {
+    "_id": "b3c6c3d569cddb9a02969c776cf39d99",
+    "user_id": "8d2e20b369b8daed0079eae842c9d09c",
+    "user_name": "单瑞雪",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": [],
+    "target_id": {},
+    "changes": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1775098778308"
+      }
+    }
+  },
+  {
+    "_id": "3bef321d69cddfdf0295d6f038017678",
+    "user_id": "8d2e20b369b8daed0079eae842c9d09c",
+    "user_name": "单瑞雪",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": [],
+    "target_id": {},
+    "changes": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1775099871059"
+      }
+    }
+  },
+  {
+    "_id": "da3d566169cde851028e90a41351a5b8",
+    "user_id": "8d2e20b369b8daed0079eae842c9d09c",
+    "user_name": "单瑞雪",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": [],
+    "target_id": {},
+    "changes": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1775102033900"
+      }
+    }
+  },
+  {
+    "_id": "c3459b2a69ce0496029b9875300149ce",
+    "user_id": "8d2e20b369b8daed0079eae842c9d09c",
+    "user_name": "单瑞雪",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": [],
+    "target_id": {},
+    "changes": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1775109270999"
+      }
+    }
+  },
+  {
+    "_id": "f0df711e69ce0497029dde8075b3a1ec",
+    "user_id": "8d2e20b369b8daed0079eae842c9d09c",
+    "user_name": "单瑞雪",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": [],
+    "target_id": {},
+    "changes": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1775109271337"
+      }
+    }
+  },
+  {
+    "_id": "3bef321d69ce049c0299d3367471fd0f",
+    "user_id": "8d2e20b369b8daed0079eae842c9d09c",
+    "user_name": "单瑞雪",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": [],
+    "target_id": {},
+    "changes": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1775109276955"
+      }
+    }
+  },
+  {
+    "_id": "8d2e20b369ce04ca029912da0241ecd0",
+    "user_id": "8d2e20b369b8daed0079eae842c9d09c",
+    "user_name": "单瑞雪",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": [],
+    "target_id": {},
+    "changes": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1775109322645"
+      }
+    }
+  },
+  {
+    "_id": "56ba808e69cf39b302c3162e6c02b2d6",
+    "user_id": "cli",
+    "user_name": "cli",
+    "role": "hr",
+    "action": "insurance-ledger_denied",
+    "target_type": "none",
+    "target_id": "none",
+    "changes": {},
+    "remark": "权限不足",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1775188403527"
+      }
+    }
+  },
+  {
+    "_id": "d3a457a269d0a83c02e630d27106c4b5",
+    "user_id": "8d2e20b369b8daed0079eae842c9d09c",
+    "user_name": "单瑞雪",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": [],
+    "target_id": {},
+    "changes": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1775282236338"
+      }
+    }
+  },
+  {
+    "_id": "d3a457a269d0a89702e6467f4d60e847",
+    "user_id": "8d2e20b369b8daed0079eae842c9d09c",
+    "user_name": "单瑞雪",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": [],
+    "target_id": {},
+    "changes": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1775282327735"
+      }
+    }
+  },
+  {
+    "_id": "9f5d149069d0b83802da18852ad2d9f7",
+    "user_id": "8d2e20b369b8daed0079eae842c9d09c",
+    "user_name": "单瑞雪",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": [],
+    "target_id": {},
+    "changes": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1775286328613"
+      }
+    }
+  },
+  {
+    "_id": "71fe4ab869d0b9fa02e32a345ed491f4",
+    "user_id": "8d2e20b369b8daed0079eae842c9d09c",
+    "user_name": "单瑞雪",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": [],
+    "target_id": {},
+    "changes": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1775286778557"
+      }
+    }
+  },
+  {
+    "_id": "f6fcfb9c69d471bb0337c3b1267a1e55",
+    "user_id": "8d2e20b369b8daed0079eae842c9d09c",
+    "user_name": "单瑞雪",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": [],
+    "target_id": {},
+    "changes": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1775530427094"
+      }
+    }
+  },
+  {
+    "_id": "f0df711e69d49dae0341085a67f0a60f",
+    "user_id": "8d2e20b369c106cc0142df8b66260c55",
+    "user_name": "单培雷",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": [],
+    "target_id": {},
+    "changes": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1775541678759"
+      }
+    }
+  },
+  {
+    "_id": "3bef321d69d767c00388e1fa181d6869",
+    "user_id": "8d2e20b369c106cc0142df8b66260c55",
+    "user_name": "单培雷",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": [],
+    "target_id": {},
+    "changes": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1775724480385"
+      }
+    }
+  },
+  {
+    "_id": "8d2e20b369dc9dc404126efb24755f00",
+    "user_id": "8d2e20b369c106cc0142df8b66260c55",
+    "user_name": "单培雷",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": [],
+    "target_id": {},
+    "changes": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1776065988129"
+      }
+    }
+  },
+  {
+    "_id": "93abbbd769e043e804777c360433537b",
+    "user_id": "8d2e20b369b8daed0079eae842c9d09c",
+    "user_name": "单瑞雪",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": [],
+    "target_id": {},
+    "changes": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1776305128037"
+      }
+    }
+  },
+  {
+    "_id": "eb9da17a69e7746e0005afbb1c62d602",
+    "user_id": "8d2e20b369b8daed0079eae842c9d09c",
+    "user_name": "单瑞雪",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": [],
+    "target_id": {},
+    "changes": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1776776302505"
+      }
+    }
+  },
+  {
+    "_id": "1aa9fbf869e8aff10021f1ef7e5c67c3",
+    "user_id": "1fa8f55169c47ee9019e20bd1f092fe4",
+    "user_name": "单黎黎",
+    "role": "deputy",
+    "action": "bonus",
+    "target_type": [],
+    "target_id": {},
+    "changes": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1776857073044"
+      }
+    }
+  },
+  {
+    "_id": "6ded7a7769e96b56003793132c7688ec",
+    "user_id": "8d2e20b369b8daed0079eae842c9d09c",
+    "user_name": "单瑞雪",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": [],
+    "target_id": {},
+    "changes": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1776905046625"
+      }
+    }
+  },
+  {
+    "_id": "293c767c69e9e2d4004642614195013a",
+    "user_id": "dde8ef4869c0a70d013a531a274943a1",
+    "user_name": "白",
+    "role": "deputy",
+    "action": "bonus",
+    "target_type": [],
+    "target_id": {},
+    "changes": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1776935636649"
+      }
+    }
+  },
+  {
+    "_id": "99fa253a69e9eb1b004809ef681f503f",
+    "user_id": "dde8ef4869c0a70d013a531a274943a1",
+    "user_name": "白",
+    "role": "deputy",
+    "action": "bonus",
+    "target_type": [],
+    "target_id": {},
+    "changes": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1776937755628"
+      }
+    }
+  },
+  {
+    "_id": "ee33190469f45fc40075f064701cb309",
+    "user_id": "codex-deploy",
+    "user_name": "Codex Deploy",
+    "role": "finance",
+    "action": "bonus",
+    "target_type": [],
+    "target_id": {},
+    "changes": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1777622980823"
+      }
+    }
+  },
+  {
+    "_id": "148caf5069f460070077ad1e0bc8d789",
+    "user_id": "codex-deploy",
+    "user_name": "Codex Deploy",
+    "role": "finance",
+    "action": "bonus",
+    "target_type": "",
+    "target_id": "",
+    "changes": {},
+    "remark": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function v2",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1777623047230"
+      }
+    }
+  },
+  {
+    "_id": "eb87832669f981c600fb70b90fbdb3da",
+    "user_id": "8d2e20b369b8daed0079eae842c9d09c",
+    "user_name": "单瑞雪",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": "",
+    "target_id": "",
+    "changes": {},
+    "remark": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function v2",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1777959366277"
+      }
+    }
+  },
+  {
+    "_id": "edc7bd2969fb2ba3013347ec3f6d7deb",
+    "user_id": "8d2e20b369b8daed0079eae842c9d09c",
+    "user_name": "单瑞雪",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": "",
+    "target_id": "",
+    "changes": {},
+    "remark": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function v2",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1778068387898"
+      }
+    }
+  },
+  {
+    "_id": "d967c8d469fb2bae0130abd4386a7dda",
+    "user_id": "8d2e20b369b8daed0079eae842c9d09c",
+    "user_name": "单瑞雪",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": "",
+    "target_id": "",
+    "changes": {},
+    "remark": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function v2",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1778068398841"
+      }
+    }
+  },
+  {
+    "_id": "9cd783ff69fb2baf013542a63c13df4a",
+    "user_id": "8d2e20b369b8daed0079eae842c9d09c",
+    "user_name": "单瑞雪",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": "",
+    "target_id": "",
+    "changes": {},
+    "remark": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function v2",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1778068399037"
+      }
+    }
+  },
+  {
+    "_id": "611e990a69fb2bb401309efa3e4d2b1d",
+    "user_id": "8d2e20b369b8daed0079eae842c9d09c",
+    "user_name": "单瑞雪",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": "",
+    "target_id": "",
+    "changes": {},
+    "remark": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function v2",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1778068404657"
+      }
+    }
+  },
+  {
+    "_id": "ae0498ca69fc53fc01521d323e0e520b",
+    "user_id": "8d2e20b369c106cc0142df8b66260c55",
+    "user_name": "单培雷",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": "",
+    "target_id": "",
+    "changes": {},
+    "remark": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function v2",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1778144252906"
+      }
+    }
+  },
+  {
+    "_id": "98d3bbc169fc5a7901582e43034943f4",
+    "user_id": "8d2e20b369c106cc0142df8b66260c55",
+    "user_name": "单培雷",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": "",
+    "target_id": "",
+    "changes": {},
+    "remark": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function v2",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1778145913661"
+      }
+    }
+  },
+  {
+    "_id": "9756e76169fc5c3a014fa52b78af0bb7",
+    "user_id": "8d2e20b369b8daed0079eae842c9d09c",
+    "user_name": "单瑞雪",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": "",
+    "target_id": "",
+    "changes": {},
+    "remark": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function v2",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1778146362957"
+      }
+    }
+  },
+  {
+    "_id": "ee33190469fc87c5015a389b67345ce8",
+    "user_id": "dde8ef4869c0a70d013a531a274943a1",
+    "user_name": "白小娟",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": "",
+    "target_id": "",
+    "changes": {},
+    "remark": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function v2",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1778157509579"
+      }
+    }
+  },
+  {
+    "_id": "f81188ba69fc880800822242602de4d6",
+    "user_id": "dde8ef4869c0a70d013a531a274943a1",
+    "user_name": "白小娟",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": "",
+    "target_id": "",
+    "changes": {},
+    "remark": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function v2",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1778157576368"
+      }
+    }
+  },
+  {
+    "_id": "edc7bd296a02dbe5020c6da226e3601b",
+    "user_id": "8d2e20b369c106cc0142df8b66260c55",
+    "user_name": "单培雷",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": "",
+    "target_id": "",
+    "changes": {},
+    "remark": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function v2",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1778572261762"
+      }
+    }
+  },
+  {
+    "_id": "613a53456a02df8f020957c468384ea5",
+    "user_id": "8d2e20b369c106cc0142df8b66260c55",
+    "user_name": "单培雷",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": "",
+    "target_id": "",
+    "changes": {},
+    "remark": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function v2",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1778573199085"
+      }
+    }
+  },
+  {
+    "_id": "98d3bbc16a02e259020a739f7a543728",
+    "user_id": "8d2e20b369c106cc0142df8b66260c55",
+    "user_name": "单培雷",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": "",
+    "target_id": "",
+    "changes": {},
+    "remark": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function v2",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1778573913472"
+      }
+    }
+  },
+  {
+    "_id": "3e45192f6a043a6600036f7b0209a4c1",
+    "user_id": "8d2e20b369c106cc0142df8b66260c55",
+    "user_name": "单培雷",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": "",
+    "target_id": "",
+    "changes": {},
+    "remark": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function v2",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1778661990306"
+      }
+    }
+  },
+  {
+    "_id": "42e8153a6a069f8000444af04da505e2",
+    "user_id": "8d2e20b369b8daed0079eae842c9d09c",
+    "user_name": "单瑞雪",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": "",
+    "target_id": "",
+    "changes": {},
+    "remark": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function v2",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1778818944821"
+      }
+    }
+  },
+  {
+    "_id": "0667d90f6a0a703800ab6d0a4ef26be3",
+    "user_id": "8d2e20b369b8daed0079eae842c9d09c",
+    "user_name": "单瑞雪",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": "",
+    "target_id": "",
+    "changes": {},
+    "remark": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function v2",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1779068984072"
+      }
+    }
+  },
+  {
+    "_id": "1b12d66e6a0a923c00acca3259c78e24",
+    "user_id": "8d2e20b369c106cc0142df8b66260c55",
+    "user_name": "单培雷",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": "",
+    "target_id": "",
+    "changes": {},
+    "remark": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function v2",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1779077692638"
+      }
+    }
+  },
+  {
+    "_id": "43e58c886a0bb91000c9b93f0b7fe01f",
+    "user_id": "8d2e20b369b8daed0079eae842c9d09c",
+    "user_name": "单瑞雪",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": "",
+    "target_id": "",
+    "changes": {},
+    "remark": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function v2",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1779153168287"
+      }
+    }
+  },
+  {
+    "_id": "43e58c886a0c1afc00d624040ad5a0ea",
+    "user_id": "8d2e20b369c106cc0142df8b66260c55",
+    "user_name": "单培雷",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": "",
+    "target_id": "",
+    "changes": {},
+    "remark": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function v2",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1779178236744"
+      }
+    }
+  },
+  {
+    "_id": "42e8153a6a0d5cca00f96d380778d068",
+    "user_id": "8d2e20b369c106cc0142df8b66260c55",
+    "user_name": "单培雷",
+    "role": "gm",
+    "action": "bonus",
+    "target_type": "",
+    "target_id": "",
+    "changes": {},
+    "remark": "bonus 操作成功",
+    "ip": "N/A",
+    "user_agent": "CloudBase Function v2",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1779260618728"
+      }
+    }
+  }
+]

@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# HTTP 云函数启动脚本
+# 使用 wx-server-sdk 处理 HTTP 请求
+
+node index.js

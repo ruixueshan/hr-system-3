@@ -1,0 +1,205 @@
+/* pages/my/profile/profile.wxss */
+.profile-container {
+  min-height: 100vh;
+  background: #f4f4f4;
+  padding-bottom: 132rpx;
+}
+
+.form-container {
+  padding: 24rpx 40rpx 30rpx;
+}
+
+.form-section {
+  background: #fff;
+  border-radius: 18rpx;
+  padding: 34rpx 30rpx;
+  margin-bottom: 32rpx;
+  box-shadow: 0 8rpx 26rpx rgba(33, 42, 54, 0.04);
+}
+
+.section-title {
+  font-size: 34rpx;
+  font-weight: 800;
+  color: #202124;
+  margin-bottom: 28rpx;
+  padding-left: 16rpx;
+  border-left: 6rpx solid #667eea;
+}
+
+.section-desc {
+  display: block;
+  font-size: 24rpx;
+  color: #8e8e93;
+  margin-bottom: 26rpx;
+  line-height: 1.65;
+}
+
+.form-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 96rpx;
+  padding: 22rpx 0;
+  border-bottom: 1rpx solid #f0f0f0;
+}
+
+.form-item:last-child {
+  border-bottom: none;
+}
+
+.form-item.required .label::before {
+  content: '*';
+  color: #ff4d4f;
+  margin-right: 8rpx;
+}
+
+.form-item .label {
+  flex-shrink: 0;
+  width: 180rpx;
+  font-size: 31rpx;
+  color: #323438;
+}
+
+.form-item .input {
+  flex: 1;
+  font-size: 31rpx;
+  color: #323438;
+}
+
+.form-item .picker {
+  flex: 1;
+  font-size: 31rpx;
+  color: #323438;
+}
+
+.form-item.vertical {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.form-item.vertical .label {
+  width: auto;
+  margin-bottom: 20rpx;
+}
+
+.form-item .textarea {
+  width: 100%;
+  min-height: 180rpx;
+  padding: 20rpx;
+  background: #f8f8f8;
+  border-radius: 8rpx;
+  font-size: 30rpx;
+  line-height: 1.6;
+  box-sizing: border-box;
+}
+
+.char-count {
+  text-align: right;
+  font-size: 24rpx;
+  color: #999;
+  margin-top: 10rpx;
+}
+
+.btn-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 24rpx 40rpx 28rpx;
+  background: #fff;
+  box-shadow: 0 -4rpx 20rpx rgba(0, 0, 0, 0.06);
+}
+
+.btn-primary {
+  width: 100%;
+  height: 88rpx;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  border-radius: 44rpx;
+  font-size: 32rpx;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-primary::after {
+  border: none;
+}
+
+/* 禁用状态样式 */
+.form-item.disabled {
+  opacity: 0.7;
+}
+
+.disabled-picker {
+  background: #f5f5f5;
+  color: #999;
+  padding-right: 80rpx !important;
+}
+
+.lock-icon {
+  position: absolute;
+  right: 0;
+  font-size: 28rpx;
+  color: #999;
+}
+
+.form-item.disabled .label {
+  color: #666;
+}
+
+.pay-method-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20rpx;
+  margin-bottom: 28rpx;
+}
+
+.pay-method {
+  padding: 30rpx 24rpx;
+  min-height: 120rpx;
+  border: 2rpx solid #eceef3;
+  border-radius: 18rpx;
+  background: #fbfbfd;
+  box-sizing: border-box;
+}
+
+.pay-method.active {
+  border-color: #667eea;
+  background: #f5f4ff;
+}
+
+.method-title {
+  color: #202124;
+  font-size: 30rpx;
+  font-weight: 800;
+}
+
+.method-desc {
+  margin-top: 14rpx;
+  color: #8e8e93;
+  font-size: 24rpx;
+  line-height: 1.45;
+}
+
+.withdraw-note {
+  margin-bottom: 30rpx;
+  padding: 26rpx 28rpx;
+  background: #f8fbfd;
+  border: 1rpx solid #e2e8ee;
+  border-radius: 18rpx;
+}
+
+.note-title {
+  margin-bottom: 16rpx;
+  color: #6b7280;
+  font-size: 27rpx;
+  font-weight: 800;
+}
+
+.note-line {
+  color: #8b95a1;
+  font-size: 25rpx;
+  line-height: 1.68;
+}

@@ -1,0 +1,34 @@
+{
+  "name": "hr-system-3.0",
+  "version": "1.0.0",
+  "description": "展瑞人力资源管理系统 3.0 - CloudBase 云函数集合",
+  "scripts": {
+    "deploy": "node scripts/cloudbase-mcp-required.js deploy all-functions",
+    "deploy:auth": "node scripts/cloudbase-mcp-required.js deploy auth",
+    "deploy:salary-engine": "node scripts/cloudbase-mcp-required.js deploy salary-engine-v2",
+    "deploy:salaries:code": "node scripts/cloudbase-mcp-required.js deploy salaries-v2",
+    "backfill:salaries-source:daily": "node scripts/cloudbase-mcp-required.js invoke salaries-v2 backfill-source-fields daily",
+    "backfill:salaries-source:monthly": "node scripts/cloudbase-mcp-required.js invoke salaries-v2 backfill-source-fields monthly",
+    "backfill:salaries-source": "npm run backfill:salaries-source:daily && npm run backfill:salaries-source:monthly",
+    "deploy:salaries": "npm run deploy:salaries:code && npm run backfill:salaries-source",
+    "deploy:web": "npm --prefix web run deploy",
+    "backfill:interviews": "node scripts/backfill-interviews-from-applications.js",
+    "setup:bonus-env": "node scripts/setup-bonus-env.js",
+    "backfill:employee-companies-referrer:dry-run": "node scripts/backfill-employee-companies-referrer.js",
+    "backfill:employee-companies-referrer": "node scripts/backfill-employee-companies-referrer.js --apply",
+    "repair:employee-companies:dry-run": "node scripts/repair-employee-companies.js --dry-run",
+    "repair:employee-companies": "node scripts/repair-employee-companies.js",
+    "merge:duplicate-employees:dry-run": "node scripts/merge-duplicate-employees.js --dry-run",
+    "merge:duplicate-employees": "node scripts/merge-duplicate-employees.js"
+  },
+  "dependencies": {
+    "@cloudbase/node-sdk": "^3.5.0",
+    "crypto": "^1.0.1",
+    "tcb-admin-node": "^1.23.0",
+    "wx-server-sdk": "^0.0.28"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  }
+}

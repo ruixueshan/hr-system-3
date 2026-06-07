@@ -1,0 +1,15 @@
+{
+  "name": "employees",
+  "version": "1.0.0",
+  "main": "index.js",
+  "dependencies": {
+    "wx-server-sdk": "~3.0.1"
+  },
+  "triggers": [
+    {
+      "name": "syncResignedStatusDaily",
+      "type": "timer",
+      "config": "0 5 0 * * * *"
+    }
+  ]
+}

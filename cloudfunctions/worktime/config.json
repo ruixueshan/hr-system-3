@@ -1,0 +1,8 @@
+{
+  "name": "worktime",
+  "version": "1.0.0",
+  "main": "index.main",
+  "dependencies": {
+    "wx-server-sdk": "~2.6.3"
+  }
+}

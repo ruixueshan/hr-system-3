@@ -1,0 +1,64 @@
+/* components/global-service-btn/global-service-btn.wxss */
+.global-service-btn {
+  position: fixed;
+  z-index: 9999;
+  width: 76px;
+  height: 84px;
+  border-radius: 38px;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.global-service-btn.hide {
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+}
+
+.global-service-btn:active {
+  transform: scale(0.95);
+}
+
+.service-btn-inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.service-glow {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(15, 217, 255, 0.45) 0%, rgba(94, 123, 255, 0.18) 55%, transparent 75%);
+  filter: blur(8px);
+}
+
+.service-image {
+  position: relative;
+  width: 68px;
+  height: 68px;
+  display: block;
+}
+
+.service-label {
+  margin-top: -2px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 10px;
+  line-height: 1.4;
+  color: #f5fbff;
+  font-weight: 600;
+  background: linear-gradient(135deg, rgba(11, 26, 50, 0.95), rgba(55, 73, 132, 0.92));
+  box-shadow: 0 6px 14px rgba(8, 18, 36, 0.24);
+}

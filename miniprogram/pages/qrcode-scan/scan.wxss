@@ -1,0 +1,42 @@
+/* pages/qrcode-scan/scan.wxss */
+.scan-page {
+  min-height: 100vh;
+  background: #f5f5f5;
+  padding: 24rpx;
+}
+
+.scan-guide {
+  text-align: center;
+  padding: 80rpx 48rpx;
+}
+
+.scan-result {
+  margin-top: 24rpx;
+}
+
+.job-header {
+  display: flex;
+  flex-direction: column;
+  gap: 12rpx;
+}
+
+.job-name {
+  font-size: 36rpx;
+  font-weight: 600;
+}
+
+.job-company {
+  font-size: 28rpx;
+}
+
+.job-salary {
+  font-size: 32rpx;
+  font-weight: 600;
+}
+
+.scan-again {
+  text-align: center;
+  margin-top: 48rpx;
+  color: #667eea;
+  font-size: 28rpx;
+}

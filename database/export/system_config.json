@@ -1,0 +1,78 @@
+[
+  {
+    "_id": "1fa8f55169c4fb1101affc942c25271e",
+    "category": "notification",
+    "key": "wecom_webhook",
+    "value": "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=8825f3b8-2995-4d77-8790-0932735448be",
+    "description": "企业微信群消息推送 webhook URL",
+    "status": "active",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1774517009173"
+      }
+    },
+    "updated_at": {
+      "$date": {
+        "$numberLong": "1774517103557"
+      }
+    }
+  },
+  {
+    "_id": "9f5d149069c5e9fc01c32e7c5d116ecd",
+    "category": "notification",
+    "key": "wecom_webhook_report",
+    "value": "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=8ac131a1-d7d8-4747-8a7b-8d79c6189493",
+    "description": "企业微信报表推送群 webhook URL",
+    "status": "active",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1774578172828"
+      }
+    },
+    "updated_at": {
+      "$date": {
+        "$numberLong": "1774578172828"
+      }
+    }
+  },
+  {
+    "_id": "71fe4ab869c63b1601cec1c60959e3e9",
+    "key": "report_recommender_list",
+    "category": "report",
+    "value": [
+      "单培雷",
+      "张梦媛",
+      "李方"
+    ],
+    "description": "报表统计推荐人白名单",
+    "status": "active",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1774598934714"
+      }
+    },
+    "updated_at": {
+      "$date": {
+        "$numberLong": "1774599096467"
+      }
+    }
+  },
+  {
+    "_id": "da3d566169c6401d01ccafa8063edc32",
+    "category": "notification",
+    "key": "wecom_webhook_external",
+    "value": "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=94b1920b-2cb4-4361-b852-6fc0e2dfac21",
+    "description": "企业微信外部群 webhook（脱敏推送）",
+    "status": "active",
+    "created_at": {
+      "$date": {
+        "$numberLong": "1774600221442"
+      }
+    },
+    "updated_at": {
+      "$date": {
+        "$numberLong": "1774600221442"
+      }
+    }
+  }
+]

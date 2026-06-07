@@ -1,0 +1,38 @@
+<svg width="800" height="640" viewBox="0 0 800 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="640" rx="48" fill="#F7F4ED"/>
+  <circle cx="656" cy="122" r="112" fill="#E6F2E0"/>
+  <circle cx="112" cy="544" r="94" fill="#E9E1D0"/>
+  <text x="72" y="94" fill="#254F1D" font-size="34" font-weight="700" font-family="PingFang SC, Microsoft YaHei, sans-serif">展瑞招聘</text>
+  <text x="72" y="146" fill="#83907D" font-size="24" font-family="PingFang SC, Microsoft YaHei, sans-serif">岗位详情分享封面</text>
+  <text x="72" y="246" fill="#285B1F" font-size="92" font-weight="800" font-family="PingFang SC, Microsoft YaHei, sans-serif">岗位详情</text>
+  <text x="72" y="316" fill="#285B1F" font-size="50" font-weight="700" font-family="PingFang SC, Microsoft YaHei, sans-serif">薪资 / 福利 / 条件 一页看清</text>
+  <text x="72" y="408" fill="#202020" font-size="34" font-weight="700" font-family="PingFang SC, Microsoft YaHei, sans-serif">查看岗位介绍、工作时间、福利待遇与申请入口</text>
+  <text x="72" y="460" fill="#444444" font-size="28" font-family="PingFang SC, Microsoft YaHei, sans-serif">分享给朋友后，可直接打开对应岗位详情页继续查看</text>
+  <rect x="72" y="524" width="240" height="66" rx="18" fill="#12BC58"/>
+  <text x="192" y="568" text-anchor="middle" fill="#FFFFFF" font-size="34" font-weight="700" font-family="PingFang SC, Microsoft YaHei, sans-serif">打开详情</text>
+  <g transform="translate(492 212)">
+    <rect x="24" y="40" width="188" height="236" rx="24" fill="#FFFFFF" stroke="#D5E2CF" stroke-width="6"/>
+    <rect x="52" y="78" width="132" height="24" rx="12" fill="#EAF3E5"/>
+    <rect x="52" y="120" width="104" height="20" rx="10" fill="#F1E8D6"/>
+    <rect x="52" y="166" width="132" height="18" rx="9" fill="#EEF5EA"/>
+    <rect x="52" y="198" width="116" height="18" rx="9" fill="#EEF5EA"/>
+    <rect x="52" y="230" width="140" height="18" rx="9" fill="#EEF5EA"/>
+    <rect x="116" y="298" width="132" height="48" rx="24" fill="#12BC58"/>
+    <text x="182" y="331" text-anchor="middle" fill="#FFFFFF" font-size="24" font-weight="700" font-family="PingFang SC, Microsoft YaHei, sans-serif">查看详情</text>
+    <circle cx="188" cy="72" r="50" fill="#F5FBF2" stroke="#D7E6D0" stroke-width="6"/>
+    <path d="M188 95C185 74 181 59 173 38" stroke="#79A73E" stroke-width="6" stroke-linecap="round"/>
+    <circle cx="188" cy="30" r="18" fill="#F4C739"/>
+    <g stroke="#BCBCBC" stroke-width="3" stroke-linecap="round">
+      <path d="M188 -8C194 7 194 19 188 30"/>
+      <path d="M214 1C209 16 201 24 188 30"/>
+      <path d="M234 24C220 24 206 26 188 30"/>
+      <path d="M232 52C219 46 205 38 188 30"/>
+      <path d="M212 69C206 54 198 41 188 30"/>
+      <path d="M188 80C186 61 186 44 188 30"/>
+      <path d="M165 69C170 54 178 41 188 30"/>
+      <path d="M145 52C158 45 172 38 188 30"/>
+      <path d="M142 24C156 24 171 26 188 30"/>
+      <path d="M163 0C169 15 177 24 188 30"/>
+    </g>
+  </g>
+</svg>

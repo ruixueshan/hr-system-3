@@ -1,0 +1,123 @@
+<!-- pages/my/my.wxml -->
+<view class="my-page">
+  <!-- 用户信息头部 -->
+  <view class="header-section">
+    <view class="user-card" bindtap="goToProfile">
+      <view class="avatar-container">
+        <image wx:if="{{userInfo.avatar}}" class="avatar" src="{{userInfo.avatar}}" mode="aspectFill"></image>
+        <view wx:else class="avatar default-avatar">
+          <text class="default-avatar-text">👤</text>
+        </view>
+      </view>
+      <view class="user-info">
+        <text class="user-name">{{userInfo.real_name || userInfo.name || '未设置'}}</text>
+        <text class="user-phone">{{maskedPhone}}</text>
+        <text class="user-role" wx:if="{{userInfo.position}}">{{userInfo.position}}</text>
+      </view>
+      <text class="edit-hint">编辑资料 ›</text>
+    </view>
+
+    <!-- 快捷统计 -->
+    <view class="stats-row">
+      <view class="stat-item" bindtap="goToPage" data-url="/pages/my/applications/applications">
+        <text class="stat-value">{{userInfo.application_count || 0}}</text>
+        <text class="stat-label">申请岗位</text>
+      </view>
+      <view class="stat-divider"></view>
+      <view class="stat-item" bindtap="goToPage" data-url="/pages/my/wallet/wallet">
+        <text class="stat-value wallet-stat">¥ {{walletBalance}}</text>
+        <text class="stat-label">我的钱包</text>
+      </view>
+      <view class="stat-divider"></view>
+      <view class="stat-item" bindtap="goToPage" data-url="/pages/my/salaries/salaries">
+        <text class="stat-value">{{formattedSalary}}+</text>
+        <text class="stat-label">总收入</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 功能菜单 -->
+  <view class="menu-section">
+    <view class="section-title">我的服务</view>
+    
+    <view class="menu-grid">
+      <view class="menu-card" bindtap="goToPage" data-url="/pages/my/applications/applications">
+        <image class="menu-icon" src="../../assets/my-menu/apply.png" mode="aspectFit"></image>
+        <text class="menu-label">申请记录</text>
+      </view>
+      
+      <view class="menu-card" bindtap="goToPage" data-url="/pages/my/worktime/worktime">
+        <image class="menu-icon" src="../../assets/my-menu/worktime.png" mode="aspectFit"></image>
+        <text class="menu-label">工时管理</text>
+      </view>
+      
+      <view class="menu-card" bindtap="goToPage" data-url="/pages/my/salaries/salaries">
+        <image class="menu-icon" src="../../assets/my-menu/salary.png" mode="aspectFit"></image>
+        <text class="menu-label">工资条</text>
+      </view>
+      <view class="menu-card" bindtap="goToProfile">
+        <image class="menu-icon" src="../../assets/my-menu/profile.png" mode="aspectFit"></image>
+        <text class="menu-label">个人资料</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 常用功能 -->
+  <view class="menu-section">
+    <view class="section-title">常用功能</view>
+    
+    <view class="menu-list">
+      <!-- <view class="menu-item" bindtap="goToPage" data-url="/pages/qrcode-scan/scan">
+        <view class="menu-left">
+          <image class="menu-item-icon" src="../../assets/my-menu/checkin.png" mode="aspectFit"></image>
+          <text class="menu-item-label">签到打卡</text>
+        </view>
+        <text class="menu-arrow">›</text>
+      </view> -->
+      
+      <!-- <view class="menu-item" bindtap="goToPage" data-url="/pages/my/profile/profile">
+        <view class="menu-left">
+          <image class="menu-item-icon" src="../../assets/my-menu/archive.png" mode="aspectFit"></image>
+          <text class="menu-item-label">档案管理</text>
+        </view>
+        <text class="menu-arrow">›</text>
+      </view> -->
+      
+      <!-- 入群插件 -->
+      <view class="menu-item join-group-item">
+        <cell
+          url="https://work.weixin.qq.com/gm/f2b9884aaf7959b498c7784567437809"
+          bind:startmessage="onJoinGroupStart"
+          bind:completemessage="onJoinGroupComplete"
+          contactText="加入招聘群，获取最新岗位信息"
+        />
+      </view>
+
+      <view class="menu-item" bindtap="handleFeedback">
+        <view class="menu-left">
+          <image class="menu-item-icon" src="../../assets/my-menu/feedback.png" mode="aspectFit"></image>
+          <text class="menu-item-label">意见反馈</text>
+        </view>
+        <text class="menu-arrow">›</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 退出登录 -->
+  <view class="logout-section">
+    <button class="btn-logout" bindtap="handleLogout">退出登录</button>
+  </view>
+
+  <!-- 全局客服浮动按钮 -->
+  <global-service-btn 
+    show="{{true}}"
+    show-label="{{true}}"
+  />
+
+  <!-- 登录弹窗 -->
+  <login-sheet 
+    visible="{{showLoginSheet}}"
+    bind:close="onLoginClose"
+    bind:login-success="onLoginSuccess"
+  />
+</view>

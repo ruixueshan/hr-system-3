@@ -1,0 +1,27 @@
+{
+  "projectname": "hr-system-3.0-cloudfunctions",
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "postcss": true,
+    "minified": true
+  },
+  "env": "cloud1-5glojms9a83c3457",
+  "appid": "wx191bb0402454164d",
+  "functions": [
+    {
+      "name": "candidates",
+      "config": {
+        "timeout": 60,
+        "envVariables": {},
+        "triggers": [
+          {
+            "name": "candidateRecycleDaily",
+            "type": "timer",
+            "config": "0 5 * * * * *"
+          }
+        ]
+      }
+    }
+  ]
+}

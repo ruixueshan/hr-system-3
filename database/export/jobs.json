@@ -1,0 +1,1407 @@
+[
+  {
+    "_id": "71fe4ab869bcb99c00d93cd608a7345f",
+    "benefits": [
+      "12小时计薪",
+      "包吃",
+      "坐班多"
+    ],
+    "created_at": "2026-03-20T03:06:04.045Z",
+    "hourly_rate": {
+      "$numberDouble": "16.5"
+    },
+    "is_recruiting": false,
+    "_openid": "vRuKpUvBrlGs45RWmnmfzQ",
+    "company_id": "b3c6c3d569bcb98b00df161941cb67fb",
+    "company_name": "江苏君弘新能源有限公司",
+    "rate_plan_id": "1fa8f55169bcb9c100db371b43c00482",
+    "salary_display": "16.5 元/时",
+    "salary_type": "hourly",
+    "status": "closed",
+    "updated_at": "2026-03-26T08:57:43.399Z",
+    "job_name": "玻璃厂月结普工",
+    "purchase_hourly_rate": {
+      "$numberDouble": "16.5"
+    },
+    "recruited": {
+      "$numberDouble": "0.0"
+    },
+    "bill_hours": {
+      "$numberDouble": "12.0"
+    },
+    "description": "",
+    "position": "玻璃厂月结普工",
+    "rate_plan_name": "君弘月结普工",
+    "shift_type": "two_shift",
+    "vacancies": {
+      "$numberDouble": "20.0"
+    },
+    "work_time": "8:00-20:00",
+    "hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "salary_max": {
+      "$numberDouble": "6000.0"
+    },
+    "salary_min": {
+      "$numberDouble": "4500.0"
+    },
+    "supports_daily": false,
+    "job_code": "JOB26032515333324"
+  },
+  {
+    "_id": "c3459b2a69bcb9fa00d891634ad51185",
+    "salary_display": "15.5 元/时",
+    "shift_type": "two_shift",
+    "benefits": [
+      "12小时计计薪",
+      "包吃",
+      "可日结"
+    ],
+    "rate_plan_name": "君弘普工",
+    "_openid": "LeKpVGfMEgPMEx-newN7UA",
+    "bill_hours": {
+      "$numberDouble": "12.0"
+    },
+    "company_id": "b3c6c3d569bcb98b00df161941cb67fb",
+    "job_name": "泗阳玻璃厂普工",
+    "salary_type": "hourly",
+    "status": "active",
+    "work_time": "8:00-20:00",
+    "description": "",
+    "hourly_rate": {
+      "$numberDouble": "15.5"
+    },
+    "purchase_hourly_rate": {
+      "$numberDouble": "16.5"
+    },
+    "recruited": {
+      "$numberDouble": "0.0"
+    },
+    "updated_at": "2026-03-31T04:24:44.667Z",
+    "vacancies": {
+      "$numberDouble": "20.0"
+    },
+    "company_name": "江苏君弘新能源有限公司",
+    "created_at": "2026-03-20T03:07:38.850Z",
+    "is_recruiting": true,
+    "job_code": "ZR001",
+    "position": "泗阳玻璃厂普工",
+    "rate_plan_id": "b3c6c3d569bcba1500df1f631b1bb451",
+    "supports_daily": true,
+    "hourly_rate_daily": {
+      "$numberDouble": "15.5"
+    },
+    "hourly_rate_monthly": {
+      "$numberDouble": "16.5"
+    },
+    "salary_max": {
+      "$numberDouble": "6000.0"
+    },
+    "salary_min": {
+      "$numberDouble": "4500.0"
+    },
+    "sort_order": null
+  },
+  {
+    "_id": "d3a457a269c273a9016a5cf24bf46c3a",
+    "updated_at": "2026-04-09T04:58:11.842Z",
+    "position": "经开区注塑普工",
+    "status": "active",
+    "vacancies": {
+      "$numberDouble": "5.0"
+    },
+    "job_name": "经开区注塑普工",
+    "benefits": [
+      "12小时全计薪 长期工工时有保障",
+      "包吃"
+    ],
+    "description": "",
+    "is_recruiting": true,
+    "salary_type": "hourly",
+    "shift_type": "two_shift",
+    "work_time": "08:00-20:00",
+    "_openid": "pe-J4j0XLnhmRiBGobUBXA",
+    "bill_hours": {
+      "$numberDouble": "12.0"
+    },
+    "company_name": "江苏明高聚金科技有限公司",
+    "supports_daily": true,
+    "purchase_hourly_rate": {
+      "$numberDouble": "18.0"
+    },
+    "company_id": "1fa8f55169c2003d015a3f4e31dc8690",
+    "created_at": "2026-03-24T11:21:12.812Z",
+    "hourly_rate_daily": {
+      "$numberDouble": "15.0"
+    },
+    "hourly_rate_monthly": {
+      "$numberDouble": "15.5"
+    },
+    "job_code": "ZR002",
+    "recruited": {
+      "$numberDouble": "0.0"
+    },
+    "rate_plan_id": "33956e3d69c2796b0167b1a4235146ce",
+    "salary_max": {
+      "$numberDouble": "6000.0"
+    },
+    "salary_min": {
+      "$numberDouble": "5000.0"
+    },
+    "sort_order": null
+  },
+  {
+    "_id": "6172875369c274140169eacf39033ac6",
+    "is_recruiting": true,
+    "salary_type": "hourly",
+    "supports_daily": true,
+    "_openid": "pe-J4j0XLnhmRiBGobUBXA",
+    "company_id": "f6fcfb9c69c2260a0159bb8562dee9fe",
+    "purchase_hourly_rate": {
+      "$numberDouble": "18.0"
+    },
+    "recruited": {
+      "$numberDouble": "0.0"
+    },
+    "updated_at": "2026-04-15T10:13:00.897Z",
+    "vacancies": {
+      "$numberDouble": "20.0"
+    },
+    "company_name": "江苏恒来电器有限公司",
+    "created_at": "2026-03-24T11:22:59.478Z",
+    "hourly_rate_daily": {
+      "$numberDouble": "14.0"
+    },
+    "job_code": "ZR003",
+    "shift_type": "day",
+    "status": "active",
+    "work_time": "08:00-19:30",
+    "description": "",
+    "position": "经开区电器厂普工",
+    "job_name": "经开区电器厂普工",
+    "benefits": [
+      "长白班",
+      "包吃包住",
+      "可带手机"
+    ],
+    "bill_hours": {
+      "$numberDouble": "10.0"
+    },
+    "hourly_rate_monthly": {
+      "$numberDouble": "15.0"
+    },
+    "salary_max": {
+      "$numberDouble": "4500.0"
+    },
+    "salary_min": {
+      "$numberDouble": "3500.0"
+    },
+    "rate_plan_id": "b3c6c3d569c3777a0181ec6a381a0317",
+    "sort_order": {
+      "$numberDouble": "4.0"
+    }
+  },
+  {
+    "_id": "3bef321d69c27559016819a5614d58ed",
+    "purchase_hourly_rate": {
+      "$numberDouble": "0.0"
+    },
+    "recruited": {
+      "$numberDouble": "0.0"
+    },
+    "benefits": [
+      "包吃",
+      "可带手机",
+      "可日结"
+    ],
+    "company_name": "宿迁凯达塑业科技有限公司",
+    "job_code": "ZR004",
+    "job_name": "北京路注塑操作工",
+    "supports_daily": true,
+    "updated_at": "2026-04-07T09:00:51.687Z",
+    "vacancies": {
+      "$numberDouble": "5.0"
+    },
+    "work_time": "07:30-19:30",
+    "position": "北京路注塑操作工",
+    "shift_type": "two_shift",
+    "created_at": "2026-03-24T11:28:24.890Z",
+    "description": "",
+    "salary_type": "hourly",
+    "status": "active",
+    "_openid": "pe-J4j0XLnhmRiBGobUBXA",
+    "bill_hours": {
+      "$numberDouble": "11.0"
+    },
+    "company_id": "33956e3d69c275190167277171422dc2",
+    "hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "is_recruiting": true,
+    "salary_max": {
+      "$numberDouble": "5500.0"
+    },
+    "salary_min": {
+      "$numberDouble": "4500.0"
+    },
+    "rate_plan_id": "3bef321d69c378100180ebcb4ac7cc37",
+    "sort_order": null
+  },
+  {
+    "_id": "1fa8f55169c375cd017ebd925d71defc",
+    "vacancies": {
+      "$numberDouble": "20.0"
+    },
+    "_openid": "LeKpVGfMEgPMEx-newN7UA",
+    "benefits": [
+      "长白班",
+      "有餐补",
+      "多劳多得"
+    ],
+    "company_id": "2d12bec269c375780187c15e6487f981",
+    "description": "",
+    "is_recruiting": true,
+    "job_code": "JOB26032513423735",
+    "work_time": "8:00-17:30",
+    "job_name": "宿迁经开区冲压工",
+    "recruited": {
+      "$numberDouble": "0.0"
+    },
+    "salary_max": {
+      "$numberDouble": "8000.0"
+    },
+    "salary_type": "hourly",
+    "supports_daily": false,
+    "created_at": "2026-03-25T05:42:37.733Z",
+    "hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "salary_min": {
+      "$numberDouble": "4500.0"
+    },
+    "company_name": "江苏祥森科技有限公司",
+    "hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "position": "宿迁经开区冲压工",
+    "purchase_hourly_rate": {
+      "$numberDouble": "0.0"
+    },
+    "shift_type": "day",
+    "status": "active",
+    "updated_at": "2026-03-25T05:59:44.210Z"
+  },
+  {
+    "_id": "c25002a969c3768d0180df290aed6277",
+    "job_name": "宿迁经开区氩弧焊二保焊",
+    "shift_type": "day",
+    "position": "宿迁经开区氩弧焊二保焊",
+    "salary_min": {
+      "$numberDouble": "8000.0"
+    },
+    "vacancies": {
+      "$numberDouble": "10.0"
+    },
+    "work_time": "8:00-20:00",
+    "benefits": [
+      "多劳多得",
+      "长白班",
+      "包吃"
+    ],
+    "company_name": "宿迁立仁新能源有限公司",
+    "created_at": "2026-03-25T05:45:49.724Z",
+    "hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "job_code": "JOB26032513454956",
+    "salary_max": {
+      "$numberDouble": "13000.0"
+    },
+    "status": "active",
+    "supports_daily": false,
+    "description": "",
+    "purchase_hourly_rate": {
+      "$numberDouble": "0.0"
+    },
+    "recruited": {
+      "$numberDouble": "0.0"
+    },
+    "salary_type": "hourly",
+    "updated_at": "2026-04-07T02:41:38.392Z",
+    "_openid": "LeKpVGfMEgPMEx-newN7UA",
+    "company_id": "dde8ef4869c3763f0180160b258d9b82",
+    "hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "is_recruiting": true,
+    "sort_order": null
+  },
+  {
+    "_id": "56ba808e69c376e0018483dd5dc63e55",
+    "hourly_rate_daily": {
+      "$numberDouble": "15.0"
+    },
+    "job_code": "JOB26032513471215",
+    "supports_daily": true,
+    "benefits": [
+      "长白班",
+      "包吃",
+      "准时发薪"
+    ],
+    "bill_hours": {
+      "$numberDouble": "12.0"
+    },
+    "company_name": "宿迁立仁新能源有限公司",
+    "created_at": "2026-03-25T05:47:12.867Z",
+    "is_recruiting": true,
+    "salary_type": "hourly",
+    "work_time": "8:00-20:00",
+    "description": "主要抬抬板，给板贴膜",
+    "hourly_rate_monthly": {
+      "$numberDouble": "16.0"
+    },
+    "position": "宿迁经开区操作工",
+    "purchase_hourly_rate": {
+      "$numberDouble": "20.0"
+    },
+    "updated_at": "2026-04-09T04:58:37.473Z",
+    "company_id": "dde8ef4869c3763f0180160b258d9b82",
+    "job_name": "宿迁经开区操作工",
+    "recruited": {
+      "$numberDouble": "0.0"
+    },
+    "shift_type": "day",
+    "status": "active",
+    "vacancies": {
+      "$numberDouble": "20.0"
+    },
+    "_openid": "LeKpVGfMEgPMEx-newN7UA",
+    "salary_max": {
+      "$numberDouble": "6000.0"
+    },
+    "salary_min": {
+      "$numberDouble": "4500.0"
+    },
+    "rate_plan_id": "93abbbd769c3af69018820d141ddd581",
+    "sort_order": {
+      "$numberDouble": "3.0"
+    }
+  },
+  {
+    "_id": "6a0a1fb669c4942a01a1a9e02f9e6bdd",
+    "created_at": "2026-03-26T02:04:26.555Z",
+    "hourly_rate_monthly": {
+      "$numberDouble": "22.0"
+    },
+    "job_code": "JOB26032610042629",
+    "shift_type": "day",
+    "supports_daily": true,
+    "updated_at": "2026-03-26T02:53:06.900Z",
+    "work_time": "8:30-17:30",
+    "company_id": "f6fcfb9c69c493a6019d74c705157768",
+    "description": "组装传送带",
+    "is_recruiting": true,
+    "position": "双庄 组装工",
+    "salary_max": {
+      "$numberDouble": "5000.0"
+    },
+    "vacancies": {
+      "$numberDouble": "20.0"
+    },
+    "bill_hours": {
+      "$numberDouble": "8.0"
+    },
+    "company_name": "威雅科技（宿迁）有限公司",
+    "job_name": "双庄 组装工",
+    "recruited": {
+      "$numberDouble": "0.0"
+    },
+    "salary_min": {
+      "$numberDouble": "3500.0"
+    },
+    "salary_type": "hourly",
+    "status": "active",
+    "benefits": [
+      "8小时工作制",
+      "外资企业"
+    ],
+    "hourly_rate_daily": {
+      "$numberDouble": "20.0"
+    },
+    "purchase_hourly_rate": {
+      "$numberDouble": "26.5"
+    },
+    "rate_plan_id": "71fe4ab869c4946501a00cb91e37026d"
+  },
+  {
+    "_id": "f0df711e69c4a13201a62605492b44dc",
+    "job_name": "经开区折弯工学徒",
+    "recruited": {
+      "$numberDouble": "0.0"
+    },
+    "salary_min": {
+      "$numberDouble": "4500.0"
+    },
+    "vacancies": {
+      "$numberDouble": "10.0"
+    },
+    "_openid": "LeKpVGfMEgPMEx-newN7UA",
+    "company_id": "f6fcfb9c69c4a0be019f44c52fc3ba6b",
+    "description": "学习折弯，可以接收学徒",
+    "hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "shift_type": "day",
+    "benefits": [
+      "包吃包住",
+      "长白班",
+      "可交五险"
+    ],
+    "created_at": "2026-03-26T03:00:02.874Z",
+    "hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "position": "经开区折弯工学徒",
+    "salary_type": "hourly",
+    "updated_at": "2026-03-26T03:00:02.874Z",
+    "company_name": "雅泰科技产业园",
+    "is_recruiting": true,
+    "job_code": "JOB26032611000222",
+    "purchase_hourly_rate": {
+      "$numberDouble": "0.0"
+    },
+    "salary_max": {
+      "$numberDouble": "6000.0"
+    },
+    "status": "active",
+    "supports_daily": false,
+    "work_time": "7:30-20:00"
+  },
+  {
+    "_id": "6172875369c4a16001a69dee7ecacb3b",
+    "benefits": [
+      "可交五险",
+      "长白班"
+    ],
+    "description": "组装工或者打磨工",
+    "is_recruiting": true,
+    "job_code": "JOB26032611004861",
+    "position": "经开区组装工",
+    "recruited": {
+      "$numberDouble": "0.0"
+    },
+    "hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "purchase_hourly_rate": {
+      "$numberDouble": "0.0"
+    },
+    "salary_type": "hourly",
+    "status": "active",
+    "supports_daily": false,
+    "updated_at": "2026-04-15T10:12:48.175Z",
+    "vacancies": {
+      "$numberDouble": "1.0"
+    },
+    "company_id": "f6fcfb9c69c4a0be019f44c52fc3ba6b",
+    "company_name": "雅泰科技产业园",
+    "created_at": "2026-03-26T03:00:48.065Z",
+    "job_name": "经开区组装工",
+    "salary_max": {
+      "$numberDouble": "6000.0"
+    },
+    "salary_min": {
+      "$numberDouble": "4500.0"
+    },
+    "shift_type": "day",
+    "_openid": "LeKpVGfMEgPMEx-newN7UA",
+    "hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "work_time": "7:30-20:00",
+    "sort_order": {
+      "$numberDouble": "2.0"
+    }
+  },
+  {
+    "_id": "f6fcfb9c69c52de701b203ca5af2ea2f",
+    "work_time": "08:00-20:00",
+    "_openid": "pe-J4j0XLnhmRiBGobUBXA",
+    "hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "job_name": "新能源厂操作工",
+    "salary_max": {
+      "$numberDouble": "6000.0"
+    },
+    "salary_min": {
+      "$numberDouble": "4500.0"
+    },
+    "shift_type": "day",
+    "supports_daily": true,
+    "benefits": [
+      "长白班",
+      "包吃"
+    ],
+    "created_at": "2026-03-26T13:00:22.538Z",
+    "job_code": "JOB26032621002282",
+    "purchase_hourly_rate": {
+      "$numberDouble": "16.0"
+    },
+    "recruited": {
+      "$numberDouble": "0.0"
+    },
+    "salary_type": "hourly",
+    "status": "active",
+    "company_name": "江苏阳溪新能源科技有限公司",
+    "is_recruiting": true,
+    "position": "新能源厂操作工",
+    "updated_at": "2026-03-30T09:40:50.485Z",
+    "company_id": "4d75389069c52d3800124cec0ffb6cfd",
+    "description": "",
+    "hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "vacancies": {
+      "$numberDouble": "5.0"
+    },
+    "bill_hours": {
+      "$numberDouble": "10.5"
+    }
+  },
+  {
+    "_id": "f0df711e69c63f5601d521bc5f1134fc",
+    "benefits": [
+      "包吃",
+      "长白班"
+    ],
+    "bill_hours": {
+      "$numberDouble": "11.0"
+    },
+    "hourly_rate_daily": {
+      "$numberDouble": "14.0"
+    },
+    "hourly_rate_monthly": {
+      "$numberDouble": "15.0"
+    },
+    "job_name": "净化器厂普工",
+    "salary_type": "hourly",
+    "supports_daily": true,
+    "vacancies": {
+      "$numberDouble": "20.0"
+    },
+    "description": "",
+    "position": "净化器厂普工",
+    "recruited": {
+      "$numberDouble": "0.0"
+    },
+    "salary_max": {
+      "$numberDouble": "5500.0"
+    },
+    "salary_min": {
+      "$numberDouble": "4500.0"
+    },
+    "updated_at": "2026-04-25T04:24:29.529Z",
+    "company_id": "dde8ef4869c63ed901d2ae95623d47ab",
+    "company_name": "江苏艾尔佳净化科技有限公司",
+    "shift_type": "day",
+    "status": "paused",
+    "_openid": "pe-J4j0XLnhmRiBGobUBXA",
+    "created_at": "2026-03-27T08:27:01.432Z",
+    "is_recruiting": false,
+    "job_code": "JOB26032716270152",
+    "purchase_hourly_rate": {
+      "$numberDouble": "0.0"
+    },
+    "work_time": "08:00-20:00",
+    "rate_plan_id": "1fa8f55169c63f8701cf94c95234411a"
+  },
+  {
+    "_id": "33956e3d69c737f301e6010b0af9f7e9",
+    "salary_type": "hourly",
+    "shift_type": "day",
+    "_openid": "gNiDXRriBeIEN0jPwnb5vQ",
+    "created_at": "2026-03-28T02:07:47.807Z",
+    "is_recruiting": true,
+    "position": "分拣装卸工",
+    "purchase_hourly_rate": {
+      "$numberDouble": "18.0"
+    },
+    "status": "active",
+    "supports_daily": true,
+    "vacancies": {
+      "$numberDouble": "20.0"
+    },
+    "description": "女工主要负责分拣，男工主要负责装卸",
+    "salary_min": {
+      "$numberDouble": "3500.0"
+    },
+    "hourly_rate_daily": {
+      "$numberDouble": "15.0"
+    },
+    "job_name": "分拣装卸工",
+    "recruited": {
+      "$numberDouble": "0.0"
+    },
+    "updated_at": "2026-03-28T02:08:24.983Z",
+    "work_time": "15:00-23:00",
+    "benefits": [],
+    "company_id": "c25002a969c737a101e6fc9b06e74bd3",
+    "company_name": "宿迁圆通快递",
+    "hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "job_code": "JOB26032810074779",
+    "salary_max": {
+      "$numberDouble": "5000.0"
+    },
+    "rate_plan_id": "8d2e20b369c7380f01e84a28132ffa0d"
+  },
+  {
+    "_id": "f0df711e69c73fea01ec6aae41365f94",
+    "recruited": {
+      "$numberDouble": "0.0"
+    },
+    "salary_min": {
+      "$numberDouble": "4800.0"
+    },
+    "salary_type": "hourly",
+    "_openid": "pe-J4j0XLnhmRiBGobUBXA",
+    "description": "",
+    "status": "active",
+    "updated_at": "2026-03-30T09:40:45.732Z",
+    "work_time": "08:30-17:30",
+    "job_code": "JOB26032810414561",
+    "position": "叉车工",
+    "salary_max": {
+      "$numberDouble": "6000.0"
+    },
+    "shift_type": "day",
+    "supports_daily": false,
+    "benefits": [
+      "长白班",
+      "可带手机",
+      "工作时间短"
+    ],
+    "created_at": "2026-03-28T02:41:46.051Z",
+    "hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "hourly_rate_monthly": {
+      "$numberDouble": "25.0"
+    },
+    "is_recruiting": true,
+    "vacancies": {
+      "$numberDouble": "1.0"
+    },
+    "bill_hours": {
+      "$numberDouble": "8.0"
+    },
+    "company_id": "f6fcfb9c69c493a6019d74c705157768",
+    "company_name": "威雅科技（宿迁）有限公司",
+    "job_name": "叉车工",
+    "purchase_hourly_rate": {
+      "$numberDouble": "0.0"
+    },
+    "rate_plan_id": "b3c6c3d569c74b2301eba30b71d33fa0"
+  },
+  {
+    "_id": "4d75389069ca3dcc009211ab3b6ad746",
+    "created_at": "2026-03-30T09:09:31.720Z",
+    "description": "",
+    "job_name": "一楼普工",
+    "salary_type": "hourly",
+    "status": "paused",
+    "company_name": "江苏巨泰生物科技有限公司",
+    "hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "is_recruiting": false,
+    "salary_min": {
+      "$numberDouble": "3000.0"
+    },
+    "updated_at": "2026-04-25T04:24:11.502Z",
+    "position": "一楼普工",
+    "recruited": {
+      "$numberDouble": "0.0"
+    },
+    "_openid": "pe-J4j0XLnhmRiBGobUBXA",
+    "company_id": "f0df711e69ca3d7f02391c0d162805ad",
+    "hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "job_code": "JOB26033017093170",
+    "salary_max": {
+      "$numberDouble": "4000.0"
+    },
+    "sort_order": null,
+    "purchase_hourly_rate": {
+      "$numberDouble": "0.0"
+    },
+    "shift_type": "day",
+    "supports_daily": true,
+    "vacancies": {
+      "$numberDouble": "1.0"
+    },
+    "work_time": "08:00-17:30",
+    "benefits": []
+  },
+  {
+    "_id": "d3a457a269cb8e30025e810621198e83",
+    "company_id": "9f5d149069cb8d5e0254d3895063bb0a",
+    "created_at": "2026-03-31T09:04:47.123Z",
+    "description": "",
+    "is_recruiting": true,
+    "shift_type": "day",
+    "sort_order": null,
+    "benefits": [],
+    "company_name": "徐州沃捷物流益丰仓库",
+    "hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "supports_daily": true,
+    "updated_at": "2026-03-31T09:04:47.123Z",
+    "vacancies": {
+      "$numberDouble": "1.0"
+    },
+    "job_code": "JOB26033117044637",
+    "job_name": "益丰装卸工",
+    "purchase_hourly_rate": {
+      "$numberDouble": "0.0"
+    },
+    "recruited": {
+      "$numberDouble": "0.0"
+    },
+    "salary_type": "hourly",
+    "work_time": "",
+    "_openid": "pe-J4j0XLnhmRiBGobUBXA",
+    "position": "益丰装卸工",
+    "status": "active"
+  },
+  {
+    "_id": "da3d566169cc7fd6026a67e429c951eb",
+    "salary_min": {
+      "$numberDouble": "5000.0"
+    },
+    "salary_type": "hourly",
+    "shift_type": "two_shift",
+    "status": "paused",
+    "purchase_hourly_rate": {
+      "$numberDouble": "21.0"
+    },
+    "supports_daily": true,
+    "updated_at": "2026-04-15T10:12:38.522Z",
+    "company_id": "71fe4ab869cc7f4b0273aa471b884fc6",
+    "position": "睢宁凌城操作工质检员",
+    "recruited": {
+      "$numberDouble": "0.0"
+    },
+    "sort_order": null,
+    "vacancies": {
+      "$numberDouble": "120.0"
+    },
+    "work_time": "8:00-20:00",
+    "_openid": "LeKpVGfMEgPMEx-newN7UA",
+    "benefits": [
+      "12小时计薪",
+      "包吃包住",
+      "长短期都要"
+    ],
+    "company_name": "江苏无双新能源有限公司",
+    "description": "",
+    "hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "is_recruiting": false,
+    "job_code": "JOB26040110154992",
+    "job_name": "睢宁凌城操作工质检员",
+    "bill_hours": {
+      "$numberDouble": "12.0"
+    },
+    "created_at": "2026-04-01T02:15:50.019Z",
+    "hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "salary_max": {
+      "$numberDouble": "6000.0"
+    }
+  },
+  {
+    "_id": "c25002a969ccb6c90278b20d576f1b54",
+    "salary_type": "hourly",
+    "updated_at": "2026-04-01T06:10:17.134Z",
+    "company_name": "江苏谷淦食品科技有限公司",
+    "job_code": "JOB26040114101609",
+    "job_name": "食品厂普工",
+    "purchase_hourly_rate": {
+      "$numberDouble": "0.0"
+    },
+    "recruited": {
+      "$numberDouble": "0.0"
+    },
+    "shift_type": "day",
+    "status": "active",
+    "company_id": "8d2e20b369ccb623027586006ef437f3",
+    "hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "is_recruiting": true,
+    "sort_order": null,
+    "supports_daily": true,
+    "work_time": "08:00-20:00",
+    "description": "",
+    "salary_min": {
+      "$numberDouble": "4000.0"
+    },
+    "vacancies": {
+      "$numberDouble": "5.0"
+    },
+    "_openid": "pe-J4j0XLnhmRiBGobUBXA",
+    "benefits": [
+      "长白班",
+      "包吃"
+    ],
+    "created_at": "2026-04-01T06:10:17.134Z",
+    "hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "position": "食品厂普工",
+    "salary_max": {
+      "$numberDouble": "5000.0"
+    }
+  },
+  {
+    "_id": "b3c6c3d569ccd107027c3b882db7fa10",
+    "created_at": "2026-04-01T08:02:15.026Z",
+    "description": "",
+    "shift_type": "day",
+    "updated_at": "2026-04-01T08:02:15.026Z",
+    "company_id": "c25002a969cccfe0027b73f900f22abd",
+    "hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "job_name": "五金操作工",
+    "position": "五金操作工",
+    "salary_min": {
+      "$numberDouble": "4500.0"
+    },
+    "salary_type": "hourly",
+    "status": "active",
+    "_openid": "pe-J4j0XLnhmRiBGobUBXA",
+    "benefits": [
+      "长白班 ",
+      "租房补贴"
+    ],
+    "company_name": "艾比户外用品宿迁有限公司",
+    "job_code": "JOB26040116021478",
+    "purchase_hourly_rate": {
+      "$numberDouble": "0.0"
+    },
+    "recruited": {
+      "$numberDouble": "0.0"
+    },
+    "sort_order": null,
+    "vacancies": {
+      "$numberDouble": "1.0"
+    },
+    "is_recruiting": true,
+    "salary_max": {
+      "$numberDouble": "6000.0"
+    },
+    "supports_daily": false,
+    "work_time": "08:00-20:00"
+  },
+  {
+    "_id": "2d12bec269ccd1db02875cb31c0e5246",
+    "work_time": "08:00-20:00",
+    "hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "position": "户外用品公司激光焊氩弧焊工",
+    "_openid": "pe-J4j0XLnhmRiBGobUBXA",
+    "benefits": [
+      "长白班",
+      "多劳多得",
+      "租房补贴"
+    ],
+    "created_at": "2026-04-01T08:05:47.502Z",
+    "job_code": "JOB26040116054639",
+    "job_name": "户外用品公司激光焊氩弧焊工",
+    "salary_min": {
+      "$numberDouble": "5000.0"
+    },
+    "status": "active",
+    "company_id": "c25002a969cccfe0027b73f900f22abd",
+    "is_recruiting": true,
+    "purchase_hourly_rate": {
+      "$numberDouble": "0.0"
+    },
+    "salary_max": {
+      "$numberDouble": "10000.0"
+    },
+    "shift_type": "day",
+    "sort_order": null,
+    "supports_daily": false,
+    "updated_at": "2026-04-01T08:05:47.502Z",
+    "company_name": "艾比户外用品宿迁有限公司",
+    "description": "",
+    "hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "recruited": {
+      "$numberDouble": "0.0"
+    },
+    "salary_type": "hourly",
+    "vacancies": {
+      "$numberDouble": "1.0"
+    }
+  },
+  {
+    "_id": "9f5d149069d4620703321dca15f275ca",
+    "company_id": "f0df711e69d4617e033a8eed501fcfbd",
+    "company_name": "江苏姚吉五金电器有限公司",
+    "hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "is_recruiting": true,
+    "job_code": "JOB26040709464661",
+    "position": "南京路注塑厂操作工",
+    "salary_type": "hourly",
+    "shift_type": "two_shift",
+    "_openid": "pe-J4j0XLnhmRiBGobUBXA",
+    "benefits": [
+      "包吃",
+      "岗位轻松"
+    ],
+    "bill_hours": {
+      "$numberDouble": "12.0"
+    },
+    "created_at": "2026-04-07T01:46:46.571Z",
+    "recruited": {
+      "$numberDouble": "0.0"
+    },
+    "salary_max": {
+      "$numberDouble": "5500.0"
+    },
+    "sort_order": null,
+    "status": "active",
+    "hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "purchase_hourly_rate": {
+      "$numberDouble": "0.0"
+    },
+    "salary_min": {
+      "$numberDouble": "4500.0"
+    },
+    "supports_daily": true,
+    "description": "",
+    "job_name": "南京路注塑厂操作工",
+    "updated_at": "2026-04-09T04:58:21.761Z",
+    "vacancies": {
+      "$numberDouble": "10.0"
+    },
+    "work_time": "08:00-20:00",
+    "rate_plan_id": "8d2e20b369d462630338726719c65e8e"
+  },
+  {
+    "_id": "f6fcfb9c69d731c5037e35d15ae3a512",
+    "hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "purchase_hourly_rate": {
+      "$numberDouble": "0.0"
+    },
+    "company_id": "1fa8f55169d7317b0382ca1b196ba866",
+    "company_name": "江苏滴客智能科技有限公司",
+    "created_at": "2026-04-09T04:57:39.874Z",
+    "description": "",
+    "hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "is_recruiting": false,
+    "job_code": "JOB26040912573908",
+    "salary_type": "hourly",
+    "_openid": "pe-J4j0XLnhmRiBGobUBXA",
+    "benefits": [],
+    "position": "滴客临时工",
+    "recruited": {
+      "$numberDouble": "0.0"
+    },
+    "shift_type": "day",
+    "supports_daily": true,
+    "updated_at": "2026-04-25T04:24:19.710Z",
+    "vacancies": {
+      "$numberDouble": "1.0"
+    },
+    "job_name": "滴客临时工",
+    "sort_order": null,
+    "status": "paused",
+    "work_time": ""
+  },
+  {
+    "_id": "b3c6c3d569dc4fe2040db3e43587bc9c",
+    "salary_type": "hourly",
+    "status": "active",
+    "supports_daily": true,
+    "_openid": "pe-J4j0XLnhmRiBGobUBXA",
+    "benefits": [
+      "三天后日结",
+      "包吃"
+    ],
+    "description": "",
+    "recruited": {
+      "$numberDouble": "0.0"
+    },
+    "salary_max": {
+      "$numberDouble": "6000.0"
+    },
+    "sort_order": null,
+    "vacancies": {
+      "$numberDouble": "20.0"
+    },
+    "work_time": "07:00-19:00",
+    "job_code": "JOB26041310072868",
+    "company_id": "71fe4ab869dc4f42040c39337441671d",
+    "created_at": "2026-04-13T02:07:29.110Z",
+    "hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "is_recruiting": true,
+    "position": "豪蓓特普工",
+    "shift_type": "two_shift",
+    "updated_at": "2026-04-13T02:07:29.110Z",
+    "company_name": "一统&豪蓓特食品",
+    "hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "job_name": "豪蓓特普工",
+    "purchase_hourly_rate": {
+      "$numberDouble": "0.0"
+    },
+    "salary_min": {
+      "$numberDouble": "4500.0"
+    }
+  },
+  {
+    "_id": "d3a457a269ddb58a0438838d0c80ef84",
+    "salary_max": {
+      "$numberDouble": "6500.0"
+    },
+    "supports_daily": false,
+    "updated_at": "2026-04-14T03:33:28.351Z",
+    "vacancies": {
+      "$numberDouble": "20.0"
+    },
+    "work_time": "08:00-20:00",
+    "company_id": "6a0a1fb669ddb4fa043740147f90715a",
+    "company_name": "宿迁禾润昌新材料有限公司",
+    "is_recruiting": true,
+    "recruited": {
+      "$numberDouble": "0.0"
+    },
+    "sort_order": null,
+    "status": "active",
+    "position": "材料厂造粒工",
+    "purchase_hourly_rate": {
+      "$numberDouble": "0.0"
+    },
+    "salary_type": "hourly",
+    "shift_type": "two_shift",
+    "benefits": [
+      "包吃包住",
+      "夜班有餐补及夜班补助"
+    ],
+    "created_at": "2026-04-14T03:33:28.351Z",
+    "description": "要求会开叉车",
+    "hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "job_code": "JOB26041411332812",
+    "job_name": "材料厂造粒工",
+    "salary_min": {
+      "$numberDouble": "5000.0"
+    },
+    "_openid": "pe-J4j0XLnhmRiBGobUBXA"
+  },
+  {
+    "_id": "69d4baf669df083504551d19252242b2",
+    "hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "job_code": "JOB26041511382804",
+    "sort_order": null,
+    "company_name": "泗阳新通路",
+    "created_at": "2026-04-15T03:38:28.352Z",
+    "purchase_hourly_rate": {
+      "$numberDouble": "0.0"
+    },
+    "recruited": {
+      "$numberDouble": "0.0"
+    },
+    "status": "active",
+    "vacancies": {
+      "$numberDouble": "1.0"
+    },
+    "work_time": "",
+    "benefits": [],
+    "company_id": "c3459b2a69df07f20457c13b5298a867",
+    "description": "",
+    "position": "装卸工",
+    "salary_type": "hourly",
+    "supports_daily": true,
+    "_openid": "pe-J4j0XLnhmRiBGobUBXA",
+    "hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "is_recruiting": false,
+    "job_name": "装卸工",
+    "shift_type": "day",
+    "updated_at": "2026-04-15T03:39:07.299Z"
+  },
+  {
+    "_id": "93abbbd769df647e0461345c066ef37e",
+    "job_name": "物流分拣",
+    "recruited": {
+      "$numberDouble": "0.0"
+    },
+    "_openid": "pe-J4j0XLnhmRiBGobUBXA",
+    "created_at": "2026-04-15T10:12:13.659Z",
+    "description": "",
+    "hourly_rate_daily": {
+      "$numberDouble": "16.0"
+    },
+    "sort_order": {
+      "$numberDouble": "1.0"
+    },
+    "supports_daily": true,
+    "updated_at": "2026-04-15T10:14:30.034Z",
+    "purchase_hourly_rate": {
+      "$numberDouble": "0.0"
+    },
+    "benefits": [
+      "第二天就发工资"
+    ],
+    "company_id": "c3459b2a69df07f20457c13b5298a867",
+    "hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "job_code": "JOB26041518121368",
+    "salary_type": "hourly",
+    "work_time": "23:00",
+    "company_name": "泗阳京东分拣",
+    "is_recruiting": true,
+    "position": "物流分拣",
+    "shift_type": "day",
+    "status": "active",
+    "vacancies": {
+      "$numberDouble": "20.0"
+    },
+    "rate_plan_id": "2d12bec269df64f4046d0d240e79862b"
+  },
+  {
+    "_id": "dde8ef4869e1d5e904a155867efbadc3",
+    "job_name": "洋河装卸工",
+    "salary_type": "hourly",
+    "shift_type": "day",
+    "status": "active",
+    "vacancies": {
+      "$numberDouble": "20.0"
+    },
+    "work_time": "15:00-20:00",
+    "company_id": "d3a457a269cb8d1e025e6d6f50355884",
+    "created_at": "2026-04-17T06:40:41.003Z",
+    "hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "is_recruiting": false,
+    "job_code": "JOB26041714404083",
+    "position": "洋河装卸工",
+    "purchase_hourly_rate": {
+      "$numberDouble": "0.0"
+    },
+    "_openid": "pe-J4j0XLnhmRiBGobUBXA",
+    "description": "",
+    "hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "supports_daily": true,
+    "recruited": {
+      "$numberDouble": "0.0"
+    },
+    "company_name": "德邦物流洋河网点",
+    "sort_order": null,
+    "updated_at": "2026-04-17T06:40:41.003Z",
+    "benefits": []
+  },
+  {
+    "_id": "42098a0769e2edfb0011b3a85f0c72f9",
+    "_openid": "pe-J4j0XLnhmRiBGobUBXA",
+    "job_code": "JOB26041810353820",
+    "job_name": "沭阳分拣工",
+    "description": "",
+    "salary_type": "hourly",
+    "created_at": "2026-04-18T02:35:38.312Z",
+    "company_id": "bdc6452e69e2edc3001280325976f644",
+    "hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "supports_daily": true,
+    "purchase_hourly_rate": {
+      "$numberDouble": "0.0"
+    },
+    "is_recruiting": true,
+    "recruited": {
+      "$numberDouble": "0.0"
+    },
+    "updated_at": "2026-04-18T02:35:38.312Z",
+    "position": "沭阳分拣工",
+    "vacancies": {
+      "$numberDouble": "15.0"
+    },
+    "benefits": [],
+    "status": "active",
+    "sort_order": null,
+    "company_name": "沭阳京东仓",
+    "work_time": "3：30-8：00",
+    "shift_type": "day"
+  },
+  {
+    "_id": "293c767c69ede6f200afc7f223ec6fae",
+    "updated_at": "2026-04-28T05:36:17.479Z",
+    "company_name": "宿迁维凯科技有限公司",
+    "benefits": [
+      "长白班",
+      "包吃两餐",
+      "坐班"
+    ],
+    "position": "广州路操作普工",
+    "job_code": "JOB26042618203442",
+    "sort_order": {
+      "$numberDouble": "1.0"
+    },
+    "supports_daily": true,
+    "work_time": "8:20-20:30",
+    "purchase_hourly_rate": {
+      "$numberDouble": "0.0"
+    },
+    "is_recruiting": true,
+    "_openid": "pe-J4j0XLnhmRiBGobUBXA",
+    "company_id": "6b0b394169ede6a600ae0db3790fddef",
+    "job_name": "广州路操作普工",
+    "hourly_rate_monthly": {
+      "$numberDouble": "16.0"
+    },
+    "vacancies": {
+      "$numberDouble": "50.0"
+    },
+    "salary_max": {
+      "$numberDouble": "5500.0"
+    },
+    "description": "",
+    "recruited": {
+      "$numberDouble": "0.0"
+    },
+    "status": "active",
+    "salary_min": {
+      "$numberDouble": "4500.0"
+    },
+    "hourly_rate_daily": {
+      "$numberDouble": "15.0"
+    },
+    "shift_type": "two_shift",
+    "salary_type": "hourly",
+    "created_at": "2026-04-26T10:20:34.775Z",
+    "rate_plan_id": "8e40b4e269f03d240002cb113eb5a913"
+  },
+  {
+    "_id": "69c95b666a0a914a00a6b3cb44ef2e64",
+    "sort_order": null,
+    "purchase_hourly_rate": {
+      "$numberDouble": "0.0"
+    },
+    "benefits": [],
+    "is_recruiting": true,
+    "recruited": {
+      "$numberDouble": "0.0"
+    },
+    "_openid": "pe-J4j0XLnhmRiBGobUBXA",
+    "description": "",
+    "company_name": "邦信物流",
+    "hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "supports_daily": true,
+    "salary_type": "hourly",
+    "position": "物流装卸",
+    "job_code": "JOB26051812105094",
+    "company_id": "0667d90f6a0a8c7700ae9f234be413da",
+    "created_at": "2026-05-18T04:10:50.235Z",
+    "status": "active",
+    "job_name": "物流装卸",
+    "hourly_rate_daily": {
+      "$numberDouble": "0.0"
+    },
+    "work_time": "",
+    "shift_type": "day",
+    "vacancies": {
+      "$numberDouble": "15.0"
+    },
+    "updated_at": "2026-05-18T04:12:57.074Z"
+  },
+  {
+    "_id": "69c95b666a0ba48800c357fc64252c21",
+    "job_code": "JOB26051907451195",
+    "company_id": "f0df711e69ca3d7f02391c0d162805ad",
+    "company_name": "江苏巨泰生物科技有限公司",
+    "job_name": "三楼普工",
+    "supports_daily": true,
+    "shift_type": "day",
+    "salary_type": "hourly",
+    "status": "active",
+    "position": "三楼普工",
+    "description": "",
+    "benefits": [],
+    "is_recruiting": true,
+    "created_at": "2026-05-18T23:45:11.372Z",
+    "_openid": "pe-J4j0XLnhmRiBGobUBXA",
+    "vacancies": {
+      "$numberDouble": "10.0"
+    },
+    "hourly_rate_monthly": {
+      "$numberDouble": "0.0"
+    },
+    "purchase_hourly_rate": {
+      "$numberDouble": "0.0"
+    },
+    "updated_at": "2026-05-18T23:46:28.398Z",
+    "sort_order": null,
+    "hourly_rate_daily": {
+      "$numberDouble": "13.0"
+    },
+    "work_time": "08：00-18：00",
+    "recruited": {
+      "$numberDouble": "0.0"
+    },
+    "rate_plan_id": "2e5b265c6a0ba4b200c5f5103cdb797b"
+  }
+]
