@@ -62,6 +62,8 @@ function toggleSidebar() {
   background-color: var(--bg-color);
   padding: 20px;
   overflow-y: auto;
+  overflow-x: hidden;
+  min-height: 0;
 }
 
 .fade-enter-active,

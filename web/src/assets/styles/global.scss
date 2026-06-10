@@ -70,6 +70,11 @@ a {
 }
 
 /* Element Plus 覆盖 */
+/* 修复 Firefox/Safari 中 el-main 作为 flex 子项时不产生滚动条的问题 */
+.el-main {
+  min-height: 0;
+}
+
 .el-button--primary {
   --el-button-bg-color: var(--primary-color);
   --el-button-border-color: var(--primary-color);

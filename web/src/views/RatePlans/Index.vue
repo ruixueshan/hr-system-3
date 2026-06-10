@@ -347,6 +347,7 @@ function handleDelete(row: RatePlan) {
   .pagination-wrapper {
     margin-top: 16px;
     display: flex;
+    flex-shrink: 0;
     justify-content: flex-end;
   }
 

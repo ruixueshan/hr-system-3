@@ -912,6 +912,7 @@ onMounted(() => {
   .pagination-wrapper {
     margin-top: 16px;
     display: flex;
+    flex-shrink: 0;
     justify-content: flex-end;
   }
 

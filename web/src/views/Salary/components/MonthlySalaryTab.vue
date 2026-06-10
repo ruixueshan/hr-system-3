@@ -776,6 +776,7 @@ watch(
 
 .table-pagination {
   display: flex;
+  flex-shrink: 0;
   justify-content: flex-end;
   padding-top: 16px;
 }

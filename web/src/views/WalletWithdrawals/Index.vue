@@ -642,6 +642,7 @@ onMounted(loadData);
 
   .pagination-wrapper {
     display: flex;
+    flex-shrink: 0;
     justify-content: flex-end;
     margin-top: 18px;
   }

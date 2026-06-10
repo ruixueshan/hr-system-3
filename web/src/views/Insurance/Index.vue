@@ -1383,7 +1383,9 @@ onBeforeUnmount(() => {
 
 .table-pagination {
   margin-top: 12px;
+  display: flex;
   justify-content: flex-end;
+  flex-shrink: 0;
 }
 
 .detail-table {
